@@ -3,22 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PikaGames", "PikaGames\PikaGames.csproj", "{7D0282CB-10F6-4EED-8190-235EFE3B8802}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Games", "Games", "{5240409E-92D0-45FC-B4D8-9CBCED3C8737}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PikaGames.Android", "PikaGames.Android\PikaGames.Android.csproj", "{45266623-ED0D-46DC-9A29-5EF84A126CD8}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PaperCast", "Games\PaperCast\PaperCast.shproj", "{C8165587-C583-420C-8E8C-5ED4EA9E1331}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Games\PaperCast\PaperCast.projitems*{45266623-ed0d-46dc-9a29-5ef84a126cd8}*SharedItemsImports = 4
+		Games\PaperCast\PaperCast.projitems*{c8165587-c583-420c-8e8c-5ed4ea9e1331}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7D0282CB-10F6-4EED-8190-235EFE3B8802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D0282CB-10F6-4EED-8190-235EFE3B8802}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D0282CB-10F6-4EED-8190-235EFE3B8802}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{7D0282CB-10F6-4EED-8190-235EFE3B8802}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D0282CB-10F6-4EED-8190-235EFE3B8802}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D0282CB-10F6-4EED-8190-235EFE3B8802}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C8165587-C583-420C-8E8C-5ED4EA9E1331} = {5240409E-92D0-45FC-B4D8-9CBCED3C8737}
 	EndGlobalSection
 EndGlobal
