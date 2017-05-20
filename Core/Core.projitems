@@ -31,7 +31,7 @@
     <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
     <None Include="$(MSBuildThisFileDirectory)Content\fonts\DebugFont.spritefont" />
     <None Include="$(MSBuildThisFileDirectory)Content\fonts\GameFont.spritefont" />
-    <None Include="$(MSBuildThisFileDirectory)Content\sounds\bgm\WereTheResistors.ogg" />
+    <None Include="$(MSBuildThisFileDirectory)Content\sounds\bgm\IttyBitty8Bit.ogg" />
     <None Include="$(MSBuildThisFileDirectory)Content\sounds\se\Logo.ogg" />
     <None Include="$(MSBuildThisFileDirectory)Content\sounds\se\Monogame.ogg" />
   </ItemGroup>

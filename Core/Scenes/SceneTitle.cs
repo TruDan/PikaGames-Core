@@ -37,8 +37,6 @@ namespace PikaGames.Core.Scenes
 
         private Color _menuItemColor;
         private Color _menuShadowColor;
-        private string[] _menuOptions;
-        private int _menuY;
 
         private const int NewGame = 0;
         private const int LoadGame = 1;
@@ -47,10 +45,7 @@ namespace PikaGames.Core.Scenes
 
         //--------------------------------------------------
         // Menu icon
-
-        //private Sprite _menuIcon;
-        private int _menuIconBaseY;
-
+        
         //--------------------------------------------------
         // Scene mechanic
 
@@ -87,32 +82,19 @@ namespace PikaGames.Core.Scenes
 
             // Press Start!
             var pabX = (viewportWidth - SceneManager.Instance.GameFont.MeasureString("Press Start!").X) / 2;
-            var pabY = viewportHeight - SceneManager.Instance.GameFont.MeasureString("Press Start!").Y - 15;
+            var pabY = viewportHeight - SceneManager.Instance.GameFont.MeasureString("Press Start!").Y - 45;
             _pressStartPosition = new Vector2(pabX, pabY);
             _pressStartInitialY = pabY;
 
             // Menu init
-            _menuItemColor = new Color(68, 44, 45);
-            _menuShadowColor = new Color(243, 171, 71);
-            _menuOptions = new string[]
-            {
-                "New Game",
-                "Load Game",
-                "Options",
-                "Exit"
-            };
-            _menuY = viewportHeight - (_menuOptions.Length * SceneManager.Instance.GameFont.LineSpacing) - 7;
-
-            // Menu icon
-            _menuIconBaseY = _menuY + SceneManager.Instance.GameFont.LineSpacing / 2;
-            //_menuIcon = new Sprite(ImageManager.loadScene(ScenePathName, "IndexIcon"));
-            //_menuIcon.Position = new Vector2(13, _menuIconBaseY);
-
+            _menuItemColor = new Color(128, 222, 234);
+            _menuShadowColor = new Color(0, 96, 100);
+            
             // Helper init
             //_optionsHelper = new SceneTitleOptionsHelper();
 
             // Start BGM
-            SoundManager.StartBgm("WereTheResistors");
+            SoundManager.StartBgm("IttyBitty8Bit");
 
             if (SceneManager.Instance.TitleStarted)
                 _phase = 1;
@@ -164,18 +146,6 @@ namespace PikaGames.Core.Scenes
 
             if (_phase == MenuPhase)
             {
-                if (InputManager.Instance.Pressed(InputCommand.Up) || InputManager.Instance.Pressed(InputCommand.Left))
-                {
-                    _index = _index - 1 < 0 ? _menuOptions.Length - 1 : _index - 1;
-                    SoundManager.PlaySelectSe();
-                }
-
-                if (InputManager.Instance.Pressed(InputCommand.Down) || InputManager.Instance.Pressed(InputCommand.Right))
-                {
-                    _index = _index + 1 > _menuOptions.Length - 1 ? 0 : _index + 1;
-                    SoundManager.PlaySelectSe();
-                }
-
                 if (InputManager.Instance.Pressed(InputCommand.Confirm))
                 {
                     switch (_index)
@@ -231,19 +201,6 @@ namespace PikaGames.Core.Scenes
             if (_phase == PressStartPhase)
             {
                 spriteBatch.DrawString(SceneManager.Instance.GameFont, "Press Start!", _pressStartPosition, _menuItemColor);
-            }
-            else if (_phase == MenuPhase)
-            {
-                // Menu
-                for (var i = 0; i < _menuOptions.Length; i++)
-                    spriteBatch.DrawString(SceneManager.Instance.GameFont, _menuOptions[i],
-                        new Vector2(25, _menuY + (i * SceneManager.Instance.GameFont.LineSpacing)), _menuItemColor);
-                //spriteBatch.Draw(_menuIcon);
-            }
-            else if (_phase == OptionsPhase)
-            {
-                //_optionsHelper.Draw(spriteBatch);
-                //spriteBatch.Draw(_menuIcon);
             }
 
             spriteBatch.End();

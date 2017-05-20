@@ -55,7 +55,7 @@ namespace PikaGames.Core.Managers
             //_selectSe = LoadSe("Select");
             _songs = new Dictionary<string, Song>
             {
-                { "WereTheResistors", LoadBgm("WereTheResistors") }
+                { "IttyBitty8Bit", LoadBgm("IttyBitty8Bit") }
             };
             MediaPlayer.IsRepeating = true;
 

@@ -64,12 +64,6 @@
 /processorParam:TextureFormat=Color
 /build:imgs/scenes/intro/Logo.png
 
-#begin sounds/bgm/WereTheResistors.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:sounds/bgm/WereTheResistors.ogg
-
 #begin imgs/scenes/title/Background.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -93,4 +87,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:imgs/system/Logo.png
+
+#begin sounds/bgm/IttyBitty8Bit.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/bgm/IttyBitty8Bit.ogg
 

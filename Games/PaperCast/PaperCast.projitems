@@ -22,4 +22,13 @@
   <ItemGroup>
     <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Content\background.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\SuaveSheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+    <None Include="$(MSBuildThisFileDirectory)Content\debug_font.spritefont" />
+    <None Include="$(MSBuildThisFileDirectory)Content\TitleFont.spritefont" />
+  </ItemGroup>
 </Project>

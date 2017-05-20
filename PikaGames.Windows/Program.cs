@@ -2,8 +2,7 @@
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using PikaGames.Core;
-using PikaGames.Games.PaperCast;
+using PikaGames.PaperCast;
 
 namespace PikaGames.Windows
 {
@@ -19,7 +18,7 @@ namespace PikaGames.Windows
         [STAThread]
         static void Main()
         {
-            using (var game = new GameBase())
+            using (var game = new PaperCastGame())
             {
                 //var screen =
                 //    System.Windows.Forms.Screen.AllScreens.First(
