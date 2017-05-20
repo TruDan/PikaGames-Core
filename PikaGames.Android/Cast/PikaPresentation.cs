@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Microsoft.Xna.Framework;
+using PikaGames.Games.PaperCast;
 
 namespace PikaGames.Android.Cast
 {
@@ -30,7 +31,8 @@ namespace PikaGames.Android.Cast
             //_game = new MyGame();
 
             SetContentView((View) _game.Services.GetService<View>());
-            _game.Run();
+            
+            _game.Run(GameRunBehavior.Asynchronous);
         }
     }
 }

@@ -856,44 +856,44 @@ namespace PikaGames.Android
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f090043
-			public const int abc_background_cache_hint_selector_material_dark = 2131296323;
-			
 			// aapt resource value: 0x7f090044
-			public const int abc_background_cache_hint_selector_material_light = 2131296324;
+			public const int abc_background_cache_hint_selector_material_dark = 2131296324;
 			
 			// aapt resource value: 0x7f090045
-			public const int abc_btn_colored_borderless_text_material = 2131296325;
+			public const int abc_background_cache_hint_selector_material_light = 2131296325;
 			
 			// aapt resource value: 0x7f090046
-			public const int abc_btn_colored_text_material = 2131296326;
+			public const int abc_btn_colored_borderless_text_material = 2131296326;
 			
 			// aapt resource value: 0x7f090047
-			public const int abc_color_highlight_material = 2131296327;
+			public const int abc_btn_colored_text_material = 2131296327;
 			
 			// aapt resource value: 0x7f090048
-			public const int abc_hint_foreground_material_dark = 2131296328;
+			public const int abc_color_highlight_material = 2131296328;
 			
 			// aapt resource value: 0x7f090049
-			public const int abc_hint_foreground_material_light = 2131296329;
+			public const int abc_hint_foreground_material_dark = 2131296329;
+			
+			// aapt resource value: 0x7f09004a
+			public const int abc_hint_foreground_material_light = 2131296330;
 			
 			// aapt resource value: 0x7f090009
 			public const int abc_input_method_navigation_guard = 2131296265;
 			
-			// aapt resource value: 0x7f09004a
-			public const int abc_primary_text_disable_only_material_dark = 2131296330;
-			
 			// aapt resource value: 0x7f09004b
-			public const int abc_primary_text_disable_only_material_light = 2131296331;
+			public const int abc_primary_text_disable_only_material_dark = 2131296331;
 			
 			// aapt resource value: 0x7f09004c
-			public const int abc_primary_text_material_dark = 2131296332;
+			public const int abc_primary_text_disable_only_material_light = 2131296332;
 			
 			// aapt resource value: 0x7f09004d
-			public const int abc_primary_text_material_light = 2131296333;
+			public const int abc_primary_text_material_dark = 2131296333;
 			
 			// aapt resource value: 0x7f09004e
-			public const int abc_search_url_text = 2131296334;
+			public const int abc_primary_text_material_light = 2131296334;
+			
+			// aapt resource value: 0x7f09004f
+			public const int abc_search_url_text = 2131296335;
 			
 			// aapt resource value: 0x7f09000a
 			public const int abc_search_url_text_normal = 2131296266;
@@ -904,32 +904,32 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f09000c
 			public const int abc_search_url_text_selected = 2131296268;
 			
-			// aapt resource value: 0x7f09004f
-			public const int abc_secondary_text_material_dark = 2131296335;
-			
 			// aapt resource value: 0x7f090050
-			public const int abc_secondary_text_material_light = 2131296336;
+			public const int abc_secondary_text_material_dark = 2131296336;
 			
 			// aapt resource value: 0x7f090051
-			public const int abc_tint_btn_checkable = 2131296337;
+			public const int abc_secondary_text_material_light = 2131296337;
 			
 			// aapt resource value: 0x7f090052
-			public const int abc_tint_default = 2131296338;
+			public const int abc_tint_btn_checkable = 2131296338;
 			
 			// aapt resource value: 0x7f090053
-			public const int abc_tint_edittext = 2131296339;
+			public const int abc_tint_default = 2131296339;
 			
 			// aapt resource value: 0x7f090054
-			public const int abc_tint_seek_thumb = 2131296340;
+			public const int abc_tint_edittext = 2131296340;
 			
 			// aapt resource value: 0x7f090055
-			public const int abc_tint_spinner = 2131296341;
+			public const int abc_tint_seek_thumb = 2131296341;
 			
 			// aapt resource value: 0x7f090056
-			public const int abc_tint_switch_thumb = 2131296342;
+			public const int abc_tint_spinner = 2131296342;
 			
 			// aapt resource value: 0x7f090057
-			public const int abc_tint_switch_track = 2131296343;
+			public const int abc_tint_switch_thumb = 2131296343;
+			
+			// aapt resource value: 0x7f090058
+			public const int abc_tint_switch_track = 2131296344;
 			
 			// aapt resource value: 0x7f09000d
 			public const int accent_material_dark = 2131296269;
@@ -973,8 +973,8 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f09001a
 			public const int button_material_light = 2131296282;
 			
-			// aapt resource value: 0x7f090058
-			public const int common_google_signin_btn_text_dark = 2131296344;
+			// aapt resource value: 0x7f090059
+			public const int common_google_signin_btn_text_dark = 2131296345;
 			
 			// aapt resource value: 0x7f090000
 			public const int common_google_signin_btn_text_dark_default = 2131296256;
@@ -988,8 +988,8 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f090003
 			public const int common_google_signin_btn_text_dark_pressed = 2131296259;
 			
-			// aapt resource value: 0x7f090059
-			public const int common_google_signin_btn_text_light = 2131296345;
+			// aapt resource value: 0x7f09005a
+			public const int common_google_signin_btn_text_light = 2131296346;
 			
 			// aapt resource value: 0x7f090004
 			public const int common_google_signin_btn_text_light_default = 2131296260;
@@ -1003,8 +1003,8 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f090007
 			public const int common_google_signin_btn_text_light_pressed = 2131296263;
 			
-			// aapt resource value: 0x7f09005a
-			public const int common_google_signin_btn_tint = 2131296346;
+			// aapt resource value: 0x7f09005b
+			public const int common_google_signin_btn_tint = 2131296347;
 			
 			// aapt resource value: 0x7f09001b
 			public const int dim_foreground_disabled_material_dark = 2131296283;
@@ -1123,17 +1123,20 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f090040
 			public const int switch_thumb_disabled_material_light = 2131296320;
 			
-			// aapt resource value: 0x7f09005b
-			public const int switch_thumb_material_dark = 2131296347;
-			
 			// aapt resource value: 0x7f09005c
-			public const int switch_thumb_material_light = 2131296348;
+			public const int switch_thumb_material_dark = 2131296348;
+			
+			// aapt resource value: 0x7f09005d
+			public const int switch_thumb_material_light = 2131296349;
 			
 			// aapt resource value: 0x7f090041
 			public const int switch_thumb_normal_material_dark = 2131296321;
 			
 			// aapt resource value: 0x7f090042
 			public const int switch_thumb_normal_material_light = 2131296322;
+			
+			// aapt resource value: 0x7f090043
+			public const int theme_material_noactionbar_background = 2131296323;
 			
 			static Color()
 			{
@@ -2350,8 +2353,8 @@ namespace PikaGames.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f06007e
-			public const int action0 = 2131099774;
+			// aapt resource value: 0x7f06007d
+			public const int action0 = 2131099773;
 			
 			// aapt resource value: 0x7f060050
 			public const int action_bar = 2131099728;
@@ -2374,17 +2377,17 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f06002d
 			public const int action_bar_title = 2131099693;
 			
-			// aapt resource value: 0x7f06007b
-			public const int action_container = 2131099771;
+			// aapt resource value: 0x7f06007a
+			public const int action_container = 2131099770;
 			
 			// aapt resource value: 0x7f060051
 			public const int action_context_bar = 2131099729;
 			
-			// aapt resource value: 0x7f060082
-			public const int action_divider = 2131099778;
+			// aapt resource value: 0x7f060081
+			public const int action_divider = 2131099777;
 			
-			// aapt resource value: 0x7f06007c
-			public const int action_image = 2131099772;
+			// aapt resource value: 0x7f06007b
+			public const int action_image = 2131099771;
 			
 			// aapt resource value: 0x7f060003
 			public const int action_menu_divider = 2131099651;
@@ -2401,11 +2404,11 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f06002f
 			public const int action_mode_close_button = 2131099695;
 			
-			// aapt resource value: 0x7f06007d
-			public const int action_text = 2131099773;
+			// aapt resource value: 0x7f06007c
+			public const int action_text = 2131099772;
 			
-			// aapt resource value: 0x7f06008b
-			public const int actions = 2131099787;
+			// aapt resource value: 0x7f06008a
+			public const int actions = 2131099786;
 			
 			// aapt resource value: 0x7f060030
 			public const int activity_chooser_view_content = 2131099696;
@@ -2434,11 +2437,23 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f06002b
 			public const int bottom = 2131099691;
 			
+			// aapt resource value: 0x7f060092
+			public const int button1 = 2131099794;
+			
+			// aapt resource value: 0x7f060093
+			public const int button2 = 2131099795;
+			
+			// aapt resource value: 0x7f060094
+			public const int button3 = 2131099796;
+			
+			// aapt resource value: 0x7f060095
+			public const int button4 = 2131099797;
+			
 			// aapt resource value: 0x7f060037
 			public const int buttonPanel = 2131099703;
 			
-			// aapt resource value: 0x7f06007f
-			public const int cancel_action = 2131099775;
+			// aapt resource value: 0x7f06007e
+			public const int cancel_action = 2131099774;
 			
 			// aapt resource value: 0x7f060000
 			public const int cast_notification_id = 2131099648;
@@ -2446,8 +2461,8 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f060047
 			public const int checkbox = 2131099719;
 			
-			// aapt resource value: 0x7f060087
-			public const int chronometer = 2131099783;
+			// aapt resource value: 0x7f060086
+			public const int chronometer = 2131099782;
 			
 			// aapt resource value: 0x7f060027
 			public const int collapseActionView = 2131099687;
@@ -2479,14 +2494,17 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f060024
 			public const int end = 2131099684;
 			
-			// aapt resource value: 0x7f060091
-			public const int end_padder = 2131099793;
+			// aapt resource value: 0x7f060090
+			public const int end_padder = 2131099792;
 			
 			// aapt resource value: 0x7f060031
 			public const int expand_activities_button = 2131099697;
 			
 			// aapt resource value: 0x7f060046
 			public const int expanded_menu = 2131099718;
+			
+			// aapt resource value: 0x7f060091
+			public const int gridLayout1 = 2131099793;
 			
 			// aapt resource value: 0x7f060005
 			public const int home = 2131099653;
@@ -2497,8 +2515,8 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f060035
 			public const int icon = 2131099701;
 			
-			// aapt resource value: 0x7f06008c
-			public const int icon_group = 2131099788;
+			// aapt resource value: 0x7f06008b
+			public const int icon_group = 2131099787;
 			
 			// aapt resource value: 0x7f06000d
 			public const int icon_only = 2131099661;
@@ -2509,17 +2527,17 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f060032
 			public const int image = 2131099698;
 			
-			// aapt resource value: 0x7f060088
-			public const int info = 2131099784;
+			// aapt resource value: 0x7f060087
+			public const int info = 2131099783;
 			
 			// aapt resource value: 0x7f060012
 			public const int light = 2131099666;
 			
-			// aapt resource value: 0x7f06008d
-			public const int line1 = 2131099789;
+			// aapt resource value: 0x7f06008c
+			public const int line1 = 2131099788;
 			
-			// aapt resource value: 0x7f06008f
-			public const int line3 = 2131099791;
+			// aapt resource value: 0x7f06008e
+			public const int line3 = 2131099790;
 			
 			// aapt resource value: 0x7f060013
 			public const int listMode = 2131099667;
@@ -2527,89 +2545,89 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f060034
 			public const int list_item = 2131099700;
 			
-			// aapt resource value: 0x7f060060
-			public const int mediaRouteButton1 = 2131099744;
+			// aapt resource value: 0x7f060096
+			public const int mediaRouteButton1 = 2131099798;
 			
-			// aapt resource value: 0x7f060081
-			public const int media_actions = 2131099777;
+			// aapt resource value: 0x7f060080
+			public const int media_actions = 2131099776;
 			
 			// aapt resource value: 0x7f060025
 			public const int middle = 2131099685;
 			
-			// aapt resource value: 0x7f06006d
-			public const int mr_art = 2131099757;
-			
-			// aapt resource value: 0x7f060062
-			public const int mr_chooser_list = 2131099746;
-			
-			// aapt resource value: 0x7f060065
-			public const int mr_chooser_route_desc = 2131099749;
-			
-			// aapt resource value: 0x7f060063
-			public const int mr_chooser_route_icon = 2131099747;
-			
-			// aapt resource value: 0x7f060064
-			public const int mr_chooser_route_name = 2131099748;
+			// aapt resource value: 0x7f06006c
+			public const int mr_art = 2131099756;
 			
 			// aapt resource value: 0x7f060061
-			public const int mr_chooser_title = 2131099745;
+			public const int mr_chooser_list = 2131099745;
 			
-			// aapt resource value: 0x7f06006a
-			public const int mr_close = 2131099754;
+			// aapt resource value: 0x7f060064
+			public const int mr_chooser_route_desc = 2131099748;
 			
-			// aapt resource value: 0x7f060070
-			public const int mr_control_divider = 2131099760;
+			// aapt resource value: 0x7f060062
+			public const int mr_chooser_route_icon = 2131099746;
 			
-			// aapt resource value: 0x7f060076
-			public const int mr_control_playback_ctrl = 2131099766;
+			// aapt resource value: 0x7f060063
+			public const int mr_chooser_route_name = 2131099747;
 			
-			// aapt resource value: 0x7f060079
-			public const int mr_control_subtitle = 2131099769;
-			
-			// aapt resource value: 0x7f060078
-			public const int mr_control_title = 2131099768;
-			
-			// aapt resource value: 0x7f060077
-			public const int mr_control_title_container = 2131099767;
-			
-			// aapt resource value: 0x7f06006b
-			public const int mr_custom_control = 2131099755;
-			
-			// aapt resource value: 0x7f06006c
-			public const int mr_default_control = 2131099756;
-			
-			// aapt resource value: 0x7f060067
-			public const int mr_dialog_area = 2131099751;
-			
-			// aapt resource value: 0x7f060066
-			public const int mr_expandable_area = 2131099750;
-			
-			// aapt resource value: 0x7f06007a
-			public const int mr_group_expand_collapse = 2131099770;
-			
-			// aapt resource value: 0x7f06006e
-			public const int mr_media_main_control = 2131099758;
+			// aapt resource value: 0x7f060060
+			public const int mr_chooser_title = 2131099744;
 			
 			// aapt resource value: 0x7f060069
-			public const int mr_name = 2131099753;
+			public const int mr_close = 2131099753;
 			
 			// aapt resource value: 0x7f06006f
-			public const int mr_playback_control = 2131099759;
-			
-			// aapt resource value: 0x7f060068
-			public const int mr_title_bar = 2131099752;
-			
-			// aapt resource value: 0x7f060071
-			public const int mr_volume_control = 2131099761;
-			
-			// aapt resource value: 0x7f060072
-			public const int mr_volume_group_list = 2131099762;
-			
-			// aapt resource value: 0x7f060074
-			public const int mr_volume_item_icon = 2131099764;
+			public const int mr_control_divider = 2131099759;
 			
 			// aapt resource value: 0x7f060075
-			public const int mr_volume_slider = 2131099765;
+			public const int mr_control_playback_ctrl = 2131099765;
+			
+			// aapt resource value: 0x7f060078
+			public const int mr_control_subtitle = 2131099768;
+			
+			// aapt resource value: 0x7f060077
+			public const int mr_control_title = 2131099767;
+			
+			// aapt resource value: 0x7f060076
+			public const int mr_control_title_container = 2131099766;
+			
+			// aapt resource value: 0x7f06006a
+			public const int mr_custom_control = 2131099754;
+			
+			// aapt resource value: 0x7f06006b
+			public const int mr_default_control = 2131099755;
+			
+			// aapt resource value: 0x7f060066
+			public const int mr_dialog_area = 2131099750;
+			
+			// aapt resource value: 0x7f060065
+			public const int mr_expandable_area = 2131099749;
+			
+			// aapt resource value: 0x7f060079
+			public const int mr_group_expand_collapse = 2131099769;
+			
+			// aapt resource value: 0x7f06006d
+			public const int mr_media_main_control = 2131099757;
+			
+			// aapt resource value: 0x7f060068
+			public const int mr_name = 2131099752;
+			
+			// aapt resource value: 0x7f06006e
+			public const int mr_playback_control = 2131099758;
+			
+			// aapt resource value: 0x7f060067
+			public const int mr_title_bar = 2131099751;
+			
+			// aapt resource value: 0x7f060070
+			public const int mr_volume_control = 2131099760;
+			
+			// aapt resource value: 0x7f060071
+			public const int mr_volume_group_list = 2131099761;
+			
+			// aapt resource value: 0x7f060073
+			public const int mr_volume_item_icon = 2131099763;
+			
+			// aapt resource value: 0x7f060074
+			public const int mr_volume_slider = 2131099764;
 			
 			// aapt resource value: 0x7f06001d
 			public const int multiply = 2131099677;
@@ -2623,17 +2641,20 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f060014
 			public const int normal = 2131099668;
 			
-			// aapt resource value: 0x7f06008a
-			public const int notification_background = 2131099786;
-			
-			// aapt resource value: 0x7f060084
-			public const int notification_main_column = 2131099780;
+			// aapt resource value: 0x7f060089
+			public const int notification_background = 2131099785;
 			
 			// aapt resource value: 0x7f060083
-			public const int notification_main_column_container = 2131099779;
+			public const int notification_main_column = 2131099779;
+			
+			// aapt resource value: 0x7f060082
+			public const int notification_main_column_container = 2131099778;
 			
 			// aapt resource value: 0x7f060039
 			public const int parentPanel = 2131099705;
+			
+			// aapt resource value: 0x7f06005f
+			public const int pikaToolbar1 = 2131099743;
 			
 			// aapt resource value: 0x7f060006
 			public const int progress_circular = 2131099654;
@@ -2644,11 +2665,11 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f060049
 			public const int radio = 2131099721;
 			
-			// aapt resource value: 0x7f060089
-			public const int right_icon = 2131099785;
+			// aapt resource value: 0x7f060088
+			public const int right_icon = 2131099784;
 			
-			// aapt resource value: 0x7f060085
-			public const int right_side = 2131099781;
+			// aapt resource value: 0x7f060084
+			public const int right_side = 2131099780;
 			
 			// aapt resource value: 0x7f06001e
 			public const int screen = 2131099678;
@@ -2725,8 +2746,8 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f06000e
 			public const int standard = 2131099662;
 			
-			// aapt resource value: 0x7f060080
-			public const int status_bar_latest_event_content = 2131099776;
+			// aapt resource value: 0x7f06007f
+			public const int status_bar_latest_event_content = 2131099775;
 			
 			// aapt resource value: 0x7f06004a
 			public const int submenuarrow = 2131099722;
@@ -2737,11 +2758,11 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f060015
 			public const int tabMode = 2131099669;
 			
-			// aapt resource value: 0x7f060090
-			public const int text = 2131099792;
+			// aapt resource value: 0x7f06008f
+			public const int text = 2131099791;
 			
-			// aapt resource value: 0x7f06008e
-			public const int text2 = 2131099790;
+			// aapt resource value: 0x7f06008d
+			public const int text2 = 2131099789;
 			
 			// aapt resource value: 0x7f06003e
 			public const int textSpacerNoButtons = 2131099710;
@@ -2749,8 +2770,8 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f06003d
 			public const int textSpacerNoTitle = 2131099709;
 			
-			// aapt resource value: 0x7f060086
-			public const int time = 2131099782;
+			// aapt resource value: 0x7f060085
+			public const int time = 2131099781;
 			
 			// aapt resource value: 0x7f060036
 			public const int title = 2131099702;
@@ -2760,9 +2781,6 @@ namespace PikaGames.Android
 			
 			// aapt resource value: 0x7f060043
 			public const int title_template = 2131099715;
-			
-			// aapt resource value: 0x7f06005f
-			public const int toolbar1 = 2131099743;
 			
 			// aapt resource value: 0x7f06002c
 			public const int top = 2131099692;
@@ -2776,8 +2794,8 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f06001b
 			public const int useLogo = 2131099675;
 			
-			// aapt resource value: 0x7f060073
-			public const int volume_item_container = 2131099763;
+			// aapt resource value: 0x7f060072
+			public const int volume_item_container = 2131099762;
 			
 			// aapt resource value: 0x7f06000f
 			public const int wide = 2131099663;
@@ -3008,16 +3026,19 @@ namespace PikaGames.Android
 			public const int PikaRemoteDisplay = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int select_dialog_item_material = 2130903090;
+			public const int PikaToolbar = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int select_dialog_multichoice_material = 2130903091;
+			public const int select_dialog_item_material = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int select_dialog_singlechoice_material = 2130903092;
+			public const int select_dialog_multichoice_material = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int support_simple_spinner_dropdown_item = 2130903093;
+			public const int select_dialog_singlechoice_material = 2130903093;
+			
+			// aapt resource value: 0x7f030036
+			public const int support_simple_spinner_dropdown_item = 2130903094;
 			
 			static Layout()
 			{
@@ -4091,6 +4112,9 @@ namespace PikaGames.Android
 			
 			// aapt resource value: 0x7f0b011a
 			public const int Theme_AppCompat_NoActionBar = 2131427610;
+			
+			// aapt resource value: 0x7f0b016a
+			public const int Theme_Custom = 2131427690;
 			
 			// aapt resource value: 0x7f0b0003
 			public const int Theme_MediaRouter = 2131427331;

@@ -9,6 +9,7 @@ using Android.Support.V7.Media;
 using Android.Views;
 using PikaGames.Android.Cast;
 using Java.Lang;
+using PikaGames.Android.Views;
 using MediaRouteButton = Android.Support.V7.App.MediaRouteButton;
 
 namespace PikaGames.Android
@@ -18,10 +19,9 @@ namespace PikaGames.Android
         ScreenOrientation = ScreenOrientation.Portrait,
         LaunchMode = LaunchMode.SingleTop)]
     [IntentFilter(actions: new[] { "android.intent.action.MAIN" }, Categories = new[] { "android.intent.category.LAUNCHER" })]
-    public class MainActivity : ActionBarActivity
+    public class MainActivity : AppCompatActivity
     {
-
-        private MediaRouteButton _mediaRouteButton;
+        private PikaToolbar _toolbar;
 
         private MediaRouter _mediaRouter;
         private MediaRouteSelector _mediaRouteSelector;
@@ -33,10 +33,14 @@ namespace PikaGames.Android
 
             SetContentView(Resource.Layout.Main);
 
+
             //var g = new Game1();
             //SetContentView((View)g.Services.GetService(typeof(View)));
             //g.Run();
             InitMediaRouter();
+            
+            _toolbar = FindViewById<PikaToolbar>(Resource.Id.pikaToolbar1);
+            _toolbar.MediaRouteButton.RouteSelector = _mediaRouteSelector;
         }
 
         protected override void OnStart()
@@ -56,9 +60,6 @@ namespace PikaGames.Android
 
             _mediaRouteSelector = new MediaRouteSelector.Builder().AddControlCategory(CastMediaControlIntent.CategoryForCast(GetString(Resource.String.app_id))).Build();
             _mediaRouter = MediaRouter.GetInstance(Application.Context);
-
-            _mediaRouteButton = FindViewById<MediaRouteButton>(Resource.Id.mediaRouteButton1);
-            _mediaRouteButton.RouteSelector = _mediaRouteSelector;
 
             _myMediaRouterCallback = new PikaMediaRouterCallback()
             {
@@ -82,7 +83,7 @@ namespace PikaGames.Android
                 },
                 RouteCountChangedHandler = newCount =>
                 {
-                    _mediaRouteButton.Visibility = newCount > 0 ? ViewStates.Visible : ViewStates.Gone;
+                    _toolbar.Visibility = newCount > 0 ? ViewStates.Visible : ViewStates.Gone;
                 }
             };
 

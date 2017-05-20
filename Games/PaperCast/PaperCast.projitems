@@ -9,15 +9,17 @@
     <Import_RootNamespace>PikaGames.Games.PaperCast</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Direction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Level\Level.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Level\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PaperCastGame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Player.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\InGameState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\IState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\FloodFill.cs" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Content\background.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
   </ItemGroup>
 </Project>

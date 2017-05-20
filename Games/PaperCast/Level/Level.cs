@@ -1,0 +1,134 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using PikaGames.Games.PaperCast.Util;
+
+namespace PikaGames.Games.PaperCast.Level
+{
+    public class Level
+    {
+        private Game Game { get; }
+
+        public int Width { get; }
+        public int Height { get; }
+
+        List<Tile> _grid = new List<Tile>();
+
+        public Level(Game game, int width, int height)
+        {
+            Game = game;
+
+            Width = width;
+            Height = height;
+
+            Initialise();
+        }
+
+        private void Initialise()
+        {
+            for (int i = 0; i < Width; i++)
+            {
+                for (int j = 0; j < Height; j++)
+                {
+                    var t = new Tile(Game, i, j);
+                    _grid.Add(t);
+                    Game.Components.Add(t);
+                }
+            }
+        }
+
+        public Tile GetTile(int x, int y)
+        {
+            var i = x * Width + y;
+            if (i < 0 || i >= _grid.Count)
+                return null;
+            return _grid[i];
+        }
+
+        public Tile GetTileFromPosition(double x, double y)
+        {
+            var i = (int) (Math.Floor(x / Tile.Size) * Width + Math.Floor(y / Tile.Size));
+            if (i >= _grid.Count || i < 0)
+            {
+                return null;
+            }
+
+            return _grid[i];
+        }
+
+        public void UpdateClaims(Player player)
+        {
+            var sizeX = Width + 2;
+            var sizeY = Height + 2;
+
+            var grid = new byte[sizeX,sizeY];
+
+
+            for (var x = 0; x < sizeX; x++)
+            {
+                for (var y = 0; y < sizeY; y++)
+                {
+                    grid[x, y] = 0;
+
+                    if (x == sizeX - 1 || y == sizeY - 1 || x == 0 || y == 0)
+                    {
+                        grid[x, y] = 1;
+                    }
+                    else
+                    {
+                        var tile = GetTile(x-1, y-1);
+                        if (tile.Owner == null || tile.Owner != player)
+                        {
+                            grid[x, y] = 1;
+                        }
+                    }
+                }
+            }
+
+            FloodFill.FillGrid(grid, Point.Zero, 2);
+
+            for (var x = 1; x < sizeX-1; x++)
+            {
+                for (var y = 1; y < sizeY-1; y++)
+                {
+                    if (grid[x, y] != 2)
+                    {
+                        var tile = GetTile(x - 1, y - 1);
+                        
+                        tile.Owner = player;
+                        tile.UpdateTexture();
+                    }
+                }
+            }
+        }
+
+        public void ClaimTrail(Player player)
+        {
+            foreach (var tile in _grid)
+            {
+                if (tile.PendingOwner == player)
+                {
+                    tile.Owner = player;
+                    tile.PendingOwner = null;
+                    tile.UpdateTexture();
+                }
+            }
+        }
+
+        internal void Update(GameTime deltaTime)
+        {
+            
+        }
+
+        internal void Draw(SpriteBatch spriteBatch)
+        {
+            foreach (var tile in _grid)
+            {
+                //tile.Draw(spriteBatch);
+            }
+        }
+
+    }
+}

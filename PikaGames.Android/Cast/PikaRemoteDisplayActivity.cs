@@ -12,6 +12,7 @@ using Android.Support.V7.Media;
 using Android.Views;
 using Android.Widget;
 using Microsoft.Xna.Framework;
+using PikaGames.Android.Views;
 using PikaGames.Games;
 using PikaGames.Games.PaperCast;
 
@@ -24,6 +25,9 @@ namespace PikaGames.Android.Cast
         public const string INTENT_EXTRA_GAME = "Game";
 
         internal static Game Game;
+        internal static Player LocalPlayer;
+
+        private PikaToolbar _toolbar;
 
         private MediaRouter _mediaRouter;
         private MediaRouteSelector _mediaRouteSelector;
@@ -31,11 +35,14 @@ namespace PikaGames.Android.Cast
 
         private CastDevice _castDevice;
 
+        private Button _upButton, _downButton, _leftButton, _rightButton;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             Game = new PaperCastGame();
+            LocalPlayer = ((PaperCastGame) Game).AddPlayer("TruDan");
 
             // Create your application here
             SetContentView(Resource.Layout.PikaRemoteDisplay);
@@ -48,7 +55,21 @@ namespace PikaGames.Android.Cast
             {
                 OnRouteSelectedHandler = (router, route) =>
                 {
+                    if (IsRemoteDisplaying())
+                    {
+                        CastDevice castDevice = CastDevice.GetFromBundle(_mediaRouter.SelectedRoute.Extras);
+                        _castDevice = castDevice;
+                    }
+                    else
+                    {
+                        Bundle extras = Intent.Extras;
+                        if (extras != null)
+                        {
+                            _castDevice = (CastDevice)extras.GetParcelable(INTENT_EXTRA_CAST_DEVICE);
+                        }
+                    }
 
+                    StartCastService(_castDevice);
                 },
                 OnRouteUnselectedHandler = (router, route) =>
                 {
@@ -77,6 +98,16 @@ namespace PikaGames.Android.Cast
             }
 
             _mediaRouter.AddCallback(_mediaRouteSelector, _mediaRouterCallback, MediaRouter.CallbackFlagRequestDiscovery);
+
+            _upButton = FindViewById<Button>(Resource.Id.button1);
+            _downButton = FindViewById<Button>(Resource.Id.button4);
+            _leftButton = FindViewById<Button>(Resource.Id.button2);
+            _rightButton = FindViewById<Button>(Resource.Id.button3);
+
+            _upButton.Touch += (sender, args) => LocalPlayer.Move(Direction.North);
+            _downButton.Touch += (sender, args) => LocalPlayer.Move(Direction.South);
+            _leftButton.Touch += (sender, args) => LocalPlayer.Move(Direction.West);
+            _rightButton.Touch += (sender, args) => LocalPlayer.Move(Direction.East);
         }
 
         protected override void OnResume()

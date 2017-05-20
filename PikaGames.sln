@@ -9,27 +9,50 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PikaGames.Android", "PikaGa
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PaperCast", "Games\PaperCast\PaperCast.shproj", "{C8165587-C583-420C-8E8C-5ED4EA9E1331}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PikaGames.Windows", "PikaGames.Windows\PikaGames.Windows.csproj", "{0C163B17-AEE3-49A1-BE80-27E3A1AF269A}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Core", "Core\Core.shproj", "{25415114-7898-4756-8123-9DAA73570FAC}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Core\Core.projitems*{0c163b17-aee3-49a1-be80-27e3a1af269a}*SharedItemsImports = 4
+		Core\Core.projitems*{25415114-7898-4756-8123-9daa73570fac}*SharedItemsImports = 13
+		Core\Core.projitems*{45266623-ed0d-46dc-9a29-5ef84a126cd8}*SharedItemsImports = 4
 		Games\PaperCast\PaperCast.projitems*{45266623-ed0d-46dc-9a29-5ef84a126cd8}*SharedItemsImports = 4
 		Games\PaperCast\PaperCast.projitems*{c8165587-c583-420c-8e8c-5ed4ea9e1331}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Debug|x86.Build.0 = Debug|Any CPU
+		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Debug|x86.Deploy.0 = Debug|Any CPU
 		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Release|x86.ActiveCfg = Release|Any CPU
+		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Release|x86.Build.0 = Release|Any CPU
+		{45266623-ED0D-46DC-9A29-5EF84A126CD8}.Release|x86.Deploy.0 = Release|Any CPU
+		{0C163B17-AEE3-49A1-BE80-27E3A1AF269A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{0C163B17-AEE3-49A1-BE80-27E3A1AF269A}.Debug|Any CPU.Build.0 = Debug|x86
+		{0C163B17-AEE3-49A1-BE80-27E3A1AF269A}.Debug|x86.ActiveCfg = Debug|x86
+		{0C163B17-AEE3-49A1-BE80-27E3A1AF269A}.Debug|x86.Build.0 = Debug|x86
+		{0C163B17-AEE3-49A1-BE80-27E3A1AF269A}.Release|Any CPU.ActiveCfg = Release|x86
+		{0C163B17-AEE3-49A1-BE80-27E3A1AF269A}.Release|x86.ActiveCfg = Release|x86
+		{0C163B17-AEE3-49A1-BE80-27E3A1AF269A}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C8165587-C583-420C-8E8C-5ED4EA9E1331} = {5240409E-92D0-45FC-B4D8-9CBCED3C8737}
+		{25415114-7898-4756-8123-9DAA73570FAC} = {5240409E-92D0-45FC-B4D8-9CBCED3C8737}
 	EndGlobalSection
 EndGlobal

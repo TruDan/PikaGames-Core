@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>25415114-7898-4756-8123-9daa73570fac</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>PikaGames.Core</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ColorUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\MathUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\RandomExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\RectangleExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SpriteBatchExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Vector2Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Managers\ImageManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Managers\InputManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Managers\SceneManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Managers\SoundManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\SceneBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\SceneIntro.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\SceneTitle.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+    <None Include="$(MSBuildThisFileDirectory)Content\fonts\DebugFont.spritefont" />
+    <None Include="$(MSBuildThisFileDirectory)Content\fonts\GameFont.spritefont" />
+    <None Include="$(MSBuildThisFileDirectory)Content\sounds\bgm\WereTheResistors.ogg" />
+    <None Include="$(MSBuildThisFileDirectory)Content\sounds\se\Logo.ogg" />
+    <None Include="$(MSBuildThisFileDirectory)Content\sounds\se\Monogame.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Content\fonts\PressStart2P.ttf" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\imgs\scenes\intro\Logo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\imgs\scenes\intro\Monogame.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\imgs\scenes\title\Background.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\imgs\system\Logo.png" />
+  </ItemGroup>
+</Project>

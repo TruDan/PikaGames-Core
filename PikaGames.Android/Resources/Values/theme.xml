@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="theme_material_noactionbar_background">#ff4a148c</color>
+  <style name="Theme.Custom" parent="@style/Theme.AppCompat.NoActionBar">
+    <item name="android:colorPrimary">#ff9c27b0</item>
+    <item name="android:colorBackground">@color/theme_material_noactionbar_background</item>
+    <item name="android:windowBackground">?android:attr/colorBackground</item>
+    <item name="android:colorPrimaryDark">#ff7b1fa2</item>
+    <item name="android:colorAccent">#ff4fc3f7</item>
+    <item name="android:textColorPrimary">#fff3e5f5</item>
+    <item name="android:textColorSecondary">#ffe1bee7</item>
+    <item name="android:colorControlNormal">#ffba68c8</item>
+    <item name="android:colorControlActivated">#ff80deea</item>
+    <item name="android:colorButtonNormal">#ff29b6f6</item>
+  </style>
+</resources>
