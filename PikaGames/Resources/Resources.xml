@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Resources>
+
+  <Fonts importer="FontDescriptionImporter" processor="FontDescriptionProcessor">
+    <Parameters>
+      <PremultiplyAlpha Value="True" />
+      <TextureFormat Value="Compressed" />
+    </Parameters>
+    
+    <SpriteFont name="GameFont" src="GameFont.spritefont" />
+    <SpriteFont name="DebugFont" src="DebugFont.spritefont" />
+  </Fonts>
+  
+  <Images importer="TextureImporter" processor="TextureProcessor">
+    <Parameters>
+      <ColorKeyColor Value="255,0,255,255" />
+      <ColorKeyEnabled Value="True" />
+      <GenerateMipmaps Value="False" />
+      <PremultiplyAlpha Value="True" />
+      <ResizeToPowerOfTwo Value="False" />
+      <MakeSquare Value="False" />
+      <TextureFormat  Value="Color" />
+    </Parameters>
+    
+    <Texture2D name="Logo" src="Logo.png" />
+    <Texture2D name="Background" src="Background.png" />
+  </Images>
+  
+</Resources>

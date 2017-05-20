@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using PikaGames.Games.Core;
 using PikaGames.Games.Core.Util;
+using PikaGames.Games.Core.Utils;
 
 namespace PikaGames.PaperCast.World
 {

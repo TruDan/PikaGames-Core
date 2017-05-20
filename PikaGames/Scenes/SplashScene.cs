@@ -37,9 +37,9 @@ namespace PikaGames.Games.Core.Scenes
             spriteBatch.Begin(transformMatrix: viewportAdapter.GetScaleMatrix(), samplerState: SamplerState.PointClamp);
 
             var center = viewportAdapter.Center;
-            var pos = new Vector2(center.X - Resources.Image.Logo.Width/2, center.Y/2 - Resources.Image.Logo.Height/2);
+            var pos = new Vector2(center.X - Resources.Images.Logo.Width/2, center.Y/2 - Resources.Images.Logo.Height/2);
 
-            spriteBatch.Draw(Resources.Image.Logo, pos, Color.White);
+            spriteBatch.Draw(Resources.Images.Logo, pos, Color.White);
 
             spriteBatch.End();
 

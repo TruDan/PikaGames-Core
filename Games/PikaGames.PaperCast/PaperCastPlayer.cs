@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using PikaGames.Games.Core;
 using PikaGames.Games.Core.Entities;
+using PikaGames.Games.Core.Utils;
 using PikaGames.PaperCast.World;
 
 namespace PikaGames.PaperCast
@@ -172,7 +173,7 @@ namespace PikaGames.PaperCast
 
         private static Texture2D GetTexture(Color color, int size)
         {
-            return Games.Core.Resources.Texture.CreateRectangle(size, size, color);
+            return TextureUtils.CreateRectangle(size, size, color);
         }
     }
 }

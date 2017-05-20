@@ -20,8 +20,6 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Core\Core.projitems*{25415114-7898-4756-8123-9daa73570fac}*SharedItemsImports = 13
-		Core\Core.projitems*{45266623-ed0d-46dc-9a29-5ef84a126cd8}*SharedItemsImports = 4
-		Games\PaperCast\PaperCast.projitems*{45266623-ed0d-46dc-9a29-5ef84a126cd8}*SharedItemsImports = 4
 		Games\PaperCast\PaperCast.projitems*{c8165587-c583-420c-8e8c-5ed4ea9e1331}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

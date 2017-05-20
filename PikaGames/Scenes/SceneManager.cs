@@ -38,7 +38,7 @@ namespace PikaGames.Games.Core.Scenes
             _currentScene = SplashScene;
             _currentScene.Init(this, Game);
 
-            _background = Resources.Image.Background;
+            _background = Resources.Images.Background;
         }
 
         public void LoadContent(ContentManager content)

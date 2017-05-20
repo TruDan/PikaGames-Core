@@ -170,8 +170,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Values\theme.xml" />
   </ItemGroup>
-  <Import Project="..\Games\PaperCast\PaperCast.projitems" Label="Shared" />
-  <Import Project="..\Core\Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

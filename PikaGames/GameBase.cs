@@ -8,6 +8,7 @@ using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 using PikaGames.Games.Core.Entities;
 using PikaGames.Games.Core.Scenes;
+using PikaGames.Games.Core.Utils;
 
 namespace PikaGames.Games.Core
 {
@@ -57,6 +58,7 @@ namespace PikaGames.Games.Core
             ViewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice, (int)VirtualSize.X, (int)VirtualSize.Y);
             
             Resources.Init(ContentManager, GraphicsDevice);
+            TextureUtils.Init(GraphicsDevice);
 
             SceneManager = new SceneManager(this);
 

@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Resources.xml">
+      <DesignTime>True</DesignTime>
       <SubType>Designer</SubType>
     </None>
     <MonoGameContentReference Include="Resources\Resources.mgcb">
