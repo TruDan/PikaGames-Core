@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended;
-using MonoGame.Extended.Sprites;
 
-namespace PikaGames.Games.Core.Players
+namespace PikaGames.Games.Core.Entities
 {
-    public class Player
+    public class Entity
     {
+
 
         public int Width = 1;
         public int Height = 1;
@@ -21,21 +20,19 @@ namespace PikaGames.Games.Core.Players
 
         public Vector2 Position => new Vector2(X, Y);
 
-        private readonly Texture2D _texture;
+        public bool IsAlive { get; protected set; }
 
-        public Player(Texture2D texture)
-        {
-            _texture = texture;
-        }
+
 
         public virtual void Update(GameTime gameTime)
         {
-            
+
         }
 
         public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, Position, Color.White);
+
         }
+
     }
 }

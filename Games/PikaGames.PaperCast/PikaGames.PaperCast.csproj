@@ -14,6 +14,7 @@
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MonoGamePlatform>NativeClient</MonoGamePlatform>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Direction.cs" />
     <Compile Include="Scenes\GameMapScene.cs" />
+    <Compile Include="Scenes\MainMenuScene.cs" />
     <Compile Include="World\Level.cs" />
     <Compile Include="World\Tile.cs" />
     <Compile Include="PaperCastGame.cs" />
@@ -62,5 +64,35 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Resources.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <MonoGameContentReference Include="Resources\Resources.mgcb">
+      <AutoGen>True</AutoGen>
+      <SubType>Compile</SubType>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.tt</DependentUpon>
+    </MonoGameContentReference>
+    <None Include="Resources\Resources.tt">
+      <DependentUpon>Resources.xml</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Resources.mgcb</LastGenOutput>
+    </None>
+    <Compile Include="Resources\Resources.Designer.cs">
+      <DependentUpon>Resources.Designer.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Resources\Resources.Designer.tt">
+      <DependentUpon>Resources.xml</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
 </Project>

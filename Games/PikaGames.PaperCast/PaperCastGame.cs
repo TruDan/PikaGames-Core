@@ -9,6 +9,7 @@ namespace PikaGames.PaperCast
 {
     public class PaperCastGame : GameBase
     {
+        private MainMenuScene _mainMenuScene;
         private GameMapScene _gameMapScene;
 
         public PaperCastGame()
@@ -20,10 +21,12 @@ namespace PikaGames.PaperCast
         protected override void Initialize()
         {
             base.Initialize();
+            Resources.Init(ContentManager, GraphicsDevice);
 
+            _mainMenuScene = new MainMenuScene();
             _gameMapScene = new GameMapScene();
 
-            SceneManager.DefaultScene = _gameMapScene;
+            SceneManager.DefaultScene = _mainMenuScene;
         }
     }
 }

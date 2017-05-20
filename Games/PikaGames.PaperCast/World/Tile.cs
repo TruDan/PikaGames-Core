@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PikaGames.Games.Core;
-using PikaGames.Games.Core.Players;
 
 namespace PikaGames.PaperCast.World
 {
@@ -34,15 +33,15 @@ namespace PikaGames.PaperCast.World
         {
             if (PendingOwner != null)
             {
-                _texture = Resources.Texture.CreateRectangle(Size, Size, PendingOwner.Color * 0.75f);
+                _texture = Games.Core.Resources.Texture.CreateRectangle(Size, Size, PendingOwner.Color * 0.75f);
             }
             else if (Owner != null)
             {
-                _texture = Resources.Texture.CreateRectangle(Size, Size, Owner.Color * 0.9f);
+                _texture = Games.Core.Resources.Texture.CreateRectangle(Size, Size, Owner.Color * 0.9f);
             }
             else
             {
-                _texture = Resources.Texture.CreateBorderedRectangle(Size, Size, Color.Black * 0.25f, Color.Black * 0.75f);
+                _texture = Games.Core.Resources.Texture.CreateBorderedRectangle(Size, Size, Color.Black * 0.25f, Color.Black * 0.75f);
             }
         }
 

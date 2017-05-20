@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using PikaGames.Games.Core;
-using PikaGames.Games.Core.Players;
+using PikaGames.Games.Core.Entities;
 using PikaGames.PaperCast.World;
 
 namespace PikaGames.PaperCast
@@ -16,6 +16,8 @@ namespace PikaGames.PaperCast
     {
         const int Speed = 4;
 
+        public int TileX => (int) Math.Floor((double)X / Tile.Size);
+        public int TileY => (int) Math.Floor((double)Y / Tile.Size);
 
         public Level Level { get; private set; }
         public Color Color { get; set; } = Color.Aqua;
@@ -159,8 +161,8 @@ namespace PikaGames.PaperCast
             var targetTile = Level.GetTileFromPosition(targetX, targetY);
             if (targetTile == null || targetX < 0 || targetY < 0 || targetX > (Level.Width*Tile.Size -Width) || targetY > (Level.Height * Tile.Size - Height))
             {
-                targetX = (int)Math.Floor((double)X / Tile.Size) * Tile.Size;
-                targetY = (int)Math.Floor((double)Y / Tile.Size) * Tile.Size;
+                targetX = TileX * Tile.Size;
+                targetY = TileY * Tile.Size;
             }
 
             X = targetX;
@@ -170,7 +172,7 @@ namespace PikaGames.PaperCast
 
         private static Texture2D GetTexture(Color color, int size)
         {
-            return Resources.Texture.CreateRectangle(size, size, color);
+            return Games.Core.Resources.Texture.CreateRectangle(size, size, color);
         }
     }
 }

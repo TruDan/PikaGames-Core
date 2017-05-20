@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
-using PikaGames.Games.Core.Players;
+using PikaGames.Games.Core.Entities;
 using PikaGames.Games.Core.Scenes;
 
 namespace PikaGames.Games.Core
