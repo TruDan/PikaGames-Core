@@ -14,6 +14,7 @@ namespace PikaGames.Games.Core.Scenes
     public class Scene
     {
         internal bool IsInitialised { get; set; }
+        public bool IsActive { get; private set; }
 
         private FramesPerSecondCounter _fpsCounter;
 
@@ -38,12 +39,13 @@ namespace PikaGames.Games.Core.Scenes
 
         public virtual void LoadContent()
         {
+            IsActive = true;
             _fpsCounter = new FramesPerSecondCounter();
         }
 
         public virtual void UnloadContent()
         {
-
+            IsActive = false;
         }
 
         public virtual void Update(GameTime gameTime)

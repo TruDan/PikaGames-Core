@@ -46,10 +46,13 @@
     <Compile Include="Scenes\SceneManager.cs" />
     <Compile Include="Scenes\SplashScene.cs" />
     <Compile Include="Sound\SoundManager.cs" />
+    <Compile Include="UI\ButtonBar\UiButtonBar.cs" />
     <Compile Include="UI\Controls\UiControl.cs" />
     <Compile Include="UI\Controls\UiControlGroup.cs" />
     <Compile Include="UI\Controls\UiSliderControl.cs" />
+    <Compile Include="UI\ButtonBar\UiButtonBarItem.cs" />
     <Compile Include="UI\UiContainer.cs" />
+    <Compile Include="UI\UiImage.cs" />
     <Compile Include="UI\UIItem.cs" />
     <Compile Include="UI\Menu\UIMenu.cs" />
     <Compile Include="UI\Menu\UIMenuItem.cs" />

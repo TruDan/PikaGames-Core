@@ -29,10 +29,14 @@ namespace PikaGames.Games.Core.UI.Controls
         private readonly Texture2D _knobShadow;
         private readonly Texture2D _knobShadowActive;
 
+        private Action<float> _onChangeAction;
+
         private Vector2 _knobPosition = Vector2.Zero;
 
-        public UiSliderControl(UiMenu menu, int x, int y, string label) : base(menu, x, y, label)
+        public UiSliderControl(UiMenu menu, int x, int y, string label, Action<float> onChangeAction = null) : base(menu, x, y, label)
         {
+            _onChangeAction = onChangeAction;
+
             _background = TextureUtils.CreateRectangle(1, 1, UiTheme.ControlBackgroundColor);
             _backgroundActive = TextureUtils.CreateRectangle(1, 1, UiTheme.ControlActiveBackgroundColor);
 
@@ -50,6 +54,8 @@ namespace PikaGames.Games.Core.UI.Controls
         {
             base.Update(gameTime);
 
+            _knobPosition = Position + new Vector2(Width / 2f + (Width / 2f) * Value, 0);
+
             if (!IsSelected)
                 return;
 
@@ -58,15 +64,19 @@ namespace PikaGames.Games.Core.UI.Controls
                 Value -= Step;
                 if (Value < 0)
                     Value = 0;
+
+                _onChangeAction?.Invoke(Value);
             }
             else if (GameBase.Instance.Players.Any(p => p.Input.IsDown(InputCommand.Right)))
             {
                 Value += Step;
                 if (Value > 1)
                     Value = 1;
+
+                _onChangeAction?.Invoke(Value);
             }
 
-            _knobPosition = Position + new Vector2(Width / 2f + (Width/2f) * Value, 0);
+            _knobPosition = Position + new Vector2(Width / 2f + (Width / 2f) * Value, 0);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

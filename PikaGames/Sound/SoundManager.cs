@@ -9,10 +9,10 @@ namespace PikaGames.Games.Core.Sound
 {
     public class SoundManager
     {
-        private static float _musicVolume = 1f;
-        private static float _soundEffectVolume = 1f;
+        public float MusicVolume { get; set; } = 1f;
+        public float SfxVolume { get; set; } = 1f;
 
-        private static bool _soundEnabled = true;
+        private bool _soundEnabled = true;
 
 
         public void Play(SoundEffect soundEffect)
@@ -20,7 +20,7 @@ namespace PikaGames.Games.Core.Sound
             if (_soundEnabled && soundEffect != null)
             {
                 var seIntance = soundEffect.CreateInstance();
-                seIntance.Volume = _soundEffectVolume;
+                seIntance.Volume = SfxVolume;
                 seIntance.Play();
             }
         }

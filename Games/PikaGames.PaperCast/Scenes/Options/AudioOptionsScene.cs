@@ -24,8 +24,8 @@ namespace PikaGames.PaperCast.Scenes.Options
             _controls = new UiControlGroup(Container, 0, 0);
             _controls.Width = (int)Game.VirtualSize.Y - 100;
 
-            _controls.AddSlider("Music");
-            _controls.AddSlider("SFX");
+            _controls.AddSlider("Music", (value) => Game.SoundManager.MusicVolume = value);
+            _controls.AddSlider("SFX", (value) => Game.SoundManager.SfxVolume = value);
         }
     }
 }

@@ -70,7 +70,7 @@ namespace <#= defaultNamespace #>
 			foreach(XmlNode resource in resourceNode.ChildNodes) {
 				if(resource.Name != "Parameters") {
 #>
-				<#= resource.Attributes["name"].Value #> = Content.Load<<#= resource.Name #>>("<#= resourceNode.Name #>/<#= resource.Attributes["name"].Value #>");
+				<#= resource.Attributes["name"].Value #> = Content.Load<<#= resource.Name #>>("<#= resourceNode.Name #>/<#= Path.ChangeExtension(resource.Attributes["src"].Value, null) #>");
 <#
 				}
             }

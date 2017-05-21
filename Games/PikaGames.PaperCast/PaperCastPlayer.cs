@@ -82,7 +82,8 @@ namespace PikaGames.PaperCast
         {
             base.Update(deltaTime);
 
-            if (((PaperCastGame) Level.Game).GameMapScene.IsPaused)
+            var g = ((PaperCastGame) Level.Game);
+            if (g.GameMapScene.IsPaused || !g.GameMapScene.IsActive)
                 return;
 
             if (Input.IsDown(InputCommand.Up))

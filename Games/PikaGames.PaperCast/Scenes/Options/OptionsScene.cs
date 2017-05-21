@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.ViewportAdapters;
 using PikaGames.Games.Core.Input;
 using PikaGames.Games.Core.Scenes;
 using PikaGames.Games.Core.UI;
+using PikaGames.Games.Core.UI.ButtonBar;
 using PikaGames.Games.Core.Utils;
 
 namespace PikaGames.PaperCast.Scenes.Options
@@ -21,6 +23,8 @@ namespace PikaGames.PaperCast.Scenes.Options
 
         public string Title { get; }
         private UiText _title;
+
+        private UiButtonBar _buttonBar;
 
         protected OptionsScene(OptionsMenuScene optionsMenu, string title)
         {
@@ -36,6 +40,10 @@ namespace PikaGames.PaperCast.Scenes.Options
             _title.Scale = 4f;
 
             Container = new UiContainer(50, 100 + _title.Height);
+
+            _buttonBar = new UiButtonBar(Container, (int)Game.VirtualSize.X - 25 - (int)Container.Position.X, (int)Game.VirtualSize.Y - 25 - (int)Container.Position.Y);
+            _buttonBar.AddButton(Buttons.A, "Select");
+            _buttonBar.AddButton(Buttons.B, "Back");
         }
 
         public override void Update(GameTime gameTime)

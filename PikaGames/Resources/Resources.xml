@@ -25,6 +25,10 @@
     
     <Texture2D name="Logo" src="Logo.png" />
     <Texture2D name="Background" src="Background.png" />
+
+
+    <Texture2D name="Buttons_A" src="Buttons/A.png" />
+    <Texture2D name="Buttons_B" src="Buttons/B.png" />
   </Images>
 
   <Sfx importer="OggImporter" processor="SoundEffectProcessor">

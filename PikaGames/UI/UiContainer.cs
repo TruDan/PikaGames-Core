@@ -10,6 +10,8 @@ namespace PikaGames.Games.Core.UI
 {
     public class UiContainer : UiItem
     {
+        public override int Width => ItemCount == 0 ? 0 : Children.Max(c => c.X + c.Width) - Children.Min(c => c.X);
+        public override int Height => ItemCount == 0 ? 0 : Children.Max(c => c.Y + c.Height) - Children.Min(c => c.Y);
 
         protected readonly List<UiItem> Children = new List<UiItem>();
         public int ItemCount => Children.Count;

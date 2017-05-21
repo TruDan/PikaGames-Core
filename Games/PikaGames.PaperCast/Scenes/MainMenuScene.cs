@@ -10,6 +10,8 @@ using MonoGame.Extended.NuclexGui.Visuals.Flat;
 using MonoGame.Extended.ViewportAdapters;
 using PikaGames.Games.Core.Input;
 using PikaGames.Games.Core.Scenes;
+using PikaGames.Games.Core.UI;
+using PikaGames.Games.Core.UI.ButtonBar;
 using PikaGames.Games.Core.UI.Menu;
 using PikaGames.Games.Core.Utils;
 
@@ -24,8 +26,10 @@ namespace PikaGames.PaperCast.Scenes
         private Color _splashShadowColor = MaterialDesignColors.LightBlue900;
 
         private bool _inMenu = false;
-        
+
+        private UiContainer _container;
         private UiMenu _menu;
+        private UiButtonBar _buttonBar;
 
         public override void LoadContent()
         {
@@ -39,12 +43,17 @@ namespace PikaGames.PaperCast.Scenes
             var size = font.MeasureString(_splashText);
             _splashPosition = new Vector2(center.X - size.X, _splashInitialY - size.Y);
             
+            _container = new UiContainer();
+
             _menu = new UiMenu(null, center.X, center.Y);
             _menu.Alignment = Frame.HorizontalTextAlignment.Center;
             
             _menu.AddMenuItem("Play Game", () => Game.SceneManager.ChangeScene(((PaperCastGame)Game).GameMapScene));
             _menu.AddMenuItem("Options", () => Game.SceneManager.ChangeScene(((PaperCastGame)Game).OptionsMenuScene));
             _menu.AddMenuItem("Exit", () => Game.Exit());
+
+            _buttonBar = new UiButtonBar(_container, (int)Game.VirtualSize.X - 25, (int)Game.VirtualSize.Y - 25);
+            _buttonBar.AddButton(Buttons.A, "Select");
         }
 
         public override void Update(GameTime gameTime)
@@ -68,6 +77,8 @@ namespace PikaGames.PaperCast.Scenes
             {
                 SetSplashText("Press A to join", MaterialDesignColors.Green500, MaterialDesignColors.Green900);
             }
+
+            _container.Update(gameTime);
 
             if (!_inMenu)
             {
@@ -103,6 +114,8 @@ namespace PikaGames.PaperCast.Scenes
 
             spriteBatch.Draw(Resources.Images.PaperCastLogo, pos, Color.White);
 
+            _container.Draw(spriteBatch);
+
             if (!_inMenu)
             {
                 spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, _splashText,
@@ -115,6 +128,7 @@ namespace PikaGames.PaperCast.Scenes
             {
                 _menu.Draw(spriteBatch);
             }
+
 
             spriteBatch.End();
         }

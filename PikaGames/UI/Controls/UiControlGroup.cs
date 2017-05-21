@@ -16,9 +16,9 @@ namespace PikaGames.Games.Core.UI.Controls
 
         public UiControlGroup(UiContainer container, int x, int y) : base(container, x, y) { }
 
-        public void AddSlider(string name)
+        public void AddSlider(string name, Action<float> onChangeAction = null)
         {
-            var slider = new UiSliderControl(this, 0, Children.Count * ItemSize, name);
+            var slider = new UiSliderControl(this, 0, Children.Count * ItemSize, name, onChangeAction);
         }
         
     }

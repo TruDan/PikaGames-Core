@@ -37,10 +37,16 @@ namespace PikaGames.Games.Core
 
 			public static Texture2D Background { get; private set; }
 
+			public static Texture2D Buttons_A { get; private set; }
+
+			public static Texture2D Buttons_B { get; private set; }
+
 			internal static void Init()
 			{
 				Logo = Content.Load<Texture2D>("Images/Logo");
 				Background = Content.Load<Texture2D>("Images/Background");
+				Buttons_A = Content.Load<Texture2D>("Images/Buttons/A");
+				Buttons_B = Content.Load<Texture2D>("Images/Buttons/B");
 			}
 		}
 
