@@ -12,7 +12,7 @@ namespace PikaGames.PaperCast.World
 {
     public class Level
     {
-        private GameBase Game { get; }
+        public GameBase Game { get; }
 
         public int Width { get; }
         public int Height { get; }
@@ -121,10 +121,7 @@ namespace PikaGames.PaperCast.World
 
         internal void Update(GameTime gameTime)
         {
-            foreach (var player in Game.Players)
-            {
-                player.Update(gameTime);
-            }
+
         }
 
         internal void Draw(GameTime gameTime, Camera2D camera, SpriteBatch spriteBatch)

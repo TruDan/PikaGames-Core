@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PikaGames.Games.Core.Input;
 
 namespace PikaGames.Games.Core.Entities
 {
@@ -7,9 +8,22 @@ namespace PikaGames.Games.Core.Entities
     {
         private readonly Texture2D _texture;
 
-        public Player(Texture2D texture)
+        public PlayerInputManager Input { get; }
+
+        public Player(Texture2D texture, PlayerIndex playerIndex)
         {
             _texture = texture;
+
+            Input = new PlayerInputManager(playerIndex, InputType.GamePad);
+
+            Input.UsesKeyboard = true;
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+
+            Input.Update();
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

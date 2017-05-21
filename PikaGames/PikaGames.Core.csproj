@@ -35,13 +35,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\EntityManager.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="GameBase.cs" />
+    <Compile Include="Input\InputCommand.cs" />
+    <Compile Include="Input\InputManager.cs" />
+    <Compile Include="Input\InputType.cs" />
+    <Compile Include="Input\PlayerInputManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
     <Compile Include="Scenes\SplashScene.cs" />
+    <Compile Include="Sound\SoundManager.cs" />
     <Compile Include="Utils\FloodFill.cs" />
+    <Compile Include="Utils\MaterialDesignColors.cs" />
+    <Compile Include="Utils\MathUtils.cs" />
     <Compile Include="Utils\TextureUtils.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -122,4 +130,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <PropertyGroup>
+    <TransformOnBuild>true</TransformOnBuild>
+  </PropertyGroup>
 </Project>

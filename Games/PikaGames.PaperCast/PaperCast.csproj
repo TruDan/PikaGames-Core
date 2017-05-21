@@ -35,9 +35,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\..\PikaGames\PikaGames.csproj">
+    <ProjectReference Include="..\..\PikaGames\PikaGames.Core.csproj">
       <Project>{90dcc068-4002-4cbe-92ec-d761ee0046e0}</Project>
-      <Name>PikaGames</Name>
+      <Name>PikaGames.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -96,4 +96,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <PropertyGroup>
+    <TransformOnBuild>true</TransformOnBuild>
+  </PropertyGroup>
 </Project>

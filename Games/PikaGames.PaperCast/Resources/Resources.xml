@@ -14,6 +14,18 @@
     </Parameters>
     
     <Texture2D name="PaperCastLogo" src="PaperCastLogo.png" />
+    <Texture2D name="InputKeyboard" src="InputKeyboard.png" />
+    <Texture2D name="InputPhone" src="InputPhone.png" />
+    <Texture2D name="InputNetwork" src="InputNetwork.png" />
+    <Texture2D name="InputGamePad" src="InputGamePad.png" />
   </Images>
+
+  <Sfx importer="OggImporter" processor="SoundEffectProcessor">
+    <Parameters>
+      <Quality Value="Best" />
+    </Parameters>
+    
+    <SoundEffect name="SpaceMorph" src="SpaceMorph.ogg" />
+  </Sfx>
   
 </Resources>

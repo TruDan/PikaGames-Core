@@ -1,4 +1,4 @@
-﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+﻿<#@ template hostspecific="true" language="C#" #>
 <#@ output extension=".cs" #>
 <#@ assembly name="EnvDTE"#>
 <#@ assembly name="System.Xml"#>
@@ -32,6 +32,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 

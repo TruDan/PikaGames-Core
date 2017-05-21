@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using PikaGames.Games.Core;
 using PikaGames.Games.Core.Entities;
+using PikaGames.Games.Core.Input;
 using PikaGames.Games.Core.Utils;
 using PikaGames.PaperCast.World;
 
@@ -28,7 +29,7 @@ namespace PikaGames.PaperCast
         private Direction _currentDirection = Direction.None;
         private Direction _nextDirection = Direction.None;
 
-        public PaperCastPlayer(Level level, Color color) : base(GetTexture(color, Tile.Size))
+        public PaperCastPlayer(PlayerIndex playerIndex, Level level, Color color) : base(GetTexture(color, Tile.Size), playerIndex)
         {
             Level = level;
             Color = color;
@@ -36,8 +37,21 @@ namespace PikaGames.PaperCast
             Width = Tile.Size;
             Height = Tile.Size;
 
-            X = 6 * Tile.Size;
-            Y = 6 * Tile.Size;
+            var x = 12;
+            var y = 12;
+            
+            if (playerIndex == PlayerIndex.Two || playerIndex == PlayerIndex.Four)
+            {
+                x = Level.Width - x;
+            }
+
+            if (playerIndex == PlayerIndex.Three || playerIndex == PlayerIndex.Four)
+            {
+                y = Level.Height - y;
+            }
+
+            X = x * Tile.Size;
+            Y = y * Tile.Size;
 
 
             var tile = Level.GetTileFromPosition(X, Y);
@@ -66,21 +80,24 @@ namespace PikaGames.PaperCast
 
         public override void Update(GameTime deltaTime)
         {
-            // DEBUG
-            KeyboardState kbs = Keyboard.GetState();
-            if (kbs.IsKeyDown(Keys.W))
+            base.Update(deltaTime);
+
+            if (((PaperCastGame) Level.Game).GameMapScene.IsPaused)
+                return;
+
+            if (Input.IsDown(InputCommand.Up))
             {
                 _nextDirection = Direction.North;
             }
-            else if (kbs.IsKeyDown(Keys.S))
+            else if (Input.IsDown(InputCommand.Down))
             {
                 _nextDirection = Direction.South;
             }
-            else if (kbs.IsKeyDown(Keys.D))
+            else if (Input.IsDown(InputCommand.Right))
             {
                 _nextDirection = Direction.East;
             }
-            else if (kbs.IsKeyDown(Keys.A))
+            else if (Input.IsDown(InputCommand.Left))
             {
                 _nextDirection = Direction.West;
             }

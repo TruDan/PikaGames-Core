@@ -7,7 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 using PikaGames.Games.Core.Entities;
+using PikaGames.Games.Core.Input;
 using PikaGames.Games.Core.Scenes;
+using PikaGames.Games.Core.Sound;
 using PikaGames.Games.Core.Utils;
 
 namespace PikaGames.Games.Core
@@ -24,6 +26,7 @@ namespace PikaGames.Games.Core
         public bool RequestingExit = false;
 
         public SceneManager SceneManager;
+        public SoundManager SoundManager;
 
         public readonly List<Player> Players = new List<Player>();
 
@@ -34,7 +37,8 @@ namespace PikaGames.Games.Core
         {
             Content.RootDirectory = "Content";
             ContentManager = new ContentManager(Content.ServiceProvider, "Content");
-
+            
+            SoundManager = new SoundManager();;
 
             _graphicsDeviceManager = new GraphicsDeviceManager(this);
             _graphicsDeviceManager.PreferredBackBufferWidth = (int) WindowSize.X;
@@ -45,6 +49,23 @@ namespace PikaGames.Games.Core
             IsMouseVisible = true;
 
 
+        }
+
+        public void InitialiseLocalMultiplayer(int max = 4)
+        {
+            AddPlayer(CreatePlayer(PlayerIndex.One));
+
+            if(max > 1)
+                AddPlayer(CreatePlayer(PlayerIndex.Two));
+            if(max > 2)
+                AddPlayer(CreatePlayer(PlayerIndex.Three));
+            if(max > 3)
+                AddPlayer(CreatePlayer(PlayerIndex.Four));
+        }
+
+        public virtual Player CreatePlayer(PlayerIndex playerIndex)
+        {
+            return new Player(TextureUtils.CreateRectangle(64, 64, Color.White), playerIndex);
         }
 
         public Player AddPlayer(Player player)
@@ -84,6 +105,11 @@ namespace PikaGames.Games.Core
         {
             if (RequestingExit)
                 Exit();
+
+            foreach (var player in Players)
+            {
+                player.Update(gameTime);
+            }
 
             SceneManager.Update(gameTime);
 

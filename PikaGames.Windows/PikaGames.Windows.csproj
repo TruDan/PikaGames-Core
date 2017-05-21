@@ -94,13 +94,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Games\PikaGames.PaperCast\PikaGames.PaperCast.csproj">
+    <ProjectReference Include="..\Games\PikaGames.PaperCast\PaperCast.csproj">
       <Project>{14e3b201-ff98-40c9-b329-ede40b869ba4}</Project>
-      <Name>PikaGames.PaperCast</Name>
+      <Name>PaperCast</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PikaGames\PikaGames.csproj">
+    <ProjectReference Include="..\PikaGames\PikaGames.Core.csproj">
       <Project>{90dcc068-4002-4cbe-92ec-d761ee0046e0}</Project>
-      <Name>PikaGames</Name>
+      <Name>PikaGames.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

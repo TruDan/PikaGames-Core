@@ -1,4 +1,4 @@
-﻿<#@ template debug="true" hostspecific="true " language="C#" #>
+﻿<#@ template hostspecific="true " language="C#" #>
 <#@ output extension=".mgcb" #>
 <#@ assembly name="System.Core"#>
 <#@ assembly name="System.Xml"#>
