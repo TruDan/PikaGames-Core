@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PikaGames.Core", "PikaGames
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaperCast", "Games\PikaGames.PaperCast\PaperCast.csproj", "{14E3B201-FF98-40C9-B329-EDE40B869BA4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLauncher", "Games\GameLauncher\GameLauncher.csproj", "{68E6C734-DE72-4414-99E2-66E5CABA8319}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Games\PaperCast\PaperCast.projitems*{c8165587-c583-420c-8e8c-5ed4ea9e1331}*SharedItemsImports = 13
@@ -61,6 +63,14 @@ Global
 		{14E3B201-FF98-40C9-B329-EDE40B869BA4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14E3B201-FF98-40C9-B329-EDE40B869BA4}.Release|x86.ActiveCfg = Release|Any CPU
 		{14E3B201-FF98-40C9-B329-EDE40B869BA4}.Release|x86.Build.0 = Release|Any CPU
+		{68E6C734-DE72-4414-99E2-66E5CABA8319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68E6C734-DE72-4414-99E2-66E5CABA8319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68E6C734-DE72-4414-99E2-66E5CABA8319}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{68E6C734-DE72-4414-99E2-66E5CABA8319}.Debug|x86.Build.0 = Debug|Any CPU
+		{68E6C734-DE72-4414-99E2-66E5CABA8319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68E6C734-DE72-4414-99E2-66E5CABA8319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68E6C734-DE72-4414-99E2-66E5CABA8319}.Release|x86.ActiveCfg = Release|Any CPU
+		{68E6C734-DE72-4414-99E2-66E5CABA8319}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,5 +78,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C8165587-C583-420C-8E8C-5ED4EA9E1331} = {5240409E-92D0-45FC-B4D8-9CBCED3C8737}
 		{14E3B201-FF98-40C9-B329-EDE40B869BA4} = {5240409E-92D0-45FC-B4D8-9CBCED3C8737}
+		{68E6C734-DE72-4414-99E2-66E5CABA8319} = {5240409E-92D0-45FC-B4D8-9CBCED3C8737}
 	EndGlobalSection
 EndGlobal

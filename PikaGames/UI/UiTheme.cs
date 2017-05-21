@@ -42,5 +42,8 @@ namespace PikaGames.Games.Core.UI
         public static int ControlActiveBackgroundShadowSize = 4;
         public static int ControlActiveForegroundShadowSize = 4;
 
+
+        public static Color SceneTransitionBackgroundColor = MaterialDesignColors.Grey900;
+
     }
 }

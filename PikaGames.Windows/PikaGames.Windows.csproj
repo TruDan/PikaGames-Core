@@ -94,6 +94,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Games\GameLauncher\GameLauncher.csproj">
+      <Project>{68e6c734-de72-4414-99e2-66e5caba8319}</Project>
+      <Name>GameLauncher</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Games\PikaGames.PaperCast\PaperCast.csproj">
       <Project>{14e3b201-ff98-40c9-b329-ede40b869ba4}</Project>
       <Name>PaperCast</Name>

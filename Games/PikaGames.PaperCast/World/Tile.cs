@@ -19,9 +19,9 @@ namespace PikaGames.PaperCast.World
         public PaperCastPlayer Owner;
         public PaperCastPlayer PendingOwner;
 
-        protected Game Game { get; }
+        protected GameBase Game { get; }
 
-        public Tile(Game game, int x, int y)
+        public Tile(GameBase game, int x, int y)
         {
             Game = game;
             X = x;

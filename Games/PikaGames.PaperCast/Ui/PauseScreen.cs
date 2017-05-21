@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using PikaGames.Games.Core.Input;
 using PikaGames.Games.Core.UI;
 using PikaGames.Games.Core.UI.Menu;
+using PikaGames.Games.Core.UI.Text;
 using PikaGames.Games.Core.Utils;
 
 namespace PikaGames.PaperCast.Ui
@@ -44,7 +45,6 @@ namespace PikaGames.PaperCast.Ui
             _menu = new UiMenu(this, 50, 50 + _title.Height + 50);
 
             _menu.AddMenuItem("Resume", () => _game.GameMapScene.IsPaused = false);
-            _menu.AddMenuItem("Options", () => _game.SceneManager.ChangeScene(_game.OptionsMenuScene));
             _menu.AddMenuItem("Main Menu", () => _game.SceneManager.ChangeScene(_game.MainMenuScene));
         }
 

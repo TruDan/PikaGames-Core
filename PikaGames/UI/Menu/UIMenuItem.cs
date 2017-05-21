@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using PikaGames.Games.Core.UI.Text;
 using PikaGames.Games.Core.Utils;
 
 namespace PikaGames.Games.Core.UI.Menu

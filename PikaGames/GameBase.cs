@@ -14,54 +14,53 @@ using PikaGames.Games.Core.Utils;
 
 namespace PikaGames.Games.Core
 {
-    public class GameBase : Game
+    public class GameBase : IDisposable
     {
         public static GameBase Instance { get; private set; }
-        
-        public Vector2 WindowSize = new Vector2(720*2, 480*2);
-        public Vector2 VirtualSize = new Vector2(720*2, 480*2);
 
-        public BoxingViewportAdapter ViewportAdapter;
+        private RootGame Game { get; }
+
+        public event Action<GameBase> Exiting;
+
+        public ContentManager Content => Game.Content;
+        public GameWindow Window => Game.Window;
+        public GraphicsDevice GraphicsDevice => Game.GraphicsDevice;
+
+        public SoundManager SoundManager => Game.SoundManager;
+
+        public Vector2 WindowSize => Game.WindowSize;
+        public Vector2 VirtualSize => Game.VirtualSize;
+
+        public BoxingViewportAdapter ViewportAdapter => Game.ViewportAdapter;
         public ContentManager ContentManager;
 
         public bool RequestingExit = false;
+        private bool _exited = false;
 
         public SceneManager SceneManager;
-        public SoundManager SoundManager;
 
         public readonly List<Player> Players = new List<Player>();
 
-        private readonly GraphicsDeviceManager _graphicsDeviceManager;
         public SpriteBatch SpriteBatch { get; private set; }
-
+        
         public GameBase()
         {
+            if (RootGame.Instance == null)
+            {
+                Game = new RootGame(this);
+            }
+            else
+            {
+                Game = RootGame.Instance;
+            }
+            
             Instance = this;
 
             Content.RootDirectory = "Content";
             ContentManager = new ContentManager(Content.ServiceProvider, "Content");
             
-            SoundManager = new SoundManager();;
-
-            _graphicsDeviceManager = new GraphicsDeviceManager(this);
-            _graphicsDeviceManager.PreferredBackBufferWidth = (int) WindowSize.X;
-            _graphicsDeviceManager.PreferredBackBufferHeight = (int)WindowSize.Y;
-            _graphicsDeviceManager.ApplyChanges();
-
             Window.AllowUserResizing = false;
-            IsMouseVisible = true;
-        }
-
-        public void InitialiseLocalMultiplayer(int max = 4)
-        {
-            AddPlayer(CreatePlayer(PlayerIndex.One));
-
-            if(max > 1)
-                AddPlayer(CreatePlayer(PlayerIndex.Two));
-            if(max > 2)
-                AddPlayer(CreatePlayer(PlayerIndex.Three));
-            if(max > 3)
-                AddPlayer(CreatePlayer(PlayerIndex.Four));
+            Game.IsMouseVisible = true;
         }
 
         public virtual Player CreatePlayer(PlayerIndex playerIndex)
@@ -75,34 +74,43 @@ namespace PikaGames.Games.Core
             return player;
         }
 
-        protected override void Initialize()
+        public void InitialiseLocalMultiplayer(int max = 4)
         {
-            ViewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice, (int)VirtualSize.X, (int)VirtualSize.Y);
-            
+            AddPlayer(CreatePlayer(PlayerIndex.One));
+
+            if (max > 1)
+                AddPlayer(CreatePlayer(PlayerIndex.Two));
+            if (max > 2)
+                AddPlayer(CreatePlayer(PlayerIndex.Three));
+            if (max > 3)
+                AddPlayer(CreatePlayer(PlayerIndex.Four));
+        }
+
+        protected internal virtual void Initialize()
+        {
             Resources.Init(ContentManager, GraphicsDevice);
             TextureUtils.Init(GraphicsDevice);
 
             SceneManager = new SceneManager(this);
-
-            base.Initialize();
         }
 
-        protected override void LoadContent()
+        protected internal virtual void LoadContent()
         {
-            SpriteBatch = new SpriteBatch(GraphicsDevice);
+            _exited = false;
+            Instance = this;
+
+            if(SpriteBatch == null)
+                SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             SceneManager.LoadContent(Content);
-
-            base.LoadContent();
         }
 
-        protected override void UnloadContent()
+        protected internal virtual void UnloadContent()
         {
-
-            base.UnloadContent();
+            SceneManager.UnloadContent();
         }
 
-        protected override void Update(GameTime gameTime)
+        protected internal virtual void Update(GameTime gameTime)
         {
             if (RequestingExit)
                 Exit();
@@ -113,16 +121,27 @@ namespace PikaGames.Games.Core
             }
 
             SceneManager.Update(gameTime);
-
-            base.Update(gameTime);
         }
 
-        protected override void Draw(GameTime gameTime)
+        protected internal virtual void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
             SceneManager.Draw(gameTime, SpriteBatch);
+        }
 
-            base.Draw(gameTime);
+        public void Exit()
+        {
+            if (_exited) return;
+            _exited = true;
+
+            RequestingExit = true;
+            Exiting?.Invoke(this);
+        }
+
+        public void Dispose()
+        {
+            ContentManager?.Dispose();
+            SpriteBatch?.Dispose();
         }
     }
 }

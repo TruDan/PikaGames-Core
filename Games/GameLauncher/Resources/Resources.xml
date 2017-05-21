@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Resources>
+
+  <Images importer="TextureImporter" processor="TextureProcessor">
+    <Parameters>
+      <ColorKeyColor Value="255,0,255,255" />
+      <ColorKeyEnabled Value="True" />
+      <GenerateMipmaps Value="False" />
+      <PremultiplyAlpha Value="True" />
+      <ResizeToPowerOfTwo Value="False" />
+      <MakeSquare Value="False" />
+      <TextureFormat  Value="Color" />
+    </Parameters>
+    
+    <Texture2D name="PikaGamesLogo" src="PikaGamesLogo.png" />
+    <Texture2D name="InputKeyboard" src="Inputs/Keyboard.png" />
+    <Texture2D name="InputPhone" src="Inputs/Phone.png" />
+    <Texture2D name="InputNetwork" src="Inputs/Network.png" />
+    <Texture2D name="InputGamePad" src="Inputs/GamePad.png" />
+  </Images>
+  
+</Resources>

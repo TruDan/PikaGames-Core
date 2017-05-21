@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PikaGames.Games.Core.Scenes;
-using PikaGames.Games.Core.UI.Controls;
+﻿using PikaGames.Games.Core.UI.Controls;
 
-namespace PikaGames.PaperCast.Scenes.Options
+namespace GameLauncher.Scenes.Options
 {
     public class AudioOptionsScene : OptionsScene
     {

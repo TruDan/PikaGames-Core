@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using GameLauncher.Scenes.Options;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Extended.NuclexGui.Visuals.Flat;
 using MonoGame.Extended.ViewportAdapters;
 using PikaGames.Games.Core.Input;
 using PikaGames.Games.Core.Scenes;
 using PikaGames.Games.Core.UI;
 using PikaGames.Games.Core.UI.ButtonBar;
 using PikaGames.Games.Core.UI.Menu;
+using PikaGames.Games.Core.UI.Text;
 using PikaGames.Games.Core.Utils;
-using PikaGames.PaperCast.Scenes.Options;
 
-namespace PikaGames.PaperCast.Scenes
+namespace GameLauncher.Scenes
 {
     public class OptionsMenuScene : Scene
     {
@@ -49,8 +45,7 @@ namespace PikaGames.PaperCast.Scenes
 
             _container = new UiContainer();
 
-            _title = new UiText(_container, 50, 50, "Paused", MaterialDesignColors.Amber500, MaterialDesignColors.Amber900);
-            _title.Scale = 4f;
+            _title = new UiTitle(_container, 50, 50, "Options");
             
             _menu = new UiMenu(_container, 50, 50 + _title.Height + 50);
             

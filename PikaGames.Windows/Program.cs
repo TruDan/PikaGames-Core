@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
+using GameLauncher;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PikaGames.Games.Core;
 using PikaGames.PaperCast;
 
 namespace PikaGames.Windows
@@ -18,7 +20,7 @@ namespace PikaGames.Windows
         [STAThread]
         static void Main()
         {
-            using (var game = new PaperCastGame())
+            using (var game = new GameLauncherGame())
             {
                 //var screen =
                 //    System.Windows.Forms.Screen.AllScreens.First(
@@ -36,11 +38,8 @@ namespace PikaGames.Windows
                 //game._graphics.ApplyChanges();
 
                 //var player = game.AddPlayer("TruDan");
-
-
-                game.Run();
-
-
+                
+                RootGame.Instance.Run();
             }
         }
     }

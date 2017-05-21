@@ -23,13 +23,7 @@ namespace PikaGames.PaperCast
 
         internal MainMenuScene MainMenuScene;
         internal GameMapScene GameMapScene;
-        internal OptionsMenuScene OptionsMenuScene;
-
-        public PaperCastGame()
-        {
-            
-        }
-
+        
         public override Player CreatePlayer(PlayerIndex playerIndex)
         {
             return new PaperCastPlayer(playerIndex, GameMapScene.Level, PlayerColors[(int)playerIndex]);
@@ -42,7 +36,6 @@ namespace PikaGames.PaperCast
 
             MainMenuScene = new MainMenuScene();
             GameMapScene = new GameMapScene(this);
-            OptionsMenuScene = new OptionsMenuScene();
 
             SceneManager.DefaultScene = MainMenuScene;
 

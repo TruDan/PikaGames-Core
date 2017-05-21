@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Sprites;
 using MonoGame.Extended.ViewportAdapters;
+using PikaGames.Games.Core.UI;
 
 namespace PikaGames.Games.Core.Scenes
 {
@@ -46,12 +47,17 @@ namespace PikaGames.Games.Core.Scenes
         public void LoadContent(ContentManager content)
         {
             var transitionTexture = new Texture2D(Game.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            transitionTexture.SetData(new Color[] { Color.Black });
+            transitionTexture.SetData(new Color[] { UiTheme.SceneTransitionBackgroundColor });
             _transitionImage = new Sprite(transitionTexture);
             _transitionImage.Scale = new Vector2(Game.VirtualSize.X, Game.VirtualSize.Y);
             _transitionImage.Alpha = 0.0f;
             _transitionImage.IsVisible = false;
             CurrentScene.LoadContent();
+        }
+
+        public void UnloadContent()
+        {
+            CurrentScene.UnloadContent();
         }
 
         public void ChangeScene(Scene newScene)
@@ -102,7 +108,7 @@ namespace PikaGames.Games.Core.Scenes
             if (_beginTransitionFade)
             {
                 if (_transitionImage.Alpha < 1.0f)
-                    _transitionImage.Alpha += 0.1f;
+                    _transitionImage.Alpha += 0.2f;
                 else
                     _beginTransitionFade = false;
             }
@@ -117,7 +123,7 @@ namespace PikaGames.Games.Core.Scenes
                 }
 
                 if (_transitionImage.Alpha > 0.0f)
-                    _transitionImage.Alpha -= 0.1f;
+                    _transitionImage.Alpha -= 0.2f;
                 else
                 {
                     _transitionImage.IsVisible = false;

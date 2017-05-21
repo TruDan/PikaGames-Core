@@ -25,11 +25,11 @@ namespace PikaGames.Games.Core.Input
             {InputCommand.Left, new []{Keys.A, Keys.Left}},
             {InputCommand.Right, new []{Keys.D, Keys.Right}},
 
-            {InputCommand.A, new []{ Keys.Q }},
-            {InputCommand.B, new []{ Keys.E }},
+            {InputCommand.A, new []{ Keys.Q, Keys.Enter }},
+            {InputCommand.B, new []{ Keys.E, Keys.Back }},
             {InputCommand.X, new []{ Keys.F }},
             {InputCommand.Y, new []{ Keys.G }},
-            {InputCommand.Start, new []{ Keys.Space, Keys.Enter }},
+            {InputCommand.Start, new []{ Keys.Escape }},
         };
 
         // GamePad

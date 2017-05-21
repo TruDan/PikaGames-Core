@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PikaGames.PaperCast.Scenes.Options
+﻿namespace GameLauncher.Scenes.Options
 {
     public class ControlsOptionsScene : OptionsScene
     {
