@@ -10,6 +10,7 @@ namespace PikaGames.Games.Core.Input
 {
     public class PlayerInputManager
     {
+        public bool AnalogDirection = true;
 
         // Keyboard
         // -------------------------------------------
@@ -23,6 +24,7 @@ namespace PikaGames.Games.Core.Input
             {InputCommand.Down, new []{Keys.S, Keys.Down}},
             {InputCommand.Left, new []{Keys.A, Keys.Left}},
             {InputCommand.Right, new []{Keys.D, Keys.Right}},
+
             {InputCommand.A, new []{ Keys.Q }},
             {InputCommand.B, new []{ Keys.E }},
             {InputCommand.X, new []{ Keys.F }},
@@ -46,6 +48,7 @@ namespace PikaGames.Games.Core.Input
             {InputCommand.Down, new []{Buttons.LeftThumbstickDown, Buttons.DPadDown}},
             {InputCommand.Left, new []{Buttons.LeftThumbstickLeft, Buttons.DPadLeft}},
             {InputCommand.Right, new []{Buttons.LeftThumbstickRight, Buttons.DPadRight}},
+
             {InputCommand.A, new []{ Buttons.A }},
             {InputCommand.B, new []{ Buttons.B }},
             {InputCommand.X, new []{ Buttons.X }},
@@ -78,6 +81,62 @@ namespace PikaGames.Games.Core.Input
                 _padCapabilities = GamePad.GetCapabilities(PlayerIndex);
                 _currentPadState = GamePad.GetState(PlayerIndex);
             }
+        }
+
+        public Vector2 GetDirectionVector()
+        {
+            Vector2 direction = Vector2.Zero;
+
+            if (UsesKeyboard)
+            {
+                var upDown = IsKeyDown(GetKeyBinds(InputCommand.Up));
+                var downDown = IsKeyDown(GetKeyBinds(InputCommand.Down));
+                var leftDown = IsKeyDown(GetKeyBinds(InputCommand.Left));
+                var rightDown = IsKeyDown(GetKeyBinds(InputCommand.Right));
+
+                if (upDown && !downDown)
+                {
+                    direction.X = 1;
+                }
+                else if (!upDown && downDown)
+                {
+                    direction.X = -1;
+                }
+                else if (upDown && downDown)
+                {
+                    direction.X = 0;
+                }
+
+                if (leftDown && !rightDown)
+                {
+                    direction.Y = 1;
+                }
+                else if (!leftDown && rightDown)
+                {
+                    direction.Y = -1;
+                }
+                else if (leftDown && rightDown)
+                {
+                    direction.Y = 0;
+                }
+            }
+
+            if (UsesGamePad)
+            {
+                var padDirection = GetPadDirectionVector();
+                if (Math.Abs(padDirection.X) > ThumbstickTolerance || Math.Abs(padDirection.Y) > ThumbstickTolerance)
+                {
+                    direction = padDirection;
+                }
+            }
+
+            if (AnalogDirection)
+            {
+                direction.X = (float)Math.Round(direction.X);
+                direction.Y = (float)Math.Round(direction.Y);
+            }
+
+            return direction;
         }
 
         public bool IsPressed(params InputCommand[] commands)
@@ -374,6 +433,11 @@ namespace PikaGames.Games.Core.Input
                     return true;
             }
             return false;
+        }
+        
+        protected Vector2 GetPadDirectionVector()
+        {
+            return _currentPadState.ThumbSticks.Left;
         }
 
         private Buttons GetPadDirection(GamePadState state)

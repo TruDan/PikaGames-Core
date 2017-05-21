@@ -39,7 +39,6 @@
     <Compile Include="Entities\Player.cs" />
     <Compile Include="GameBase.cs" />
     <Compile Include="Input\InputCommand.cs" />
-    <Compile Include="Input\InputManager.cs" />
     <Compile Include="Input\InputType.cs" />
     <Compile Include="Input\PlayerInputManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
