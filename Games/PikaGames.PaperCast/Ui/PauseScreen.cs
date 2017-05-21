@@ -40,14 +40,11 @@ namespace PikaGames.PaperCast.Ui
         {
             _title = new UiText(this, 50, 50, "Paused", MaterialDesignColors.Amber500, MaterialDesignColors.Amber900);
             _title.Scale = 4f;
-
-            AddItem(_title);
-
+            
             _menu = new UiMenu(this, 50, 50 + _title.Height + 50);
-            AddItem(_menu);
 
             _menu.AddMenuItem("Resume", () => _game.GameMapScene.IsPaused = false);
-            _menu.AddMenuItem("Options", () => { });
+            _menu.AddMenuItem("Options", () => _game.SceneManager.ChangeScene(_game.OptionsMenuScene));
             _menu.AddMenuItem("Main Menu", () => _game.SceneManager.ChangeScene(_game.MainMenuScene));
         }
 

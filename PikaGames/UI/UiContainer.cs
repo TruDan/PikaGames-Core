@@ -16,13 +16,11 @@ namespace PikaGames.Games.Core.UI
 
         public UiContainer(UiContainer container, int x, int y) : base(container, x, y)
         {
-            
         }
 
-        public UiContainer() : this(null, 0, 0)
-        {
-            
-        }
+        public UiContainer(int x, int y) : this(null, x, y) {}
+
+        public UiContainer() : this(0, 0) {}
 
         public void AddItem(UiItem item)
         {

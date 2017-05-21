@@ -44,6 +44,11 @@
     <Compile Include="Direction.cs" />
     <Compile Include="Scenes\GameMapScene.cs" />
     <Compile Include="Scenes\MainMenuScene.cs" />
+    <Compile Include="Scenes\Options\AudioOptionsScene.cs" />
+    <Compile Include="Scenes\OptionsMenuScene.cs" />
+    <Compile Include="Scenes\Options\ControlsOptionsScene.cs" />
+    <Compile Include="Scenes\Options\OptionsScene.cs" />
+    <Compile Include="Scenes\Options\VideoOptionsScene.cs" />
     <Compile Include="Ui\PauseScreen.cs" />
     <Compile Include="World\Level.cs" />
     <Compile Include="World\Tile.cs" />

@@ -23,6 +23,7 @@ namespace PikaGames.PaperCast
 
         internal MainMenuScene MainMenuScene;
         internal GameMapScene GameMapScene;
+        internal OptionsMenuScene OptionsMenuScene;
 
         public PaperCastGame()
         {
@@ -41,6 +42,7 @@ namespace PikaGames.PaperCast
 
             MainMenuScene = new MainMenuScene();
             GameMapScene = new GameMapScene(this);
+            OptionsMenuScene = new OptionsMenuScene();
 
             SceneManager.DefaultScene = MainMenuScene;
 

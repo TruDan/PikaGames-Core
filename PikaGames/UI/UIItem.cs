@@ -27,6 +27,8 @@ namespace PikaGames.Games.Core.UI
             Container = container;
             X = x;
             Y = y;
+
+            Container?.AddItem(this);
         }
 
 

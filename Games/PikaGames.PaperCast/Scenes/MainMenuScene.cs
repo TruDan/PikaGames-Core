@@ -48,7 +48,7 @@ namespace PikaGames.PaperCast.Scenes
             _menu.ActiveShadowColor = MaterialDesignColors.LightBlue700;
 
             _menu.AddMenuItem("Play Game", () => Game.SceneManager.ChangeScene(((PaperCastGame)Game).GameMapScene));
-            _menu.AddMenuItem("Options", () => {});
+            _menu.AddMenuItem("Options", () => Game.SceneManager.ChangeScene(((PaperCastGame)Game).OptionsMenuScene));
             _menu.AddMenuItem("Exit", () => Game.Exit());
         }
 

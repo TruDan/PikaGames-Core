@@ -13,6 +13,8 @@ namespace PikaGames.Games.Core.Scenes
 {
     public class Scene
     {
+        internal bool IsInitialised { get; set; }
+
         private FramesPerSecondCounter _fpsCounter;
 
         protected SceneManager SceneManager { get; private set; }
@@ -20,10 +22,16 @@ namespace PikaGames.Games.Core.Scenes
 
         internal void Init(SceneManager sceneManager, GameBase game)
         {
+            if (IsInitialised)
+                return;
+
+            IsInitialised = true;
+
             SceneManager = sceneManager;
             Game = game;
 
             Initialise();
+
         }
 
         protected virtual void Initialise() { }

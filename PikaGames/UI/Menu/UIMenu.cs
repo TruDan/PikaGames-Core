@@ -38,8 +38,6 @@ namespace PikaGames.Games.Core.UI.Menu
         public void AddMenuItem(string text, Action action)
         {
             var menuItem = new UiMenuItem(this, text, action);
-            AddItem(menuItem);
-
             AlignItems();
         }
 
