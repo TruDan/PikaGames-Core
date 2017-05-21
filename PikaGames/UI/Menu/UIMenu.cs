@@ -11,12 +11,6 @@ namespace PikaGames.Games.Core.UI.Menu
 {
     public class UiMenu : UiContainer
     {
-        public Color DefaultColor { get; set; } = MaterialDesignColors.LightBlue500;
-        public Color DefaultShadowColor { get; set; } = MaterialDesignColors.LightBlue900;
-
-        public Color ActiveColor { get; set; } = MaterialDesignColors.Yellow500;
-        public Color ActiveShadowColor { get; set; } = MaterialDesignColors.Yellow900;
-
         private int _menuSelectedIndex = 0;
 
         public Frame.HorizontalTextAlignment Alignment { get; set; } = Frame.HorizontalTextAlignment.Left;

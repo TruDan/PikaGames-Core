@@ -18,9 +18,10 @@ namespace PikaGames.Games.Core.UI
         public int Y { get; set; }
 
         public Vector2 Position => (Container?.Position ?? Vector2.Zero) + new Vector2(X, Y);
+        public Rectangle Bounds => new Rectangle((int) Position.X, (int) Position.Y, Width, Height);
 
-        public virtual int Width => 0;
-        public virtual int Height => 0;
+        public virtual int Width { get; set; } = 0;
+        public virtual int Height { get; set; } = 0;
 
         protected UiItem(UiContainer container, int x, int y)
         {

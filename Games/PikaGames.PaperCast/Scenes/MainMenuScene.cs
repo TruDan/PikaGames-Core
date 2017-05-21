@@ -41,12 +41,7 @@ namespace PikaGames.PaperCast.Scenes
             
             _menu = new UiMenu(null, center.X, center.Y);
             _menu.Alignment = Frame.HorizontalTextAlignment.Center;
-
-            _menu.DefaultColor = MaterialDesignColors.LightBlue400;
-            _menu.DefaultShadowColor = MaterialDesignColors.LightBlue900;
-            _menu.ActiveColor = MaterialDesignColors.LightBlue50;
-            _menu.ActiveShadowColor = MaterialDesignColors.LightBlue700;
-
+            
             _menu.AddMenuItem("Play Game", () => Game.SceneManager.ChangeScene(((PaperCastGame)Game).GameMapScene));
             _menu.AddMenuItem("Options", () => Game.SceneManager.ChangeScene(((PaperCastGame)Game).OptionsMenuScene));
             _menu.AddMenuItem("Exit", () => Game.Exit());

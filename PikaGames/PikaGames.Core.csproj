@@ -46,11 +46,15 @@
     <Compile Include="Scenes\SceneManager.cs" />
     <Compile Include="Scenes\SplashScene.cs" />
     <Compile Include="Sound\SoundManager.cs" />
+    <Compile Include="UI\Controls\UiControl.cs" />
+    <Compile Include="UI\Controls\UiControlGroup.cs" />
+    <Compile Include="UI\Controls\UiSliderControl.cs" />
     <Compile Include="UI\UiContainer.cs" />
     <Compile Include="UI\UIItem.cs" />
     <Compile Include="UI\Menu\UIMenu.cs" />
     <Compile Include="UI\Menu\UIMenuItem.cs" />
     <Compile Include="UI\UiText.cs" />
+    <Compile Include="UI\UiTheme.cs" />
     <Compile Include="Utils\FloodFill.cs" />
     <Compile Include="Utils\MaterialDesignColors.cs" />
     <Compile Include="Utils\MathUtils.cs" />

@@ -50,11 +50,6 @@ namespace PikaGames.PaperCast.Scenes
             _title.Scale = 4f;
             
             _menu = new UiMenu(_container, 50, 50 + _title.Height + 50);
-
-            _menu.DefaultColor = MaterialDesignColors.LightBlue400;
-            _menu.DefaultShadowColor = MaterialDesignColors.LightBlue900;
-            _menu.ActiveColor = MaterialDesignColors.LightBlue50;
-            _menu.ActiveShadowColor = MaterialDesignColors.LightBlue700;
             
             _menu.AddMenuItem("Video", () => Game.SceneManager.ChangeScene(_videoOptionsScene));
             _menu.AddMenuItem("Audio", () => Game.SceneManager.ChangeScene(_audioOptionsScene));

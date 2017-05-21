@@ -17,27 +17,30 @@ namespace PikaGames.Games.Core.UI.Menu
 
                 if (_isSelected)
                 {
-                    Color = ((UiMenu) Container).ActiveColor;
-                    ShadowColor = ((UiMenu)Container).ActiveShadowColor;
+                    Color = UiTheme.MenuActiveTextColor;
+                    ShadowColor = UiTheme.MenuActiveTextShadowColor;
+                    ShadowSize = UiTheme.MenuActiveTextShadowSize;
                 }
                 else
                 {
-                    Color = ((UiMenu)Container).DefaultColor;
-                    ShadowColor = ((UiMenu)Container).DefaultShadowColor;
+                    Color = UiTheme.MenuTextColor;
+                    ShadowColor = UiTheme.MenuTextShadowColor;
+                    ShadowSize = UiTheme.MenuTextShadowSize;
                 }
             }
         }
 
         private readonly Action _action;
 
-        public UiMenuItem(UiMenu menu, string text, Action action) : base(menu, 0, menu.ItemCount * menu.ItemSize, text, menu.DefaultColor, menu.DefaultShadowColor)
+        public UiMenuItem(UiMenu menu, string text, Action action = null) : base(menu, 0, menu.ItemCount * menu.ItemSize, text)
         {
             _action = action;
+            IsSelected = false;
         }
 
-        public void Activate()
+        public virtual void Activate()
         {
-            _action.Invoke();
+            _action?.Invoke();
         }
     }
 }

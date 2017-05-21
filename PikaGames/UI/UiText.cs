@@ -22,10 +22,10 @@ namespace PikaGames.Games.Core.UI
             }
         }
 
-        public Color Color { get; set; }
-        public Color ShadowColor { get; set; }
+        public Color Color { get; set; } = UiTheme.TextColor;
+        public Color ShadowColor { get; set; } = UiTheme.TextShadowColor;
 
-        public int ShadowSize { get; set; } = 0;
+        public int ShadowSize { get; set; } = UiTheme.TextShadowSize;
 
         private float _scale = 1f;
         public float Scale
@@ -49,10 +49,14 @@ namespace PikaGames.Games.Core.UI
             ShadowSize = shadowSize;
         }
 
-        public UiText(UiContainer container, int x, int y, string text, Color color) : base(container, x, y)
+        public UiText(UiContainer container, int x, int y, string text, Color color) : this(container, x, y, text)
+        {
+            Color = color;
+        }
+
+        public UiText(UiContainer container, int x, int y, string text) : base(container, x, y)
         {
             Text = text;
-            Color = color;
 
             UpdateSize();
         }
