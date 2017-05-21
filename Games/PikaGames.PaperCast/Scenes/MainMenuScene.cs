@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended.NuclexGui.Visuals.Flat;
 using MonoGame.Extended.ViewportAdapters;
 using PikaGames.Games.Core.Input;
 using PikaGames.Games.Core.Scenes;
+using PikaGames.Games.Core.UI.Menu;
 using PikaGames.Games.Core.Utils;
 
 namespace PikaGames.PaperCast.Scenes
@@ -22,14 +24,8 @@ namespace PikaGames.PaperCast.Scenes
         private Color _splashShadowColor = MaterialDesignColors.LightBlue900;
 
         private bool _inMenu = false;
-        private int _menuSelectedIndex = 0;
-        private Vector2 _menuPosition;
-        private string[] _menu = new string[]
-        {
-            "New Game",
-            "Options",
-            "Exit"
-        };
+        
+        private UiMenu _menu;
 
         public override void LoadContent()
         {
@@ -42,10 +38,18 @@ namespace PikaGames.PaperCast.Scenes
 
             var size = font.MeasureString(_splashText);
             _splashPosition = new Vector2(center.X - size.X, _splashInitialY - size.Y);
+            
+            _menu = new UiMenu(null, center.X, center.Y);
+            _menu.Alignment = Frame.HorizontalTextAlignment.Center;
 
-            var menuSize = _menu.Select(m => font.MeasureString(m).X).OrderByDescending(m => m).FirstOrDefault();
+            _menu.DefaultColor = MaterialDesignColors.LightBlue400;
+            _menu.DefaultShadowColor = MaterialDesignColors.LightBlue900;
+            _menu.ActiveColor = MaterialDesignColors.LightBlue50;
+            _menu.ActiveShadowColor = MaterialDesignColors.LightBlue700;
 
-            _menuPosition = new Vector2(center.X - menuSize, center.Y);
+            _menu.AddMenuItem("Play Game", () => Game.SceneManager.ChangeScene(((PaperCastGame)Game).GameMapScene));
+            _menu.AddMenuItem("Options", () => {});
+            _menu.AddMenuItem("Exit", () => Game.Exit());
         }
 
         public override void Update(GameTime gameTime)
@@ -60,25 +64,7 @@ namespace PikaGames.PaperCast.Scenes
                 }
                 else if (_inMenu)
                 {
-                    if (Game.Players.Any(p => p.Input.IsPressed(InputCommand.Up)))
-                    {
-                        if (_menuSelectedIndex == 0) _menuSelectedIndex = _menu.Length - 1;
-                        else _menuSelectedIndex--;
-
-                        Game.SoundManager.Play(Resources.Sfx.SpaceMorph);
-                    }
-                    else if (Game.Players.Any(p => p.Input.IsPressed(InputCommand.Down)))
-                    {
-                        _menuSelectedIndex++;
-                        if (_menuSelectedIndex == _menu.Length) _menuSelectedIndex = 0;
-
-                        Game.SoundManager.Play(Resources.Sfx.SpaceMorph);
-                    }
-                    else if (Game.Players.Any(p => p.Input.IsPressed(InputCommand.A)))
-                    {
-                        // Start Game
-                        Game.SceneManager.ChangeScene(((PaperCastGame) Game).GameMapScene);
-                    }
+                    _menu.Update(gameTime);
                 }
 
                 SetSplashText("Press Start!", MaterialDesignColors.Yellow500, MaterialDesignColors.Yellow900);
@@ -132,25 +118,7 @@ namespace PikaGames.PaperCast.Scenes
             }
             else
             {
-                for (int i = 0; i < _menu.Length; i++)
-                {
-                    Color color = MaterialDesignColors.LightBlue400;
-                    Color shadow = MaterialDesignColors.LightBlue900;
-
-                    if (i == _menuSelectedIndex)
-                    {
-                        color = MaterialDesignColors.LightBlue50;
-                        shadow = MaterialDesignColors.LightBlue700;
-                    }
-
-                    for (int j = 0; j < (i == _menuSelectedIndex ? 4 : 6); j++)
-                    {
-                        spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, _menu[i], new Vector2(_menuPosition.X + j, _menuPosition.Y + 50 * i - j), shadow, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0);
-                    }
-
-
-                    spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, _menu[i], new Vector2(_menuPosition.X, _menuPosition.Y + 50*i), color, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0);
-                }
+                _menu.Draw(spriteBatch);
             }
 
             spriteBatch.End();

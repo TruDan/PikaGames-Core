@@ -16,6 +16,7 @@ namespace PikaGames.Games.Core
 {
     public class GameBase : Game
     {
+        public static GameBase Instance { get; private set; }
         
         public Vector2 WindowSize = new Vector2(720*2, 480*2);
         public Vector2 VirtualSize = new Vector2(720*2, 480*2);
@@ -35,6 +36,8 @@ namespace PikaGames.Games.Core
 
         public GameBase()
         {
+            Instance = this;
+
             Content.RootDirectory = "Content";
             ContentManager = new ContentManager(Content.ServiceProvider, "Content");
             
@@ -47,8 +50,6 @@ namespace PikaGames.Games.Core
 
             Window.AllowUserResizing = false;
             IsMouseVisible = true;
-
-
         }
 
         public void InitialiseLocalMultiplayer(int max = 4)

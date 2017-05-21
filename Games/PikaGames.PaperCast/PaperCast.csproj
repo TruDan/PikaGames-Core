@@ -44,6 +44,7 @@
     <Compile Include="Direction.cs" />
     <Compile Include="Scenes\GameMapScene.cs" />
     <Compile Include="Scenes\MainMenuScene.cs" />
+    <Compile Include="Ui\PauseScreen.cs" />
     <Compile Include="World\Level.cs" />
     <Compile Include="World\Tile.cs" />
     <Compile Include="PaperCastGame.cs" />
@@ -53,6 +54,12 @@
   <ItemGroup>
     <Reference Include="MonoGame.Extended, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MonoGame.Extended.0.6.377\lib\MonoGame.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Extended.Input, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MonoGame.Extended.Input.0.6.377\lib\MonoGame.Extended.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Extended.NuclexGui, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MonoGame.Extended.NuclexGui.0.6.377\lib\MonoGame.Extended.NuclexGui.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MonoGame.Framework.Portable.3.6.0.1625\lib\portable-net45+win8+wpa81\MonoGame.Framework.dll</HintPath>

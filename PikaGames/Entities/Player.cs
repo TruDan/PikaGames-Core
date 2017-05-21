@@ -10,13 +10,16 @@ namespace PikaGames.Games.Core.Entities
 
         public PlayerInputManager Input { get; }
 
+        public virtual bool IsConnected => Input.UsesKeyboard || (Input.UsesGamePad && Input.IsGamePadConnected());
+
         public Player(Texture2D texture, PlayerIndex playerIndex)
         {
             _texture = texture;
 
             Input = new PlayerInputManager(playerIndex, InputType.GamePad);
 
-            Input.UsesKeyboard = true;
+            if(playerIndex == PlayerIndex.One)
+                Input.UsesKeyboard = true;
         }
 
         public override void Update(GameTime gameTime)

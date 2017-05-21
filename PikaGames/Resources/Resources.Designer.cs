@@ -45,6 +45,18 @@ namespace PikaGames.Games.Core
 		}
 
 
+		public static class Sfx
+		{
+
+			public static SoundEffect SpaceMorph { get; private set; }
+
+			internal static void Init()
+			{
+				SpaceMorph = Content.Load<SoundEffect>("Sfx/SpaceMorph");
+			}
+		}
+
+
         internal static void Init(ContentManager contentManager, GraphicsDevice graphicsDevice)
         {
             Content = new ContentManager(contentManager.ServiceProvider, "Content");
@@ -52,6 +64,7 @@ namespace PikaGames.Games.Core
 
 			Fonts.Init();
 			Images.Init();
+			Sfx.Init();
         }
 	}
 }

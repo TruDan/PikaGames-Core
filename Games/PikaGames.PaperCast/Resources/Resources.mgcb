@@ -74,9 +74,3 @@
 /processorParam:TextureFormat=Color
 /build:Images/InputGamePad.png
 
-#begin Sfx/SpaceMorph.ogg
-/importer:OggImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sfx/SpaceMorph.ogg
-

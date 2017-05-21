@@ -26,5 +26,13 @@
     <Texture2D name="Logo" src="Logo.png" />
     <Texture2D name="Background" src="Background.png" />
   </Images>
+
+  <Sfx importer="OggImporter" processor="SoundEffectProcessor">
+    <Parameters>
+      <Quality Value="Best" />
+    </Parameters>
+
+    <SoundEffect name="SpaceMorph" src="SpaceMorph.ogg" />
+  </Sfx>
   
 </Resources>

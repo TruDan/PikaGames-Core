@@ -10,6 +10,7 @@ using MonoGame.Extended.ViewportAdapters;
 using PikaGames.Games.Core.Input;
 using PikaGames.Games.Core.Scenes;
 using PikaGames.Games.Core.Utils;
+using PikaGames.PaperCast.Ui;
 using PikaGames.PaperCast.World;
 
 namespace PikaGames.PaperCast.Scenes
@@ -30,16 +31,7 @@ namespace PikaGames.PaperCast.Scenes
         private Vector2 _pausedPosition;
         private int _playerListItemHeight;
 
-
-        private int _menuSelectedIndex = 0;
-        private Vector2 _menuPosition;
-        private string[] _menu = new string[]
-        {
-            "Resume",
-            "Main Menu",
-            "Options",
-            "Exit"
-        };
+        private PauseScreen _pauseScreen;
 
         private Vector2 _playerListPosition;
 
@@ -66,9 +58,10 @@ namespace PikaGames.PaperCast.Scenes
 
             _pausedPosition.X = Math.Max(100, _pausedPosition.X);
             
-            _menuPosition = new Vector2(_pausedPosition.X + 25, _pausedPosition.Y + textSize.Y + 50);
             _playerListPosition = new Vector2(Math.Max(_pausedPosition.X, center.X*2) + 25, _pausedPosition.Y + textSize.Y + 50);
             _playerListItemHeight = (int) (font.MeasureString("Player 0").Y * 1.5f);
+
+            _pauseScreen = new PauseScreen((PaperCastGame) Game);
         }
 
         protected override void Initialise()
@@ -85,45 +78,10 @@ namespace PikaGames.PaperCast.Scenes
                 IsPaused = !IsPaused;
             }
 
+
             if (IsPaused)
             {
-                if (Game.Players.Any(p => p.Input.IsPressed(InputCommand.Up)))
-                {
-                    if (_menuSelectedIndex == 0) _menuSelectedIndex = _menu.Length - 1;
-                    else _menuSelectedIndex--;
-
-                    Game.SoundManager.Play(Resources.Sfx.SpaceMorph);
-                }
-                else if (Game.Players.Any(p => p.Input.IsPressed(InputCommand.Down)))
-                {
-                    _menuSelectedIndex++;
-                    if (_menuSelectedIndex == _menu.Length) _menuSelectedIndex = 0;
-
-                    Game.SoundManager.Play(Resources.Sfx.SpaceMorph);
-                }
-                else if (Game.Players.Any(p => p.Input.IsPressed(InputCommand.A)))
-                {
-                    switch (_menuSelectedIndex)
-                    {
-                        case 0:
-                            // Resume
-                            IsPaused = false;
-                            break;
-
-                        case 1:
-                            // Main Menu
-                            Game.SceneManager.ChangeScene(((PaperCastGame) Game).MainMenuScene);
-                            break;
-                        case 2:
-                            // Options
-
-                            break;
-                        case 3:
-                            // Exit
-                            Game.Exit();
-                            break;
-                    }
-                }
+                _pauseScreen.Update(gameTime);
             }
             else
             {
@@ -165,33 +123,9 @@ namespace PikaGames.PaperCast.Scenes
                 spriteBatch.End();
 
                 spriteBatch.Begin(transformMatrix: viewportAdapter.GetScaleMatrix(), samplerState: SamplerState.PointClamp);
-                for (int j = 0; j < 6; j++)
-                {
-                    spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, "Paused", new Vector2(_pausedPosition.X + j, _pausedPosition.Y + j), MaterialDesignColors.Amber900, 0f, Vector2.Zero, 4f, SpriteEffects.None, 0);
-                }
-                spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, "Paused", _pausedPosition, MaterialDesignColors.Amber500, 0f, Vector2.Zero, 4f, SpriteEffects.None, 0);
 
-                for (int i = 0; i < _menu.Length; i++)
-                {
-                    Color color = MaterialDesignColors.LightBlue500;
-                    Color shadow = MaterialDesignColors.LightBlue900;
-
-                    if (i == _menuSelectedIndex)
-                    {
-                        color = MaterialDesignColors.LightBlue100;
-                        shadow = MaterialDesignColors.LightBlue500;
-                    }
-
-                    for (int j = 0; j < (i == _menuSelectedIndex ? 4 : 6); j++)
-                    {
-                        spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, _menu[i], new Vector2(_menuPosition.X + j + (_menuSelectedIndex == i ? 10 : 0), _menuPosition.Y + 50 * i - j), shadow, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0);
-                    }
-
-
-                    spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, _menu[i], new Vector2(_menuPosition.X + (_menuSelectedIndex == i ? 10 : 0), _menuPosition.Y + 50 * i), color, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0);
-                }
-
-
+                _pauseScreen.Draw(spriteBatch);
+                
                 // Player List
                 for (int i = 0; i < Game.Players.Count; i++)
                 {
