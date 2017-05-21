@@ -58,6 +58,7 @@
     <Compile Include="UI\Menu\UIMenuItem.cs" />
     <Compile Include="UI\UiText.cs" />
     <Compile Include="UI\UiTheme.cs" />
+    <Compile Include="Utils\CameraExtensions.cs" />
     <Compile Include="Utils\FloodFill.cs" />
     <Compile Include="Utils\MaterialDesignColors.cs" />
     <Compile Include="Utils\MathUtils.cs" />

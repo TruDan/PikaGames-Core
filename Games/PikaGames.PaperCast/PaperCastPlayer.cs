@@ -42,12 +42,12 @@ namespace PikaGames.PaperCast
             
             if (playerIndex == PlayerIndex.Two || playerIndex == PlayerIndex.Four)
             {
-                x = Level.Width - x;
+                x = Level.TileWidth - x;
             }
 
             if (playerIndex == PlayerIndex.Three || playerIndex == PlayerIndex.Four)
             {
-                y = Level.Height - y;
+                y = Level.TileHeight - y;
             }
 
             X = x * Tile.Size;
@@ -178,7 +178,7 @@ namespace PikaGames.PaperCast
             }
 
             var targetTile = Level.GetTileFromPosition(targetX, targetY);
-            if (targetTile == null || targetX < 0 || targetY < 0 || targetX > (Level.Width*Tile.Size -Width) || targetY > (Level.Height * Tile.Size - Height))
+            if (targetTile == null || targetX < 0 || targetY < 0 || targetX > (Level.TileWidth*Tile.Size -Width) || targetY > (Level.TileHeight * Tile.Size - Height))
             {
                 targetX = TileX * Tile.Size;
                 targetY = TileY * Tile.Size;

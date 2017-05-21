@@ -17,14 +17,10 @@ namespace PikaGames.PaperCast.Scenes
 {
     public class GameMapScene : Scene
     {
-
         private Camera2D _camera;
-        private const float CameraSmooth = 0.1f;
 
         public Level Level { get; private set; }
-
-        private PaperCastPlayer _player;
-
+        
         public bool IsPaused = false;
         private Texture2D _pauseBackground;
         private Rectangle _pauseBackgroundArea;
@@ -87,27 +83,13 @@ namespace PikaGames.PaperCast.Scenes
             {
                 Level.Update(gameTime);
             }
-
-            if (_player == null)
-            {
-                _player = (PaperCastPlayer) Game.Players.FirstOrDefault();
-            }
-
+            
             UpdateCamera();
         }
 
         private void UpdateCamera()
         {
-            var viewport = Game.ViewportAdapter;
-            
-            var newPosition = _player.Position - new Vector2(viewport.VirtualWidth / 2f, viewport.VirtualHeight / 2f);
-            var playerOffsetX = _player.Width / 2;
-            var playerOffsetY = _player.Height / 2;
-            var x = MathHelper.Lerp(_camera.Position.X, newPosition.X + playerOffsetX, CameraSmooth);
-            x = MathHelper.Clamp(x, 0.0f, (Level.Width * Tile.Size) - viewport.VirtualWidth);
-            var y = MathHelper.Lerp(_camera.Position.Y, newPosition.Y + playerOffsetY, CameraSmooth);
-            y = MathHelper.Clamp(y, 0.0f, (Level.Height * Tile.Size) - viewport.VirtualHeight);
-            _camera.Position = new Vector2((int)x, (int)y);
+            _camera.LookAtMultiple(new Vector2(Level.Width, Level.Height), 64, Game.Players.Select(p => p.Position).ToArray());
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, ViewportAdapter viewportAdapter)

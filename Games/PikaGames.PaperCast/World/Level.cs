@@ -14,26 +14,29 @@ namespace PikaGames.PaperCast.World
     {
         public GameBase Game { get; }
 
-        public int Width { get; }
-        public int Height { get; }
+        public int Width => TileWidth * Tile.Size;
+        public int Height => TileHeight * Tile.Size;
+
+        public int TileWidth { get; }
+        public int TileHeight { get; }
 
         List<Tile> _grid = new List<Tile>();
 
-        public Level(GameBase game, int width, int height)
+        public Level(GameBase game, int tileWidth, int tileHeight)
         {
             Game = game;
 
-            Width = width;
-            Height = height;
+            TileWidth = tileWidth;
+            TileHeight = tileHeight;
 
             Initialise();
         }
 
         private void Initialise()
         {
-            for (int i = 0; i < Width; i++)
+            for (int i = 0; i < TileWidth; i++)
             {
-                for (int j = 0; j < Height; j++)
+                for (int j = 0; j < TileHeight; j++)
                 {
                     var t = new Tile(Game, i, j);
                     _grid.Add(t);
@@ -43,7 +46,7 @@ namespace PikaGames.PaperCast.World
 
         public Tile GetTile(int x, int y)
         {
-            var i = x * Width + y;
+            var i = x * TileWidth + y;
             if (i < 0 || i >= _grid.Count)
                 return null;
             return _grid[i];
@@ -51,7 +54,7 @@ namespace PikaGames.PaperCast.World
 
         public Tile GetTileFromPosition(double x, double y)
         {
-            var i = (int) (Math.Floor(x / Tile.Size) * Width + Math.Floor(y / Tile.Size));
+            var i = (int) (Math.Floor(x / Tile.Size) * TileWidth + Math.Floor(y / Tile.Size));
             if (i >= _grid.Count || i < 0)
             {
                 return null;
@@ -62,8 +65,8 @@ namespace PikaGames.PaperCast.World
 
         public void UpdateClaims(PaperCastPlayer player)
         {
-            var sizeX = Width + 2;
-            var sizeY = Height + 2;
+            var sizeX = TileWidth + 2;
+            var sizeY = TileHeight + 2;
 
             var grid = new byte[sizeX,sizeY];
 

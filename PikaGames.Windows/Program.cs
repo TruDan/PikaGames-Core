@@ -28,7 +28,7 @@ namespace PikaGames.Windows
                 //var height = 720;
 
 
-                //game.Window.Position = new Point((screen.WorkingArea.Width - width) / 2, (screen.WorkingArea.Height - height) / 2);
+                //game.Window.Position = new Point((screen.WorkingArea.TileWidth - width) / 2, (screen.WorkingArea.TileHeight - height) / 2);
 
                // game._graphics.IsFullScreen = false;
                 //game._graphics.PreferredBackBufferWidth = width;
