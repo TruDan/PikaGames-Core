@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended.Sprites;
 using MonoGame.Extended.ViewportAdapters;
 using PikaGames.Games.Core.Entities;
 using PikaGames.Games.Core.Sound;
+using PikaGames.Games.Core.UI;
 
 namespace PikaGames.Games.Core
 {
@@ -29,6 +32,12 @@ namespace PikaGames.Games.Core
         private GameBase _currentGame;
         private GameBase _nextGame;
 
+        private SpriteBatch _spriteBatch;
+        private Sprite _transitionImage;
+
+        private bool _isTransitioning = false;
+        private bool _beginTransitionFade = false;
+
         public RootGame(GameBase rootGame)
         {
             Instance = this;
@@ -46,23 +55,39 @@ namespace PikaGames.Games.Core
 
         public void LoadGame(GameBase game)
         {
+            if (_isTransitioning) return;
+            _isTransitioning = true;
+
             game.Initialize();
 
             _nextGame = game;
+
+            _transitionImage.Alpha = 0;
+            _transitionImage.IsVisible = true;
+            _beginTransitionFade = true;
         }
 
         public void UnloadGame()
         {
-            if(_currentGame == _rootGame)
+            if (_isTransitioning) return;
+            _isTransitioning = true;
+
+            if (_currentGame == _rootGame)
                 Exit();
 
             _nextGame = _rootGame;
+
+            _transitionImage.Alpha = 0;
+            _transitionImage.IsVisible = true;
+            _beginTransitionFade = true;
         }
 
         protected override void Initialize()
         {
             if (ViewportAdapter == null)
                 ViewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice, (int)VirtualSize.X, (int)VirtualSize.Y);
+
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             _rootGame?.Initialize();
 
@@ -72,6 +97,13 @@ namespace PikaGames.Games.Core
         protected override void LoadContent()
         {
             base.LoadContent();
+
+            var transitionTexture = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            transitionTexture.SetData(new Color[] { UiTheme.SceneTransitionBackgroundColor });
+            _transitionImage = new Sprite(transitionTexture);
+            _transitionImage.Scale = new Vector2(VirtualSize.X, VirtualSize.Y);
+            _transitionImage.Alpha = 0.0f;
+            _transitionImage.IsVisible = false;
 
             _rootGame?.LoadContent();
         }
@@ -88,26 +120,56 @@ namespace PikaGames.Games.Core
             if (RequestingExit)
                 Exit();
 
-            if(_currentGame?.RequestingExit ?? false)
-                UnloadGame();
-            
-            base.Update(gameTime);
-            
-            if (_nextGame != null)
+            if (_isTransitioning)
             {
-                _currentGame.UnloadContent();
-                
-                _currentGame = _nextGame;
-                _currentGame.LoadContent();
-                _nextGame = null;
+                UpdateTransition(gameTime);
             }
 
+            if(_currentGame?.RequestingExit ?? false)
+                UnloadGame();
+
+            base.Update(gameTime);
+            
             _currentGame?.Update(gameTime);
+        }
+
+        private void UpdateTransition(GameTime gameTime)
+        {
+            var dt = gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (_beginTransitionFade)
+            {
+                if (_transitionImage.Alpha < 1.0f)
+                    _transitionImage.Alpha += 0.2f;
+                else
+                    _beginTransitionFade = false;
+            }
+            else
+            {
+                if (_nextGame != null)
+                {
+                    _currentGame.UnloadContent();
+                    _currentGame = _nextGame;
+                    _currentGame.LoadContent();
+                    _nextGame = null;
+                }
+
+                if (_transitionImage.Alpha > 0.0f)
+                    _transitionImage.Alpha -= 0.2f;
+                else
+                {
+                    _transitionImage.IsVisible = false;
+                    _isTransitioning = false;
+                }
+            }
         }
 
         protected override void Draw(GameTime gameTime)
         {
             _currentGame?.Draw(gameTime);
+            
+            _spriteBatch.Begin();
+            _spriteBatch.Draw(_transitionImage.TextureRegion.Texture, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White * _transitionImage.Alpha);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }

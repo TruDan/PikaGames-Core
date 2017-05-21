@@ -107,7 +107,7 @@ namespace PikaGames.Games.Core
 
         protected internal virtual void UnloadContent()
         {
-            SceneManager.UnloadContent();
+            //SceneManager.UnloadContent();
         }
 
         protected internal virtual void Update(GameTime gameTime)

@@ -20,8 +20,20 @@ namespace PikaGames.Games.Core.Scenes
         
         public bool IsTransitioning { get { return _isTransitioning; } }
 
-        public SplashScene SplashScene { get; }
-        public Scene DefaultScene { get; set; }
+        public Scene DefaultScene
+        {
+            get { return _defaultScene; }
+            set
+            {
+                _defaultScene = value;
+
+                if (CurrentScene == null)
+                {
+                    CurrentScene = _defaultScene;
+                    CurrentScene.Init(this, Game);
+                }
+            }
+        }
 
         private Texture2D _background;
 
@@ -32,15 +44,12 @@ namespace PikaGames.Games.Core.Scenes
 
         private bool _isTransitioning = false;
         private bool _beginTransitionFade = false;
+        private Scene _defaultScene;
 
         public SceneManager(GameBase game)
         {
             Game = game;
-            SplashScene = new SplashScene();
-
-            CurrentScene = SplashScene;
-            CurrentScene.Init(this, Game);
-
+            
             _background = Resources.Images.Background;
         }
 
@@ -52,12 +61,12 @@ namespace PikaGames.Games.Core.Scenes
             _transitionImage.Scale = new Vector2(Game.VirtualSize.X, Game.VirtualSize.Y);
             _transitionImage.Alpha = 0.0f;
             _transitionImage.IsVisible = false;
-            CurrentScene.LoadContent();
+            CurrentScene?.LoadContent();
         }
 
         public void UnloadContent()
         {
-            CurrentScene.UnloadContent();
+            CurrentScene?.UnloadContent();
         }
 
         public void ChangeScene(Scene newScene)
@@ -85,7 +94,7 @@ namespace PikaGames.Games.Core.Scenes
             spriteBatch.Draw(_background, Vector2.Zero, Game.ViewportAdapter.BoundingRectangle, Color.White);
             spriteBatch.End();
 
-            CurrentScene.Draw(gameTime, spriteBatch, Game.ViewportAdapter);
+            CurrentScene?.Draw(gameTime, spriteBatch, Game.ViewportAdapter);
 
             spriteBatch.Begin();
             spriteBatch.Draw(_transitionImage.TextureRegion.Texture, new Rectangle(0, 0, Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height), Color.White * _transitionImage.Alpha);
@@ -99,7 +108,7 @@ namespace PikaGames.Games.Core.Scenes
                 UpdateTransition(gameTime);
             }
 
-            CurrentScene.Update(gameTime);
+            CurrentScene?.Update(gameTime);
         }
 
         private void UpdateTransition(GameTime gameTime)
@@ -116,9 +125,9 @@ namespace PikaGames.Games.Core.Scenes
             {
                 if (NextScene != null)
                 {
-                    CurrentScene.UnloadContent();
+                    CurrentScene?.UnloadContent();
                     CurrentScene = NextScene;
-                    CurrentScene.LoadContent();
+                    CurrentScene?.LoadContent();
                     NextScene = null;
                 }
 
