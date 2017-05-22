@@ -50,7 +50,8 @@ namespace PikaGames.Games.Core.UI
 
             foreach (var item in Children)
             {
-                item.Draw(spriteBatch);
+                if(item.IsVisible)
+                    item.Draw(spriteBatch);
             }
         }
     }

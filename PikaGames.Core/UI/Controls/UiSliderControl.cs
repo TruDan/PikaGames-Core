@@ -54,10 +54,12 @@ namespace PikaGames.Games.Core.UI.Controls
         {
             base.Update(gameTime);
 
-            _knobPosition = Position + new Vector2(Width / 2f + (Width / 2f) * Value, 0);
 
             if (!IsSelected)
+            {
+                UpdatePosition();
                 return;
+            }
 
             if (GameBase.Instance.Players.Any(p => p.Input.IsDown(InputCommand.Left)))
             {
@@ -76,7 +78,12 @@ namespace PikaGames.Games.Core.UI.Controls
                 _onChangeAction?.Invoke(Value);
             }
 
-            _knobPosition = Position + new Vector2(Width / 2f + (Width / 2f) * Value, 0);
+            UpdatePosition();
+        }
+
+        private void UpdatePosition()
+        {
+            _knobPosition = Position + new Vector2(Width / 2f + (Width / 2f - Bounds.Height + (IsSelected ? UiTheme.ControlActiveForegroundShadowSize : UiTheme.ControlForegroundShadowSize)) * Value, 0);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -84,13 +91,13 @@ namespace PikaGames.Games.Core.UI.Controls
             base.Draw(spriteBatch);
 
             // Background
-            
-            for (int i = 0; i < (IsSelected ? UiTheme.ControlActiveBackgroundShadowSize : UiTheme.ControlBackgroundShadowSize); i++)
+            var bgShadowSize = IsSelected ? UiTheme.ControlActiveBackgroundShadowSize : UiTheme.ControlBackgroundShadowSize;
+            for (int i = 0; i < bgShadowSize; i++)
             {
-                spriteBatch.Draw(IsSelected ? _backgroundShadowActive : _backgroundShadow, new Rectangle(Bounds.X + Width / 2 + i, Bounds.Y + i, Bounds.Width / 2, Bounds.Height), Color.White);
+                spriteBatch.Draw(IsSelected ? _backgroundShadowActive : _backgroundShadow, new Rectangle((int)Position.X + Width/2 + i, (int)Position.Y + i, Width/2, Bounds.Height), Color.White);
             }
 
-            spriteBatch.Draw(IsSelected ? _backgroundActive : _background, new Rectangle(Bounds.X + Width/2, Bounds.Y, Bounds.Width/2, Bounds.Height), Color.White);
+            spriteBatch.Draw(IsSelected ? _backgroundActive : _background, new Rectangle((int)Position.X + Width/2, (int)Position.Y, Width/2, Bounds.Height), Color.White);
             
 
             // Slider Track
@@ -98,18 +105,14 @@ namespace PikaGames.Games.Core.UI.Controls
 
 
             // Slider Knob
-            var shadowSize = (int)Math.Min(Bounds.X + Bounds.Width - _knobPosition.X + Bounds.Height,
-                IsSelected ? UiTheme.ControlActiveForegroundShadowSize : UiTheme.ControlForegroundShadowSize);
-            if (_knobPosition.X + Bounds.Height < Bounds.X + Bounds.Width)
+            var shadowSize = IsSelected ? UiTheme.ControlActiveForegroundShadowSize : UiTheme.ControlForegroundShadowSize;
+            for (int i = 0; i < shadowSize; i++)
             {
-
-                for (int i = 0; i < shadowSize; i++)
-                {
-                    spriteBatch.Draw(IsSelected ? _knobShadowActive : _knobShadow, new Rectangle((int)_knobPosition.X - Bounds.Height / 2 + i, (int)_knobPosition.Y - shadowSize/2 + i, Bounds.Height, Bounds.Height), Color.White);
-                }
+                spriteBatch.Draw(IsSelected ? _knobShadowActive : _knobShadow, new Rectangle((int)_knobPosition.X - shadowSize + i, (int)_knobPosition.Y - bgShadowSize + 1 + i, Bounds.Height, Bounds.Height), Color.White);
             }
+            
 
-            spriteBatch.Draw(IsSelected ? _knobActive : _knob, new Rectangle((int)_knobPosition.X - Bounds.Height/2, (int)_knobPosition.Y - shadowSize/2, Bounds.Height, Bounds.Height), Color.White);
+            spriteBatch.Draw(IsSelected ? _knobActive : _knob, new Rectangle((int)_knobPosition.X - shadowSize, (int)_knobPosition.Y - bgShadowSize + 1, Bounds.Height, Bounds.Height), Color.White);
 
         }
     }

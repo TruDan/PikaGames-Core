@@ -9,6 +9,7 @@ using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 using PikaGames.Games.Core.Input;
 using PikaGames.Games.Core.Scenes;
+using PikaGames.Games.Core.UI;
 using PikaGames.Games.Core.Utils;
 using PikaGames.PaperCast.Ui;
 using PikaGames.PaperCast.World;
@@ -18,6 +19,7 @@ namespace PikaGames.PaperCast.Scenes
     public class GameMapScene : Scene
     {
         private Camera2D _camera;
+        private PaperCastGame _game;
 
         public Level Level { get; private set; }
         
@@ -29,10 +31,14 @@ namespace PikaGames.PaperCast.Scenes
 
         private PauseScreen _pauseScreen;
 
+        private UiContainer _playersHud;
+        private IDictionary<PlayerIndex, UiContainer> _playerHuds = new Dictionary<PlayerIndex, UiContainer>();
+
         private Vector2 _playerListPosition;
 
         public GameMapScene(PaperCastGame game)
         {
+            _game = game;
             Level = new Level(game, 64, 64);
 
             _pauseBackgroundArea = new Rectangle(0, 0, (int)game.VirtualSize.X, (int)game.VirtualSize.Y);
@@ -58,6 +64,13 @@ namespace PikaGames.PaperCast.Scenes
             _playerListItemHeight = (int) (font.MeasureString("Player 0").Y * 1.5f);
 
             _pauseScreen = new PauseScreen((PaperCastGame) Game);
+
+            _playersHud = new UiContainer(0, Game.ViewportAdapter.ViewportHeight-100);
+
+            foreach (var playerIndex in Enum.GetValues(typeof(PlayerIndex)))
+            {
+                _playerHuds.Add((PlayerIndex) playerIndex, new PlayerHud(_game, (PlayerIndex)playerIndex, _playersHud, (Game.ViewportAdapter.ViewportWidth/4) * ((int)playerIndex), 0));
+            }
         }
 
         protected override void Initialise()
@@ -82,6 +95,7 @@ namespace PikaGames.PaperCast.Scenes
             else
             {
                 Level.Update(gameTime);
+                _playersHud.Update(gameTime);
             }
             
             UpdateCamera();
@@ -89,7 +103,7 @@ namespace PikaGames.PaperCast.Scenes
 
         private void UpdateCamera()
         {
-            _camera.LookAtMultiple(new Vector2(Level.Width, Level.Height), 64, Game.Players.Select(p => p.Position).ToArray());
+            _camera.LookAtMultiple(new Vector2(Level.Width, Level.Height), 100, Game.Players.Where(p => p.IsAlive).Select(p => p.Position).ToArray());
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, ViewportAdapter viewportAdapter)
@@ -97,6 +111,10 @@ namespace PikaGames.PaperCast.Scenes
             base.Draw(gameTime, spriteBatch, viewportAdapter);
             
             Level.Draw(gameTime, _camera, spriteBatch);
+
+            spriteBatch.Begin(transformMatrix: viewportAdapter.GetScaleMatrix(), samplerState: SamplerState.PointClamp);
+            _playersHud.Draw(spriteBatch);
+            spriteBatch.End();
 
             if (IsPaused)
             {

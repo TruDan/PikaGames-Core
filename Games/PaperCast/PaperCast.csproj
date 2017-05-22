@@ -45,6 +45,7 @@
     <Compile Include="Scenes\GameMapScene.cs" />
     <Compile Include="Scenes\MainMenuScene.cs" />
     <Compile Include="Ui\PauseScreen.cs" />
+    <Compile Include="Ui\PlayerHud.cs" />
     <Compile Include="World\Level.cs" />
     <Compile Include="World\Tile.cs" />
     <Compile Include="PaperCastGame.cs" />

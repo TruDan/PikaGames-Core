@@ -44,6 +44,40 @@ namespace PikaGames.PaperCast.World
             }
         }
 
+        public void SpawnPlayer(PaperCastPlayer player)
+        {
+            var x = 12;
+            var y = 12;
+
+            if (player.Input.PlayerIndex == PlayerIndex.Two || player.Input.PlayerIndex == PlayerIndex.Four)
+            {
+                x = TileWidth - x;
+            }
+
+            if (player.Input.PlayerIndex == PlayerIndex.Three || player.Input.PlayerIndex == PlayerIndex.Four)
+            {
+                y = TileHeight - y;
+            }
+
+            player.X = x * Tile.Size;
+            player.Y = y * Tile.Size;
+
+
+            var tile = GetTile(x,y);
+            for (int i = -1; i <= 1; i++)
+            {
+                for (int j = -1; j <= 1; j++)
+                {
+                    var t = GetTile(tile.X + i, tile.Y + j);
+                    if (t != null)
+                    {
+                        t.Owner = player;
+                        t.UpdateTexture();
+                    }
+                }
+            }
+        }
+
         public Tile GetTile(int x, int y)
         {
             var i = x * TileWidth + y;
@@ -107,6 +141,8 @@ namespace PikaGames.PaperCast.World
                     }
                 }
             }
+
+            UpdatePlayerScore(player);
         }
 
         public void ClaimTrail(PaperCastPlayer player)
@@ -116,6 +152,38 @@ namespace PikaGames.PaperCast.World
                 if (tile.PendingOwner == player)
                 {
                     tile.Owner = player;
+                    tile.PendingOwner = null;
+                    tile.UpdateTexture();
+                }
+            }
+
+            UpdatePlayerScore(player);
+        }
+
+        public void UpdatePlayerScore(PaperCastPlayer player)
+        {
+            player.Score = _grid.Count(t => t.Owner == player);
+
+            if (player.Score == 0)
+            {
+                KillPlayer(player);
+            }
+        }
+
+        public void KillPlayer(PaperCastPlayer player)
+        {
+            player.Kill();
+
+            foreach (var tile in _grid.Where(t => t.Owner == player || t.PendingOwner == player))
+            {
+                if (tile.Owner == player)
+                {
+                    tile.Owner = null;
+                    tile.UpdateTexture();
+                }
+                
+                if(tile.PendingOwner == player)
+                {
                     tile.PendingOwner = null;
                     tile.UpdateTexture();
                 }

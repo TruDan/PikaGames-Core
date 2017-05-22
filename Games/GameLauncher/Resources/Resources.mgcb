@@ -1,4 +1,5 @@
 ﻿
+
 #----------------------------- Global Properties ----------------------------#
 
 /outputDir:bin/$(Platform)
@@ -10,7 +11,7 @@
 
 #-------------------------------- References --------------------------------#
 
-/reference:..\..\..\packages\MonoGame.Extended.Content.Pipeline.0.6.377\tools\MonoGame.Extended.Content.Pipeline.dll
+/reference:..\..\packages\MonoGame.Extended.Content.Pipeline.0.6.377\tools\MonoGame.Extended.Content.Pipeline.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -73,4 +74,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Images/Inputs/GamePad.png
+
+#begin Music/Metropolis.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Music/Metropolis.ogg
 

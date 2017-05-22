@@ -62,6 +62,8 @@ namespace GameLauncher.Scenes
 
             _buttonBar = new UiButtonBar(_container, (int)Game.VirtualSize.X - 25, (int)Game.VirtualSize.Y - 25);
             _buttonBar.AddButton(Buttons.A, "Select");
+
+            Game.SoundManager.PlayBackground(Resources.Music.Metropolis);
         }
 
         public override void Update(GameTime gameTime)

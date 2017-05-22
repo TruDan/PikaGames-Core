@@ -16,7 +16,7 @@ namespace PikaGames.Games.Core.UI
 
         public static Color TextColor = MaterialDesignColors.LightBlue500;
         public static Color TextShadowColor = MaterialDesignColors.LightBlue900;
-        public static int TextShadowSize = 1;
+        public static int TextShadowSize = 2;
 
 
         public static Color MenuTextColor = MaterialDesignColors.LightBlue500;
@@ -28,12 +28,12 @@ namespace PikaGames.Games.Core.UI
         public static int MenuActiveTextShadowSize = 2;
         
         
-        public static Color ControlBackgroundColor = MaterialDesignColors.Grey800;
-        public static Color ControlBackgroundShadowColor = MaterialDesignColors.Grey900;
+        public static Color ControlBackgroundColor = MaterialDesignColors.Grey700;
+        public static Color ControlBackgroundShadowColor = MaterialDesignColors.Grey800;
         public static Color ControlForegroundColor = MaterialDesignColors.LightBlue500;
         public static Color ControlForegroundShadowColor = MaterialDesignColors.LightBlue900;
-        public static int ControlBackgroundShadowSize = 1;
-        public static int ControlForegroundShadowSize = 0;
+        public static int ControlBackgroundShadowSize = 4;
+        public static int ControlForegroundShadowSize = 4;
         
         public static Color ControlActiveBackgroundColor = MaterialDesignColors.Grey600;
         public static Color ControlActiveBackgroundShadowColor = MaterialDesignColors.Grey800;

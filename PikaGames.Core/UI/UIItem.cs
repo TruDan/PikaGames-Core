@@ -23,6 +23,8 @@ namespace PikaGames.Games.Core.UI
         public virtual int Width { get; set; } = 0;
         public virtual int Height { get; set; } = 0;
 
+        public bool IsVisible { get; set; } = true;
+
         protected UiItem(UiContainer container, int x, int y)
         {
             Container = container;

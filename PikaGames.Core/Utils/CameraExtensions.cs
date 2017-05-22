@@ -45,7 +45,7 @@ namespace PikaGames.Games.Core.Utils
 
             var bounds = new Rectangle((int) minPos.X, (int) minPos.Y, (int)Math.Max(GameBase.Instance.ViewportAdapter.VirtualWidth, maxPos.X-minPos.X), (int)Math.Max(GameBase.Instance.ViewportAdapter.VirtualHeight, maxPos.Y - minPos.Y));
 
-            Debug.WriteLine(bounds);
+            //Debug.WriteLine(bounds);
 
             // zoom
 
@@ -57,7 +57,7 @@ namespace PikaGames.Games.Core.Utils
 
         public static void ZoomSmooth(this Camera2D camera, float targetZoom)
         {
-            Debug.WriteLine(camera.Zoom + " - " + targetZoom);
+            //Debug.WriteLine(camera.Zoom + " - " + targetZoom);
             camera.Zoom = MathHelper.Lerp(camera.Zoom, targetZoom, CameraZoomSmooth);
         }
 
@@ -71,7 +71,7 @@ namespace PikaGames.Games.Core.Utils
             var y = MathHelper.Lerp(camera.Position.Y, newPosition.Y, CameraMoveSmooth);
             y = MathHelper.Clamp(y, 0.0f, contentSize.Y - GameBase.Instance.ViewportAdapter.VirtualHeight);
 
-            Debug.WriteLine(contentSize.ToString() + " - " + target.ToString() + " - " + x + "," + y);
+            //Debug.WriteLine(contentSize.ToString() + " - " + target.ToString() + " - " + x + "," + y);
 
             camera.Position = new Vector2((int) x, (int) y);
         }

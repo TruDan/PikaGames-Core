@@ -18,6 +18,8 @@ namespace PikaGames.PaperCast
     {
         const int Speed = 4;
 
+        public int Score { get; set; } = 0;
+
         public int TileX => (int) Math.Floor((double)X / Tile.Size);
         public int TileY => (int) Math.Floor((double)Y / Tile.Size);
 
@@ -37,38 +39,7 @@ namespace PikaGames.PaperCast
             Width = Tile.Size;
             Height = Tile.Size;
 
-            var x = 12;
-            var y = 12;
-            
-            if (playerIndex == PlayerIndex.Two || playerIndex == PlayerIndex.Four)
-            {
-                x = Level.TileWidth - x;
-            }
-
-            if (playerIndex == PlayerIndex.Three || playerIndex == PlayerIndex.Four)
-            {
-                y = Level.TileHeight - y;
-            }
-
-            X = x * Tile.Size;
-            Y = y * Tile.Size;
-
-
-            var tile = Level.GetTileFromPosition(X, Y);
-            for (int i = -1; i <= 1; i++)
-            {
-                for (int j = -1; j <= 1; j++)
-                {
-                    var t = Level.GetTile(tile.X + i, tile.Y + j);
-                    if (t != null)
-                    {
-                        t.Owner = this;
-                        t.UpdateTexture();
-                    }
-                }
-            }
         }
-
 
         public void Move(Direction direction)
         {
@@ -84,6 +55,18 @@ namespace PikaGames.PaperCast
 
             var g = ((PaperCastGame) Level.Game);
             if (g.GameMapScene.IsPaused || !g.GameMapScene.IsActive)
+                return;
+
+            if (IsConnected && !IsAlive)
+            {
+                if (Input.IsPressed(InputCommand.A, InputCommand.Start))
+                {
+                    IsAlive = true;
+                    Level.SpawnPlayer(this);
+                }
+            }
+
+            if (!IsAlive)
                 return;
 
             if (Input.IsDown(InputCommand.Up))
@@ -136,13 +119,14 @@ namespace PikaGames.PaperCast
                     else if (tile.PendingOwner == this)
                     {
                         // whoops.
-                        // kill
+                        Level.KillPlayer(this);
                     }
                     else
                     {
                         if (tile.PendingOwner != null)
                         {
                             // kill other player
+                            Level.KillPlayer(tile.PendingOwner);
                         }
 
                         tile.PendingOwner = this;
@@ -186,6 +170,28 @@ namespace PikaGames.PaperCast
 
             X = targetX;
             Y = targetY;
+        }
+
+        public void Kill()
+        {
+            if (!IsAlive)
+                return;
+
+            IsAlive = false;
+
+            _trailSize = 0;
+            _currentDirection = Direction.None;
+            _nextDirection = Direction.None;
+
+        }
+
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            if (!IsAlive)
+                return;
+
+            base.Draw(gameTime, spriteBatch);
+
         }
 
 

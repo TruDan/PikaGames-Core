@@ -1,10 +1,13 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace GameLauncher
 {
@@ -39,12 +42,25 @@ namespace GameLauncher
 		}
 
 
+		public static class Music
+		{
+
+			public static Song Metropolis { get; private set; }
+
+			internal static void Init()
+			{
+				Metropolis = Content.Load<Song>("Music/Metropolis");
+			}
+		}
+
+
         internal static void Init(ContentManager contentManager, GraphicsDevice graphicsDevice)
         {
             Content = new ContentManager(contentManager.ServiceProvider, "Content");
             GraphicsDevice = graphicsDevice;
 
 			Images.Init();
+			Music.Init();
         }
 	}
 }
