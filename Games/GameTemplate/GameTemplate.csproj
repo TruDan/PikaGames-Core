@@ -91,6 +91,7 @@
   <ItemGroup>
     <None Include="Resources\Resources.xml">
       <SubType>Designer</SubType>
+      <DesignTime>True</DesignTime>
     </None>
     <MonoGameContentReference Include="Resources\Resources.mgcb">
       <AutoGen>True</AutoGen>
@@ -123,8 +124,4 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
-  <Import Project="$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets" />
-  <PropertyGroup>
-    <TransformOnBuild>true</TransformOnBuild>
-  </PropertyGroup>
 </Project>

@@ -1,0 +1,62 @@
+<#
+string path = this.Host.ResolvePath("");
+XmlDocument doc = new XmlDocument();
+doc.Load(path + @"\Resources.xml");
+
+#>
+
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin/$(Platform)
+/intermediateDir:obj/$(Platform)
+/platform:NativeClient
+/config:
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+
+/reference:..\..\packages\MonoGame.Extended.Content.Pipeline.0.6.377\tools\MonoGame.Extended.Content.Pipeline.dll
+
+#---------------------------------- Content ---------------------------------#
+
+<#
+
+	XmlNode root = doc.SelectSingleNode("//Resources");
+
+	foreach(XmlNode resourceNode in root.ChildNodes) {
+
+		var defaultParameters = new Dictionary<string, string>();
+
+		foreach(XmlNode param in resourceNode.SelectSingleNode("Parameters").ChildNodes) {
+			defaultParameters[param.Name] = param.Attributes["Value"] != null ? param.Attributes["Value"].Value : param.Value;
+		}
+
+		foreach(XmlNode resource in resourceNode.ChildNodes) {
+			if(resource.Name != "Parameters" && resource.Name != "#comment") {
+#>
+#begin <#= resourceNode.Name #>/<#= resource.Attributes["src"].Value #>
+/importer:<#= resource.Attributes["importer"] != null ? resource.Attributes["importer"].Value : resourceNode.Attributes["importer"].Value #>
+/processor:<#= resource.Attributes["processor"] != null ? resource.Attributes["processor"].Value : resourceNode.Attributes["processor"].Value #>
+<#
+			var parameters = new Dictionary<string,string>(defaultParameters);
+			if(resource.HasChildNodes) {
+				foreach(XmlNode param in resource.ChildNodes) {
+					parameters[param.Name] = param.Attributes["Value"] != null ? param.Attributes["Value"].Value : param.Value;
+				}
+            }
+
+			foreach(var kvp in parameters)
+            {
+#>
+/processorParam:<#= kvp.Key #>=<#= kvp.Value #>
+<#
+            }
+#>
+/build:<#= resourceNode.Name #>/<#= resource.Attributes["src"].Value #>
+
+<#
+            }
+        }
+    }
+#>

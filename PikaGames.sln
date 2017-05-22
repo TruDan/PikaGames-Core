@@ -24,6 +24,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		GameTemplate.zip = GameTemplate.zip
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{D5F55B8F-4CD3-4D25-B865-F0A29B9C677D}"
+	ProjectSection(SolutionItems) = preProject
+		Templates\Resources.Designer.t4 = Templates\Resources.Designer.t4
+		Templates\Resources.t4 = Templates\Resources.t4
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Games\PaperCast.Old\PaperCast.projitems*{c8165587-c583-420c-8e8c-5ed4ea9e1331}*SharedItemsImports = 13
@@ -95,5 +101,6 @@ Global
 		{14E3B201-FF98-40C9-B329-EDE40B869BA4} = {5240409E-92D0-45FC-B4D8-9CBCED3C8737}
 		{68E6C734-DE72-4414-99E2-66E5CABA8319} = {5240409E-92D0-45FC-B4D8-9CBCED3C8737}
 		{4B09E669-4D9F-4090-AC26-BDD11F2CC31E} = {5240409E-92D0-45FC-B4D8-9CBCED3C8737}
+		{D5F55B8F-4CD3-4D25-B865-F0A29B9C677D} = {F725B829-6E3E-4E98-B3F8-D21568ECAEA6}
 	EndGlobalSection
 EndGlobal
