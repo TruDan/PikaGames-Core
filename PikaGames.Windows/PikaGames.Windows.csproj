@@ -98,11 +98,11 @@
       <Project>{68e6c734-de72-4414-99e2-66e5caba8319}</Project>
       <Name>GameLauncher</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Games\PikaGames.PaperCast\PaperCast.csproj">
+    <ProjectReference Include="..\Games\PaperCast\PaperCast.csproj">
       <Project>{14e3b201-ff98-40c9-b329-ede40b869ba4}</Project>
       <Name>PaperCast</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PikaGames\PikaGames.Core.csproj">
+    <ProjectReference Include="..\PikaGames.Core\PikaGames.Core.csproj">
       <Project>{90dcc068-4002-4cbe-92ec-d761ee0046e0}</Project>
       <Name>PikaGames.Core</Name>
     </ProjectReference>

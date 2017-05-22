@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{90DCC068-4002-4CBE-92EC-D761EE0046E0}</ProjectGuid>
+    <ProjectGuid>{4B09E669-4D9F-4090-AC26-BDD11F2CC31E}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>PikaGames.Games.Core</RootNamespace>
-    <AssemblyName>PikaGames.Games.Core</AssemblyName>
+    <RootNamespace>GameTemplate</RootNamespace>
+    <AssemblyName>GameTemplate</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,79 +34,55 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Entities\Entity.cs" />
-    <Compile Include="Entities\EntityManager.cs" />
-    <Compile Include="Entities\Player.cs" />
-    <Compile Include="GameBase.cs" />
-    <Compile Include="Input\InputCommand.cs" />
-    <Compile Include="Input\InputType.cs" />
-    <Compile Include="Input\PlayerInputManager.cs" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\..\PikaGames.Core\PikaGames.Core.csproj">
+      <Project>{90dcc068-4002-4cbe-92ec-d761ee0046e0}</Project>
+      <Name>PikaGames.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RootGame.cs" />
-    <Compile Include="Scenes\Scene.cs" />
-    <Compile Include="Scenes\SceneManager.cs" />
-    <Compile Include="Sound\SoundManager.cs" />
-    <Compile Include="UI\ButtonBar\UiButtonBar.cs" />
-    <Compile Include="UI\Controls\UiControl.cs" />
-    <Compile Include="UI\Controls\UiControlGroup.cs" />
-    <Compile Include="UI\Controls\UiSliderControl.cs" />
-    <Compile Include="UI\ButtonBar\UiButtonBarItem.cs" />
-    <Compile Include="UI\Text\UiTitle.cs" />
-    <Compile Include="UI\UiContainer.cs" />
-    <Compile Include="UI\UiImage.cs" />
-    <Compile Include="UI\UIItem.cs" />
-    <Compile Include="UI\Menu\UIMenu.cs" />
-    <Compile Include="UI\Menu\UIMenuItem.cs" />
-    <Compile Include="UI\Text\UiText.cs" />
-    <Compile Include="UI\UiTheme.cs" />
-    <Compile Include="Utils\CameraExtensions.cs" />
-    <Compile Include="Utils\FloodFill.cs" />
-    <Compile Include="Utils\MaterialDesignColors.cs" />
-    <Compile Include="Utils\MathUtils.cs" />
-    <Compile Include="Utils\TextureUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Extended, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.0.6.377\lib\MonoGame.Extended.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Extended.0.6.377\lib\MonoGame.Extended.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Animations, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.Animations.0.6.377\lib\MonoGame.Extended.Animations.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Extended.Animations.0.6.377\lib\MonoGame.Extended.Animations.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Entities, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.Entities.0.6.377\lib\MonoGame.Extended.Entities.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Extended.Entities.0.6.377\lib\MonoGame.Extended.Entities.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Graphics, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.Graphics.0.6.377\lib\MonoGame.Extended.Graphics.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Extended.Graphics.0.6.377\lib\MonoGame.Extended.Graphics.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Gui, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.Gui.0.6.377\lib\MonoGame.Extended.Gui.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Extended.Gui.0.6.377\lib\MonoGame.Extended.Gui.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Input, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.Input.0.6.377\lib\MonoGame.Extended.Input.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Extended.Input.0.6.377\lib\MonoGame.Extended.Input.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.NuclexGui, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.NuclexGui.0.6.377\lib\MonoGame.Extended.NuclexGui.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Extended.NuclexGui.0.6.377\lib\MonoGame.Extended.NuclexGui.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Particles, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.Particles.0.6.377\lib\MonoGame.Extended.Particles.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Extended.Particles.0.6.377\lib\MonoGame.Extended.Particles.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.SceneGraphs, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.SceneGraphs.0.6.377\lib\MonoGame.Extended.SceneGraphs.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Extended.SceneGraphs.0.6.377\lib\MonoGame.Extended.SceneGraphs.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Tiled, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.Tiled.0.6.377\lib\MonoGame.Extended.Tiled.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Extended.Tiled.0.6.377\lib\MonoGame.Extended.Tiled.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Tweening, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.Tweening.0.6.377\lib\MonoGame.Extended.Tweening.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Extended.Tweening.0.6.377\lib\MonoGame.Extended.Tweening.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Framework.Portable.3.6.0.1625\lib\portable-net45+win8+wpa81\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Framework.Portable.3.6.0.1625\lib\portable-net45+win8+wpa81\MonoGame.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Framework.Content.Pipeline, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Framework.Content.Pipeline.Portable.3.6.0.1625\lib\portable-net45+win8+wpa81\MonoGame.Framework.Content.Pipeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -141,8 +117,13 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <Import Project="$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets" />
   <PropertyGroup>
     <TransformOnBuild>true</TransformOnBuild>
   </PropertyGroup>

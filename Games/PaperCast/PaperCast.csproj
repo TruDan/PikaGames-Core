@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\..\PikaGames\PikaGames.Core.csproj">
+    <ProjectReference Include="..\..\PikaGames.Core\PikaGames.Core.csproj">
       <Project>{90dcc068-4002-4cbe-92ec-d761ee0046e0}</Project>
       <Name>PikaGames.Core</Name>
     </ProjectReference>
@@ -73,7 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Resources.xml">
-      <DesignTime>True</DesignTime>
       <SubType>Designer</SubType>
     </None>
     <MonoGameContentReference Include="Resources\Resources.mgcb">
@@ -101,8 +100,13 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <Import Project="$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets" />
   <PropertyGroup>
     <TransformOnBuild>true</TransformOnBuild>
   </PropertyGroup>
