@@ -17,9 +17,7 @@ namespace GameLauncher.Scenes
     public class OptionsMenuScene : Scene
     {
         private Scene _previousScene;
-
-        private UiContainer _container;
-
+        
         private UiText _title;
 
         private UiMenu _menu;
@@ -42,19 +40,17 @@ namespace GameLauncher.Scenes
 
             if(_previousScene == null)
                 _previousScene = SceneManager.PreviousScene;
-
-            _container = new UiContainer();
-
-            _title = new UiTitle(_container, 50, 50, "Options");
             
-            _menu = new UiMenu(_container, 50, 50 + _title.Height + 50);
+            _title = new UiTitle(UiContainer, 50, 50, "Options");
+            
+            _menu = new UiMenu(UiContainer, 50, 50 + _title.Height + 50);
             
             _menu.AddMenuItem("Video", () => Game.SceneManager.ChangeScene(_videoOptionsScene));
             _menu.AddMenuItem("Audio", () => Game.SceneManager.ChangeScene(_audioOptionsScene));
             _menu.AddMenuItem("Controls", () => Game.SceneManager.ChangeScene(_controlsOptionsScene));
 
 
-            _buttonBar = new UiButtonBar(_container, (int)Game.VirtualSize.X - 25, (int)Game.VirtualSize.Y - 25);
+            _buttonBar = new UiButtonBar(UiContainer, (int)Game.VirtualSize.X - 25, (int)Game.VirtualSize.Y - 25);
             _buttonBar.AddButton(Buttons.A, "Select");
             _buttonBar.AddButton(Buttons.B, "Back");
         }
@@ -62,24 +58,11 @@ namespace GameLauncher.Scenes
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            
-            _container.Update(gameTime);
 
             if (Game.Players.Any(p => p.Input.IsPressed(InputCommand.B)))
             {
                 Game.SceneManager.ChangeScene(_previousScene);  
             }
-        }
-
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, ViewportAdapter viewportAdapter)
-        {
-            base.Draw(gameTime, spriteBatch, viewportAdapter);
-
-            spriteBatch.Begin(transformMatrix: viewportAdapter.GetScaleMatrix(), samplerState: SamplerState.PointClamp);
-            
-            _container.Draw(spriteBatch);
-
-            spriteBatch.End();
         }
     }
 }

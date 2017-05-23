@@ -18,12 +18,7 @@ namespace PikaGames.Games.Core.UI.Controls
         public float Value { get; set; } = 0.5f;
 
         public override int Width { get; set; } = 400;
-
-        private readonly Texture2D _background;
-        private readonly Texture2D _backgroundActive;
-        private readonly Texture2D _backgroundShadow;
-        private readonly Texture2D _backgroundShadowActive;
-
+        
         private readonly Texture2D _knob;
         private readonly Texture2D _knobActive;
         private readonly Texture2D _knobShadow;
@@ -33,16 +28,10 @@ namespace PikaGames.Games.Core.UI.Controls
 
         private Vector2 _knobPosition = Vector2.Zero;
 
-        public UiSliderControl(UiMenu menu, int x, int y, string label, Action<float> onChangeAction = null) : base(menu, x, y, label)
+        public UiSliderControl(UiControlGroup controlGroup, int x, int y, string label, Action<float> onChangeAction = null) : base(controlGroup, x, y, label)
         {
             _onChangeAction = onChangeAction;
-
-            _background = TextureUtils.CreateRectangle(1, 1, UiTheme.ControlBackgroundColor);
-            _backgroundActive = TextureUtils.CreateRectangle(1, 1, UiTheme.ControlActiveBackgroundColor);
-
-            _backgroundShadow = TextureUtils.CreateRectangle(1, 1, UiTheme.ControlBackgroundShadowColor);
-            _backgroundShadowActive = TextureUtils.CreateRectangle(1, 1, UiTheme.ControlActiveBackgroundShadowColor);
-
+            
             _knob = TextureUtils.CreateRectangle(1, 1, UiTheme.ControlForegroundColor);
             _knobActive = TextureUtils.CreateRectangle(1, 1, UiTheme.ControlActiveForegroundColor);
 
@@ -92,12 +81,6 @@ namespace PikaGames.Games.Core.UI.Controls
 
             // Background
             var bgShadowSize = IsSelected ? UiTheme.ControlActiveBackgroundShadowSize : UiTheme.ControlBackgroundShadowSize;
-            for (int i = 0; i < bgShadowSize; i++)
-            {
-                spriteBatch.Draw(IsSelected ? _backgroundShadowActive : _backgroundShadow, new Rectangle((int)Position.X + Width/2 + i, (int)Position.Y + i, Width/2, Bounds.Height), Color.White);
-            }
-
-            spriteBatch.Draw(IsSelected ? _backgroundActive : _background, new Rectangle((int)Position.X + Width/2, (int)Position.Y, Width/2, Bounds.Height), Color.White);
             
 
             // Slider Track

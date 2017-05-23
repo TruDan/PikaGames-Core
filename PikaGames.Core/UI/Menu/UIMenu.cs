@@ -67,31 +67,35 @@ namespace PikaGames.Games.Core.UI.Menu
 
         public override void Update(GameTime gameTime)
         {
-            if (GameBase.Instance.Players.Any(p => p.Input.IsPressed(InputCommand.Up)))
-            {
-                ActiveItem.IsSelected = false;
-                if (_menuSelectedIndex == 0) _menuSelectedIndex = Children.Count - 1;
-                else _menuSelectedIndex--;
-                
-                GameBase.Instance.SoundManager.Play(Resources.Sfx.SpaceMorph);
-            }
-            else if (GameBase.Instance.Players.Any(p => p.Input.IsPressed(InputCommand.Down)))
-            {
-                ActiveItem.IsSelected = false;
-                _menuSelectedIndex++;
-                if (_menuSelectedIndex == Children.Count) _menuSelectedIndex = 0;
-                
-                GameBase.Instance.SoundManager.Play(Resources.Sfx.SpaceMorph);
-            }
-            else if (GameBase.Instance.Players.Any(p => p.Input.IsPressed(InputCommand.A)))
-            {
-                var menuItem = (UiMenuItem) Children[_menuSelectedIndex];
-                menuItem.Activate();
-            }
-
-            ActiveItem.IsSelected = true;
-
             base.Update(gameTime);
+
+            if (IsFocused)
+            {
+                if (GameBase.Instance.Players.Any(p => p.Input.IsPressed(InputCommand.Up)))
+                {
+                    ActiveItem.IsSelected = false;
+                    if (_menuSelectedIndex == 0) _menuSelectedIndex = Children.Count - 1;
+                    else _menuSelectedIndex--;
+
+                    GameBase.Instance.SoundManager.Play(Resources.Sfx.UI_Zap);
+                }
+                else if (GameBase.Instance.Players.Any(p => p.Input.IsPressed(InputCommand.Down)))
+                {
+                    ActiveItem.IsSelected = false;
+                    _menuSelectedIndex++;
+                    if (_menuSelectedIndex == Children.Count) _menuSelectedIndex = 0;
+
+                    GameBase.Instance.SoundManager.Play(Resources.Sfx.UI_Zap);
+                }
+                else if (GameBase.Instance.Players.Any(p => p.Input.IsPressed(InputCommand.A)))
+                {
+                    var menuItem = (UiMenuItem) Children[_menuSelectedIndex];
+                    menuItem.Activate();
+                }
+
+                ActiveItem.IsSelected = true;
+            }
+
         }
     }
 }

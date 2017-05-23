@@ -77,9 +77,33 @@
 /processorParam:TextureFormat=Color
 /build:Images/Buttons/B.png
 
+#begin Images/Splash/PikaGames.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Splash/PikaGames.png
+
 #begin Sfx/SpaceMorph.ogg
 /importer:OggImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sfx/SpaceMorph.ogg
+
+#begin Sfx/Splash/PikaGames.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sfx/Splash/PikaGames.ogg
+
+#begin Sfx/UI/Zap.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sfx/UI/Zap.ogg
 

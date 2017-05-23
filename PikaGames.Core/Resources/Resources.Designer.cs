@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace PikaGames.Games.Core
 {
@@ -43,12 +44,15 @@ namespace PikaGames.Games.Core
 
 			public static Texture2D Buttons_B { get; private set; }
 
+			public static Texture2D Splash_PikaGames { get; private set; }
+
 			internal static void Init()
 			{
 				Logo = Content.Load<Texture2D>("Images/Logo");
 				Background = Content.Load<Texture2D>("Images/Background");
 				Buttons_A = Content.Load<Texture2D>("Images/Buttons/A");
 				Buttons_B = Content.Load<Texture2D>("Images/Buttons/B");
+				Splash_PikaGames = Content.Load<Texture2D>("Images/Splash/PikaGames");
 			}
 		}
 
@@ -58,9 +62,15 @@ namespace PikaGames.Games.Core
 
 			public static SoundEffect SpaceMorph { get; private set; }
 
+			public static SoundEffect Splash_PikaGames { get; private set; }
+
+			public static SoundEffect UI_Zap { get; private set; }
+
 			internal static void Init()
 			{
 				SpaceMorph = Content.Load<SoundEffect>("Sfx/SpaceMorph");
+				Splash_PikaGames = Content.Load<SoundEffect>("Sfx/Splash/PikaGames");
+				UI_Zap = Content.Load<SoundEffect>("Sfx/UI/Zap");
 			}
 		}
 

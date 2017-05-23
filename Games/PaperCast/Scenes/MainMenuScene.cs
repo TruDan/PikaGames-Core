@@ -22,8 +22,6 @@ namespace PikaGames.PaperCast.Scenes
         private float _splashInitialY = 0f;
         private Vector2 _splashPosition = Vector2.Zero;
         private string _splashText = "";
-        private Color _splashColor = MaterialDesignColors.LightBlue500;
-        private Color _splashShadowColor = MaterialDesignColors.LightBlue900;
 
         private bool _inMenu = false;
 
@@ -70,11 +68,11 @@ namespace PikaGames.PaperCast.Scenes
                     _menu.Update(gameTime);
                 }
 
-                SetSplashText("Press Start!", MaterialDesignColors.Yellow500, MaterialDesignColors.Yellow900);
+                SetSplashText("Press Start!");
             }
             else
             {
-                SetSplashText("Press A to join", MaterialDesignColors.Green500, MaterialDesignColors.Green900);
+                SetSplashText("Press A to join");
             }
 
             _container.Update(gameTime);
@@ -87,13 +85,11 @@ namespace PikaGames.PaperCast.Scenes
             }
         }
 
-        private void SetSplashText(string text, Color textColor, Color shadowColor)
+        private void SetSplashText(string text)
         {
-            if (text == _splashText && textColor == _splashColor && shadowColor == _splashShadowColor) return;
+            if (text == _splashText) return;
 
             _splashText = text;
-            _splashColor = textColor;
-            _splashShadowColor = shadowColor;
 
             var center = Game.ViewportAdapter.Center;
             var font = Games.Core.Resources.Fonts.GameFont;
@@ -118,10 +114,10 @@ namespace PikaGames.PaperCast.Scenes
             if (!_inMenu)
             {
                 spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, _splashText,
-                    _splashPosition + new Vector2(2, 2), _splashShadowColor, 0f, Vector2.Zero, 2f,
+                    _splashPosition + new Vector2(2, 2), UiTheme.TitleShadowColor, 0f, Vector2.Zero, 2f,
                     SpriteEffects.None, 0);
                 spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, _splashText, _splashPosition,
-                    _splashColor, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0);
+                    UiTheme.TitleColor, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0);
             }
             else
             {

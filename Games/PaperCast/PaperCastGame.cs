@@ -13,13 +13,6 @@ namespace PikaGames.PaperCast
 {
     public class PaperCastGame : GameBase
     {
-        private static readonly Color[] PlayerColors = new Color[]
-        {
-            MaterialDesignColors.LightBlue500,
-            MaterialDesignColors.LightGreen500,
-            MaterialDesignColors.Purple500,
-            MaterialDesignColors.Orange500
-        };
 
         internal MainMenuScene MainMenuScene;
         internal GameMapScene GameMapScene;

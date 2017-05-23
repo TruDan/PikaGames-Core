@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
+using PikaGames.Games.Core.UI;
 
 namespace PikaGames.Games.Core.Scenes
 {
@@ -21,6 +22,8 @@ namespace PikaGames.Games.Core.Scenes
         protected SceneManager SceneManager { get; private set; }
         protected GameBase Game { get; private set; }
 
+        public UiContainer UiContainer { get; private set; }
+        
         internal void Init(SceneManager sceneManager, GameBase game)
         {
             if (IsInitialised)
@@ -31,8 +34,8 @@ namespace PikaGames.Games.Core.Scenes
             SceneManager = sceneManager;
             Game = game;
 
-            Initialise();
 
+            Initialise();
         }
 
         protected virtual void Initialise() { }
@@ -41,6 +44,7 @@ namespace PikaGames.Games.Core.Scenes
         {
             IsActive = true;
             _fpsCounter = new FramesPerSecondCounter();
+            UiContainer = new UiContainer();
         }
 
         public virtual void UnloadContent()

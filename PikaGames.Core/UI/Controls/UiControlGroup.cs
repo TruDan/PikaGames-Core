@@ -10,15 +10,13 @@ using PikaGames.Games.Core.UI.Menu;
 
 namespace PikaGames.Games.Core.UI.Controls
 {
-    public class UiControlGroup : UiMenu
+    public class UiControlGroup : UiContainer
     {
-        public UiControl ActiveControl => (UiControl) ActiveItem;
-
         public UiControlGroup(UiContainer container, int x, int y) : base(container, x, y) { }
 
         public void AddSlider(string name, Action<float> onChangeAction = null)
         {
-            var slider = new UiSliderControl(this, 0, Children.Count * ItemSize, name, onChangeAction);
+            var slider = new UiSliderControl(this, 0, 0, name, onChangeAction);
         }
         
     }

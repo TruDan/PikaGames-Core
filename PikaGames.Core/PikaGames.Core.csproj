@@ -43,16 +43,32 @@
     <Compile Include="Input\PlayerInputManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RootGame.cs" />
+    <Compile Include="Scenes\DebugScene.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
+    <Compile Include="Scenes\SplashScene.cs" />
     <Compile Include="Sound\SoundManager.cs" />
     <Compile Include="UI\ButtonBar\UiButtonBar.cs" />
+    <Compile Include="UI\Controls\UiButton.cs" />
     <Compile Include="UI\Controls\UiControl.cs" />
     <Compile Include="UI\Controls\UiControlGroup.cs" />
+    <Compile Include="UI\Controls\UiInput.cs" />
     <Compile Include="UI\Controls\UiSliderControl.cs" />
     <Compile Include="UI\ButtonBar\UiButtonBarItem.cs" />
+    <Compile Include="UI\Controls\UiToggle.cs" />
+    <Compile Include="UI\Dialog\UiDialog.cs" />
+    <Compile Include="UI\Dialog\UiDialogContainer.cs" />
+    <Compile Include="UI\Dialog\UiTextInputDialog.cs" />
+    <Compile Include="UI\Grid\UiGridMenu.cs" />
+    <Compile Include="UI\ISelectable.cs" />
+    <Compile Include="UI\Keyboard\UiKeyboard.cs" />
+    <Compile Include="UI\Keyboard\UiKeyboardKey.cs" />
+    <Compile Include="UI\PlayerBar\UiPlayerBar.cs" />
+    <Compile Include="UI\PlayerBar\UiPlayerBarItem.cs" />
     <Compile Include="UI\Text\UiTitle.cs" />
     <Compile Include="UI\UiContainer.cs" />
+    <Compile Include="UI\Grid\UiGridContainer.cs" />
+    <Compile Include="UI\Grid\UiGridItem.cs" />
     <Compile Include="UI\UiImage.cs" />
     <Compile Include="UI\UIItem.cs" />
     <Compile Include="UI\Menu\UIMenu.cs" />
@@ -99,11 +115,11 @@
     <Reference Include="MonoGame.Extended.Tweening, Version=0.6.377.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MonoGame.Extended.Tweening.0.6.377\lib\MonoGame.Extended.Tweening.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Framework.Portable.3.6.0.1625\lib\portable-net45+win8+wpa81\MonoGame.Framework.dll</HintPath>
+    <Reference Include="MonoGame.Framework, Version=3.7.0.379, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.Portable.3.7.0.379-develop\lib\portable-net45+win8+wpa81\MonoGame.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Framework.Content.Pipeline, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Framework.Content.Pipeline.Portable.3.6.0.1625\lib\portable-net45+win8+wpa81\MonoGame.Framework.Content.Pipeline.dll</HintPath>
+    <Reference Include="MonoGame.Framework.Content.Pipeline, Version=3.7.0.379, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.Content.Pipeline.Portable.3.7.0.379-develop\lib\portable-net45+win8+wpa81\MonoGame.Framework.Content.Pipeline.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
