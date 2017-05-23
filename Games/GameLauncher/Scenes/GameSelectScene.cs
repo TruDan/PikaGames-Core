@@ -15,6 +15,7 @@ using PikaGames.Games.Core.UI.ButtonBar;
 using PikaGames.Games.Core.UI.Menu;
 using PikaGames.Games.Core.UI.Text;
 using PikaGames.Games.Core.Utils;
+using PikaGames.Games.RaceCast;
 using PikaGames.PaperCast;
 
 namespace GameLauncher.Scenes
@@ -39,7 +40,7 @@ namespace GameLauncher.Scenes
             _menu = new UiMenu(_container, 50, 50 + _title.Height + 50);
             
             _menu.AddMenuItem("PaperCast", () => LaunchGame(new PaperCastGame()));
-            _menu.AddMenuItem("RacerCast", () => { });
+            _menu.AddMenuItem("RaceCast", () => LaunchGame(new RaceCastGame()));
 
 
             _buttonBar = new UiButtonBar(_container, (int)Game.VirtualSize.X - 25, (int)Game.VirtualSize.Y - 25);

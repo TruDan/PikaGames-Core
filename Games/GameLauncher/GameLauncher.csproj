@@ -43,6 +43,10 @@
       <Project>{14e3b201-ff98-40c9-b329-ede40b869ba4}</Project>
       <Name>PaperCast</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RaceCast\RaceCast.csproj">
+      <Project>{ebf17446-dfe8-4974-a67d-93fd443836ae}</Project>
+      <Name>RaceCast</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameLauncherGame.cs" />

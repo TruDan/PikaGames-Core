@@ -59,9 +59,7 @@ namespace PikaGames.PaperCast.World
                 y = TileHeight - y;
             }
 
-            player.X = x * Tile.Size;
-            player.Y = y * Tile.Size;
-
+			player.Position = new Vector2(x * Tile.Size, y * Tile.Size);
 
             var tile = GetTile(x,y);
             for (int i = -1; i <= 1; i++)
@@ -197,23 +195,15 @@ namespace PikaGames.PaperCast.World
 
         internal void Draw(GameTime gameTime, Camera2D camera, SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(transformMatrix: camera.GetViewMatrix(), samplerState: SamplerState.PointClamp);
-
             foreach (var tile in _grid)
             {
                 tile.Draw(spriteBatch);
             }
 
-            spriteBatch.End();
-
-            spriteBatch.Begin(transformMatrix: camera.GetViewMatrix(), samplerState: SamplerState.PointClamp);
-
             foreach (var player in Game.Players)
             {
                 player.Draw(gameTime, spriteBatch);
             }
-
-            spriteBatch.End();
         }
 
     }

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Resources>
+
+  <Images importer="TextureImporter" processor="TextureProcessor">
+    <Parameters>
+      <ColorKeyColor Value="255,0,255,255" />
+      <ColorKeyEnabled Value="True" />
+      <GenerateMipmaps Value="False" />
+      <PremultiplyAlpha Value="True" />
+      <ResizeToPowerOfTwo Value="False" />
+      <MakeSquare Value="False" />
+      <TextureFormat  Value="Color" />
+    </Parameters>
+    
+<!--    <Texture2D name="PaperCastLogo" src="PaperCastLogo.png" /> -->
+  </Images>
+  
+</Resources>

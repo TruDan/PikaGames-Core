@@ -6,7 +6,7 @@ namespace PikaGames.Games.Core.Entities
 {
     public class Player : Entity
     {
-        private readonly Texture2D _texture;
+        protected readonly Texture2D _texture;
 
         public PlayerInputManager Input { get; }
 

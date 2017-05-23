@@ -11,8 +11,7 @@ namespace PikaGames.Games.Core.Input
     public class PlayerInputManager
     {
         public bool AnalogDirection = true;
-
-        // Keyboard
+		// Keyboard
         // -------------------------------------------
         public bool UsesKeyboard = false;
 
@@ -96,28 +95,28 @@ namespace PikaGames.Games.Core.Input
 
                 if (upDown && !downDown)
                 {
-                    direction.X = 1;
+                    direction.Y = 1;
                 }
                 else if (!upDown && downDown)
                 {
-                    direction.X = -1;
+                    direction.Y = -1;
                 }
                 else if (upDown && downDown)
                 {
-                    direction.X = 0;
+                    direction.Y = 0;
                 }
 
                 if (leftDown && !rightDown)
                 {
-                    direction.Y = 1;
+                    direction.X = 1;
                 }
                 else if (!leftDown && rightDown)
                 {
-                    direction.Y = -1;
+                    direction.X = -1;
                 }
                 else if (leftDown && rightDown)
                 {
-                    direction.Y = 0;
+                    direction.X = 0;
                 }
             }
 
