@@ -27,7 +27,7 @@ namespace PikaGames.PaperCast.World
             X = x;
             Y = y;
 
-            UpdateTexture();
+			UpdateTexture();
         }
 
         internal void UpdateTexture()
@@ -48,7 +48,7 @@ namespace PikaGames.PaperCast.World
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, Position, Color.White);
+             spriteBatch.Draw(_texture, Position, Color.White);
         }
     }
 }

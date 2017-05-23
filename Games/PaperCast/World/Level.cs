@@ -20,7 +20,9 @@ namespace PikaGames.PaperCast.World
         public int TileWidth { get; }
         public int TileHeight { get; }
 
-        List<Tile> _grid = new List<Tile>();
+	    private World.Tile[] _grid;
+
+      //  List<Tile> _grid = new List<Tile>();
 
         public Level(GameBase game, int tileWidth, int tileHeight)
         {
@@ -32,14 +34,20 @@ namespace PikaGames.PaperCast.World
             Initialise();
         }
 
-        private void Initialise()
+		private int GetIndex(int x, int y)
+		{
+			return (x * TileWidth) + y;
+		}
+
+		private void Initialise()
         {
+			_grid = new Tile[TileWidth * TileHeight];
             for (int i = 0; i < TileWidth; i++)
             {
                 for (int j = 0; j < TileHeight; j++)
                 {
                     var t = new Tile(Game, i, j);
-                    _grid.Add(t);
+	                _grid[GetIndex(i, j)] = t;
                 }
             }
         }
@@ -78,16 +86,18 @@ namespace PikaGames.PaperCast.World
 
         public Tile GetTile(int x, int y)
         {
-            var i = x * TileWidth + y;
-            if (i < 0 || i >= _grid.Count)
-                return null;
-            return _grid[i];
-        }
+			if (x < 0 || x >= Width) return null;
+			if (y < 0 || y >= Height) return null;
+
+			return _grid[GetIndex(x, y)];
+		}
 
         public Tile GetTileFromPosition(double x, double y)
         {
-            var i = (int) (Math.Floor(x / Tile.Size) * TileWidth + Math.Floor(y / Tile.Size));
-            if (i >= _grid.Count || i < 0)
+			return GetTile((int)Math.Floor(x / Tile.Size), (int)Math.Floor(y / Tile.Size));
+
+			var i = (int) (Math.Floor(x / Tile.Size) * TileWidth + Math.Floor(y / Tile.Size));
+            if (i >= _grid.Length || i < 0)
             {
                 return null;
             }
@@ -115,8 +125,8 @@ namespace PikaGames.PaperCast.World
                     }
                     else
                     {
-                        var tile = GetTile(x-1, y-1);
-                        if (tile.Owner == null || tile.Owner != player)
+						var tile = _grid[GetIndex(x - 1, y - 1)];
+						if (tile.Owner == null || tile.Owner != player)
                         {
                             grid[x, y] = 1;
                         }
@@ -132,7 +142,7 @@ namespace PikaGames.PaperCast.World
                 {
                     if (grid[x, y] != 2)
                     {
-                        var tile = GetTile(x - 1, y - 1);
+	                    var tile = _grid[GetIndex(x, y)];
                         
                         tile.Owner = player;
                         tile.UpdateTexture();
@@ -197,10 +207,10 @@ namespace PikaGames.PaperCast.World
         {
             foreach (var tile in _grid)
             {
-                tile.Draw(spriteBatch);
+	            tile.Draw(spriteBatch);
             }
 
-            foreach (var player in Game.Players)
+            foreach (var player in Game.Players.ToArray())
             {
                 player.Draw(gameTime, spriteBatch);
             }
