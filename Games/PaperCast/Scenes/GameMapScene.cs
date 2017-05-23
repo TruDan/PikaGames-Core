@@ -105,7 +105,7 @@ namespace PikaGames.PaperCast.Scenes
             _camera.LookAtMultiple(new Vector2(Level.Width, Level.Height), 100, Game.Players.Where(p => p.IsAlive).Select(p => p.Position).ToArray());
         }
 
-		private Texture2D TintedLightBlue = Resources.Images.InputGamePad.TintSolid(MaterialDesignColors.LightBlueA100);
+		private Texture2D TintedLightBlue = Resources.Images.InputGamePad.TintSolid(MaterialDesignColors.LightBlue.GetVariant(MaterialThemeVariant.HueA100));
 		public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, ViewportAdapter viewportAdapter)
         {
             base.Draw(gameTime, spriteBatch, viewportAdapter);
