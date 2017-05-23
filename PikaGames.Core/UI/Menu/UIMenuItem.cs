@@ -5,7 +5,7 @@ using PikaGames.Games.Core.Utils;
 
 namespace PikaGames.Games.Core.UI.Menu
 {
-    public class UiMenuItem: UiText
+    public class UiMenuItem : UiContainer
     {
         
         private bool _isSelected;
@@ -18,24 +18,28 @@ namespace PikaGames.Games.Core.UI.Menu
 
                 if (_isSelected)
                 {
-                    Color = UiTheme.MenuActiveTextColor;
-                    ShadowColor = UiTheme.MenuActiveTextShadowColor;
-                    ShadowSize = UiTheme.MenuActiveTextShadowSize;
+                    _label.Color = UiTheme.MenuActiveTextColor;
+                    _label.ShadowColor = UiTheme.MenuActiveTextShadowColor;
+                    _label.ShadowSize = UiTheme.MenuActiveTextShadowSize;
                 }
                 else
                 {
-                    Color = UiTheme.MenuTextColor;
-                    ShadowColor = UiTheme.MenuTextShadowColor;
-                    ShadowSize = UiTheme.MenuTextShadowSize;
+                    _label.Color = UiTheme.MenuTextColor;
+                    _label.ShadowColor = UiTheme.MenuTextShadowColor;
+                    _label.ShadowSize = UiTheme.MenuTextShadowSize;
                 }
             }
         }
 
         private readonly Action _action;
 
-        public UiMenuItem(UiMenu menu, string text, Action action = null) : base(menu, 0, menu.ItemCount * menu.ItemSize, text)
+        private UiText _label;
+
+        public UiMenuItem(UiMenu menu, string text, Action action = null) : base(menu, 0, menu.ItemCount * menu.ItemSize)
         {
             _action = action;
+            _label = new UiText(this, 0, 0, text);
+
             IsSelected = false;
         }
 

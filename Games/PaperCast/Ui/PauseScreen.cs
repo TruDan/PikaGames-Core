@@ -39,7 +39,7 @@ namespace PikaGames.PaperCast.Ui
 
         private void Init()
         {
-            _title = new UiText(this, 50, 50, "Paused", MaterialDesignColors.Amber500, MaterialDesignColors.Amber900);
+            _title = new UiText(this, 50, 50, "Paused");
             _title.Scale = 4f;
             
             _menu = new UiMenu(this, 50, 50 + _title.Height + 50);

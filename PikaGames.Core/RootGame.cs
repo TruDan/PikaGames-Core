@@ -26,7 +26,7 @@ namespace PikaGames.Games.Core
         public BoxingViewportAdapter ViewportAdapter;
 
         public SoundManager SoundManager;
-
+        
         private readonly GraphicsDeviceManager _graphicsDeviceManager;
         
         public bool RequestingExit = false;

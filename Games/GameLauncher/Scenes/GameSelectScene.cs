@@ -22,9 +22,7 @@ namespace GameLauncher.Scenes
 {
     public class GameSelectScene : Scene
     {
-
-        private UiContainer _container;
-
+        
         private UiText _title;
         private UiMenu _menu;
         private UiButtonBar _buttonBar;
@@ -32,18 +30,16 @@ namespace GameLauncher.Scenes
         public override void LoadContent()
         {
             base.LoadContent();
-            
-            _container = new UiContainer();
 
-            _title = new UiTitle(_container, 50, 50, "Game Select");
+            _title = new UiTitle(UiContainer, 50, 50, "Game Select");
 
-            _menu = new UiMenu(_container, 50, 50 + _title.Height + 50);
+            _menu = new UiMenu(UiContainer, 50, 50 + _title.Height + 50);
             
             _menu.AddMenuItem("PaperCast", () => LaunchGame(new PaperCastGame()));
             _menu.AddMenuItem("RaceCast", () => LaunchGame(new RaceCastGame()));
 
 
-            _buttonBar = new UiButtonBar(_container, (int)Game.VirtualSize.X - 25, (int)Game.VirtualSize.Y - 25);
+            _buttonBar = new UiButtonBar(UiContainer, (int)Game.VirtualSize.X - 25, (int)Game.VirtualSize.Y - 25);
             _buttonBar.AddButton(Buttons.A, "Select");
             _buttonBar.AddButton(Buttons.B, "Back");
         }
@@ -51,7 +47,6 @@ namespace GameLauncher.Scenes
         public override void UnloadContent()
         {
             base.UnloadContent();
-            _container = null;
         }
 
         private void LaunchGame(GameBase game)
@@ -63,23 +58,10 @@ namespace GameLauncher.Scenes
         {
             base.Update(gameTime);
 
-            _container?.Update(gameTime);
-
             if (Game.Players.Any(p => p.Input.IsPressed(InputCommand.B)))
             {
                 Game.SceneManager.Previous();
             }
-        }
-
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, ViewportAdapter viewportAdapter)
-        {
-            base.Draw(gameTime, spriteBatch, viewportAdapter);
-
-            spriteBatch.Begin(transformMatrix: viewportAdapter.GetScaleMatrix(), samplerState: SamplerState.PointClamp);
-
-            _container?.Draw(spriteBatch);
-
-            spriteBatch.End();
         }
     }
 }

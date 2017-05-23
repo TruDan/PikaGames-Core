@@ -43,8 +43,7 @@ namespace PikaGames.PaperCast.Scenes
 
             _pauseBackgroundArea = new Rectangle(0, 0, (int)game.VirtualSize.X, (int)game.VirtualSize.Y);
 
-            _pauseBackground = TextureUtils.CreateRectangle(_pauseBackgroundArea.Width, _pauseBackgroundArea.Height,
-                MaterialDesignColors.BlueGrey900);
+            _pauseBackground = TextureUtils.CreateRectangle(_pauseBackgroundArea.Width, _pauseBackgroundArea.Height, UiTheme.BackgroundTheme.GetVariant(MaterialThemeVariant.Hue900));
 
         }
 
@@ -130,7 +129,7 @@ namespace PikaGames.PaperCast.Scenes
 
                     spriteBatch.Draw(TintedLightBlue, new Rectangle((int)_playerListPosition.X, (int)_playerListPosition.Y + i * (_playerListItemHeight + 8), _playerListItemHeight-2, _playerListItemHeight-2), Color.White);
 
-                    spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, "Player " + i, _playerListPosition + new Vector2(_playerListItemHeight + 8, i * (_playerListItemHeight + 8)), MaterialDesignColors.LightBlue500, 0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, "Player " + i, _playerListPosition + new Vector2(_playerListItemHeight + 8, i * (_playerListItemHeight + 8)), UiTheme.AccentTheme.GetVariant(MaterialThemeVariant.Base), 0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0);
                 }
             }
 

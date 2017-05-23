@@ -29,6 +29,9 @@
 
     <Texture2D name="Buttons_A" src="Buttons/A.png" />
     <Texture2D name="Buttons_B" src="Buttons/B.png" />
+
+
+    <Texture2D name="Splash_PikaGames" src="Splash/PikaGames.png" />
   </Images>
 
   <Sfx importer="OggImporter" processor="SoundEffectProcessor">
@@ -37,6 +40,11 @@
     </Parameters>
 
     <SoundEffect name="SpaceMorph" src="SpaceMorph.ogg" />
+    
+    <SoundEffect name="Splash_PikaGames" src="Splash/PikaGames.ogg" />
+
+
+    <SoundEffect name="UI_Zap" src="UI/Zap.ogg" />
   </Sfx>
   
 </Resources>

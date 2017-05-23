@@ -22,12 +22,10 @@ namespace PikaGames.PaperCast.Scenes
         private float _splashInitialY = 0f;
         private Vector2 _splashPosition = Vector2.Zero;
         private string _splashText = "";
-        private Color _splashColor = MaterialDesignColors.LightBlue500;
-        private Color _splashShadowColor = MaterialDesignColors.LightBlue900;
 
         private bool _inMenu = false;
 
-        private UiContainer _container;
+        //private UiContainer _container;
         private UiMenu _menu;
         private UiButtonBar _buttonBar;
 
@@ -43,15 +41,15 @@ namespace PikaGames.PaperCast.Scenes
             var size = font.MeasureString(_splashText);
             _splashPosition = new Vector2(center.X - size.X, _splashInitialY - size.Y);
             
-            _container = new UiContainer();
+            //_container = new UiContainer();
 
-            _menu = new UiMenu(null, center.X, center.Y);
+            _menu = new UiMenu(UiContainer, center.X, center.Y);
             _menu.Alignment = Frame.HorizontalTextAlignment.Center;
             
             _menu.AddMenuItem("Play", () => Game.SceneManager.ChangeScene(((PaperCastGame)Game).GameMapScene));
             _menu.AddMenuItem("Main Menu", () => Game.Exit());
 
-            _buttonBar = new UiButtonBar(_container, (int)Game.VirtualSize.X - 25, (int)Game.VirtualSize.Y - 25);
+            _buttonBar = new UiButtonBar(UiContainer, (int)Game.VirtualSize.X - 25, (int)Game.VirtualSize.Y - 25);
             _buttonBar.AddButton(Buttons.A, "Select");
         }
 
@@ -70,14 +68,14 @@ namespace PikaGames.PaperCast.Scenes
                     _menu.Update(gameTime);
                 }
 
-                SetSplashText("Press Start!", MaterialDesignColors.Yellow500, MaterialDesignColors.Yellow900);
+                SetSplashText("Press Start!");
             }
             else
             {
-                SetSplashText("Press A to join", MaterialDesignColors.Green500, MaterialDesignColors.Green900);
+                SetSplashText("Press A to join");
             }
 
-            _container.Update(gameTime);
+            //_container.Update(gameTime);
 
             if (!_inMenu)
             {
@@ -87,13 +85,11 @@ namespace PikaGames.PaperCast.Scenes
             }
         }
 
-        private void SetSplashText(string text, Color textColor, Color shadowColor)
+        private void SetSplashText(string text)
         {
-            if (text == _splashText && textColor == _splashColor && shadowColor == _splashShadowColor) return;
+            if (text == _splashText) return;
 
             _splashText = text;
-            _splashColor = textColor;
-            _splashShadowColor = shadowColor;
 
             var center = Game.ViewportAdapter.Center;
             var font = Games.Core.Resources.Fonts.GameFont;
@@ -113,15 +109,15 @@ namespace PikaGames.PaperCast.Scenes
 
             spriteBatch.Draw(Resources.Images.PaperCastLogo, pos, Color.White);
 
-            _container.Draw(spriteBatch);
+           // _container.Draw(spriteBatch);
 
             if (!_inMenu)
             {
                 spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, _splashText,
-                    _splashPosition + new Vector2(2, 2), _splashShadowColor, 0f, Vector2.Zero, 2f,
+                    _splashPosition + new Vector2(2, 2), UiTheme.TitleShadowColor, 0f, Vector2.Zero, 2f,
                     SpriteEffects.None, 0);
                 spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, _splashText, _splashPosition,
-                    _splashColor, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0);
+                    UiTheme.TitleColor, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0);
             }
             else
             {

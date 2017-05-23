@@ -9,6 +9,7 @@ namespace PikaGames.Games.Core.Entities
         protected readonly Texture2D _texture;
 
         public PlayerInputManager Input { get; }
+        public Color Color { get; set; } = Color.Aqua;
 
         public virtual bool IsConnected => Input.UsesKeyboard || (Input.UsesGamePad && Input.IsGamePadConnected());
 

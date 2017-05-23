@@ -24,7 +24,6 @@ namespace PikaGames.PaperCast
         public int TileY => (int) Math.Floor((double)Position.Y / Tile.Size);
 
         public Level Level { get; private set; }
-        public Color Color { get; set; } = Color.Aqua;
         
         private int _trailSize = 0;
 

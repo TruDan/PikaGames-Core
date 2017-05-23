@@ -10,12 +10,22 @@ using PikaGames.Games.Core.Entities;
 using PikaGames.Games.Core.Input;
 using PikaGames.Games.Core.Scenes;
 using PikaGames.Games.Core.Sound;
+using PikaGames.Games.Core.UI;
+using PikaGames.Games.Core.UI.Dialog;
 using PikaGames.Games.Core.Utils;
 
 namespace PikaGames.Games.Core
 {
     public class GameBase : IDisposable
     {
+        public static readonly Color[] PlayerColors = new Color[]
+        {
+            MaterialDesignColors.LightBlue.GetVariant(MaterialThemeVariant.Base),
+            MaterialDesignColors.LightGreen.GetVariant(MaterialThemeVariant.Base),
+            MaterialDesignColors.Purple.GetVariant(MaterialThemeVariant.Base),
+            MaterialDesignColors.Orange.GetVariant(MaterialThemeVariant.Base)
+        };
+
         public static GameBase Instance { get; private set; }
 
         private RootGame Game { get; }
@@ -41,6 +51,8 @@ namespace PikaGames.Games.Core
 
         public readonly List<Player> Players = new List<Player>();
 
+        internal UiDialogContainer DialogContainer { get; }
+
         public SpriteBatch SpriteBatch { get; private set; }
         
         public GameBase()
@@ -61,6 +73,8 @@ namespace PikaGames.Games.Core
             
             Window.AllowUserResizing = false;
             Game.IsMouseVisible = true;
+
+            DialogContainer = new UiDialogContainer((int) WindowSize.X, (int) WindowSize.Y);
         }
 
         public virtual Player CreatePlayer(PlayerIndex playerIndex)
@@ -121,12 +135,19 @@ namespace PikaGames.Games.Core
             }
 
             SceneManager.Update(gameTime);
+
+            DialogContainer.Update(gameTime);
         }
 
         protected internal virtual void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
             SceneManager.Draw(gameTime, SpriteBatch);
+
+
+            SpriteBatch.Begin(transformMatrix: ViewportAdapter.GetScaleMatrix(), samplerState: SamplerState.PointClamp);
+            DialogContainer.Draw(SpriteBatch);
+            SpriteBatch.End();;
         }
 
         public void Exit()
