@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
   <PropertyGroup>
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -73,30 +74,30 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Resources.xml">
+    <None Include="Content\Content.xml">
       <SubType>Designer</SubType>
       <DesignTime>True</DesignTime>
     </None>
-    <MonoGameContentReference Include="Resources\Resources.mgcb">
+    <MonoGameContentReference Include="Content\Content.mgcb">
       <AutoGen>True</AutoGen>
       <SubType>Compile</SubType>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.tt</DependentUpon>
+      <DependentUpon>Content.tt</DependentUpon>
     </MonoGameContentReference>
-    <None Include="Resources\Resources.tt">
-      <DependentUpon>Resources.xml</DependentUpon>
+    <None Include="Content\Content.tt">
+      <DependentUpon>Content.xml</DependentUpon>
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Resources.mgcb</LastGenOutput>
+      <LastGenOutput>Content.mgcb</LastGenOutput>
     </None>
-    <Compile Include="Resources\Resources.Designer.cs">
-      <DependentUpon>Resources.Designer.tt</DependentUpon>
+    <Compile Include="Content\Content.Designer.cs">
+      <DependentUpon>Content.Designer.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Resources\Resources.Designer.tt">
-      <DependentUpon>Resources.xml</DependentUpon>
+    <None Include="Content\Content.Designer.tt">
+      <DependentUpon>Content.xml</DependentUpon>
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Content.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

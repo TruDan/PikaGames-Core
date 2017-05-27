@@ -1,0 +1,100 @@
+<#
+string path = this.Host.ResolvePath("");
+XmlDocument doc = new XmlDocument();
+doc.Load(path + @"\Content.xml");
+
+var hostServiceProvider = (IServiceProvider)Host;
+var dte = 
+    (EnvDTE.DTE)hostServiceProvider.GetService(typeof(EnvDTE.DTE));
+var activeSolutionProjects = (Array)dte.ActiveSolutionProjects;
+var dteProject = (EnvDTE.Project)activeSolutionProjects.GetValue(0);
+var defaultNamespace = 
+    dteProject.Properties.Item("DefaultNamespace").Value;
+
+ Action<String> UppercaseFirst = (string s) =>
+    {
+        // Check for empty string.
+        if (string.IsNullOrEmpty(s))
+        {
+            return;
+        }
+        // Return char and concat substring.
+		var str = char.ToUpper(s[0]) + s.Substring(1);
+#>
+<#= str #>
+<#
+    };
+
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
+
+namespace <#= defaultNamespace #>
+{
+
+	public static class Resources
+	{
+        private static ContentManager Content;
+        private static GraphicsDevice GraphicsDevice;
+	
+<#
+
+	XmlNode root = doc.SelectSingleNode("//Resources");
+
+	foreach(XmlNode resourceNode in root.ChildNodes) {
+#>
+
+		public static class <# UppercaseFirst(resourceNode.Name); #>
+		{
+
+<#
+		foreach(XmlNode resource in resourceNode.ChildNodes) {
+			if(resource.Name != "Parameters" && resource.Name != "#comment") {
+#>
+			public static <#= resource.Name #> <#= resource.Attributes["name"].Value #> { get; private set; }
+
+<#
+            }
+		} // foreach ChildNodes
+#>
+			internal static void Init()
+			{
+<#
+			foreach(XmlNode resource in resourceNode.ChildNodes) {
+				if(resource.Name != "Parameters" && resource.Name != "#comment") {
+#>
+				<#= resource.Attributes["name"].Value #> = Content.Load<<#= resource.Name #>>("<#= resourceNode.Name #>/<#= Path.ChangeExtension(resource.Attributes["src"].Value, null) #>");
+<#
+				}
+            }
+#>
+			}
+		}
+
+<#
+	} // foreach
+	
+#>
+
+        internal static void Init(ContentManager contentManager, GraphicsDevice graphicsDevice)
+        {
+            Content = new ContentManager(contentManager.ServiceProvider, "Content");
+            GraphicsDevice = graphicsDevice;
+
+<#
+		foreach(XmlNode resourceNode in root.ChildNodes) {
+#>
+			<# UppercaseFirst(resourceNode.Name); #>.Init();
+<#
+		}
+#>
+        }
+	}
+}

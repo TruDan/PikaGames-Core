@@ -11,7 +11,6 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Microsoft.Xna.Framework;
-using PikaGames.Games.PaperCast;
 
 namespace PikaGames.Android.Cast
 {

@@ -16,7 +16,7 @@ namespace PikaGames.Games.Core.Scenes
     {
         public readonly GameBase Game;
 
-        public bool DebugMode = true;
+        public bool DebugMode = false;
         
         public bool IsTransitioning { get { return _isTransitioning; } }
 
@@ -51,16 +51,16 @@ namespace PikaGames.Games.Core.Scenes
             Game = game;
             
             _background = Resources.Images.Background;
-
-            if (!DebugMode)
-            {
-                CurrentScene = new SplashScene();
-                CurrentScene.Init(this, game);
-            }
         }
 
         public void LoadContent(ContentManager content)
         {
+
+            if (!DebugMode)
+            {
+                CurrentScene = new SplashScene();
+                CurrentScene.Init(this, Game);
+            }
 
             var transitionTexture = new Texture2D(Game.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             transitionTexture.SetData(new Color[] { UiTheme.SceneTransitionBackgroundColor });

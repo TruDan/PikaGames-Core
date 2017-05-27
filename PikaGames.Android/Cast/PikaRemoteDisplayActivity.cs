@@ -14,7 +14,6 @@ using Android.Widget;
 using Microsoft.Xna.Framework;
 using PikaGames.Android.Views;
 using PikaGames.Games;
-using PikaGames.Games.PaperCast;
 
 namespace PikaGames.Android.Cast
 {
@@ -25,7 +24,6 @@ namespace PikaGames.Android.Cast
         public const string INTENT_EXTRA_GAME = "Game";
 
         internal static Game Game;
-        internal static Player LocalPlayer;
 
         private PikaToolbar _toolbar;
 
@@ -41,8 +39,8 @@ namespace PikaGames.Android.Cast
         {
             base.OnCreate(savedInstanceState);
 
-            Game = new PaperCastGame();
-            LocalPlayer = ((PaperCastGame) Game).AddPlayer("TruDan");
+            //Game = new PaperCastGame();
+            //LocalPlayer = ((PaperCastGame) Game).AddPlayer("TruDan");
 
             // Create your application here
             SetContentView(Resource.Layout.PikaRemoteDisplay);
@@ -104,10 +102,10 @@ namespace PikaGames.Android.Cast
             _leftButton = FindViewById<Button>(Resource.Id.button2);
             _rightButton = FindViewById<Button>(Resource.Id.button3);
 
-            _upButton.Touch += (sender, args) => LocalPlayer.Move(Direction.North);
-            _downButton.Touch += (sender, args) => LocalPlayer.Move(Direction.South);
-            _leftButton.Touch += (sender, args) => LocalPlayer.Move(Direction.West);
-            _rightButton.Touch += (sender, args) => LocalPlayer.Move(Direction.East);
+            //_upButton.Touch += (sender, args) => LocalPlayer.Move(Direction.North);
+            //_downButton.Touch += (sender, args) => LocalPlayer.Move(Direction.South);
+            //_leftButton.Touch += (sender, args) => LocalPlayer.Move(Direction.West);
+            //_rightButton.Touch += (sender, args) => LocalPlayer.Move(Direction.East);
         }
 
         protected override void OnResume()

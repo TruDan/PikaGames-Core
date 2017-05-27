@@ -48,9 +48,19 @@ namespace PikaGames.Games.Core
             SoundManager = new SoundManager();
 
             _graphicsDeviceManager = new GraphicsDeviceManager(this);
+
+#if WINDOWS
             _graphicsDeviceManager.PreferredBackBufferWidth = (int)WindowSize.X;
             _graphicsDeviceManager.PreferredBackBufferHeight = (int)WindowSize.Y;
             _graphicsDeviceManager.ApplyChanges();
+
+            Window.AllowUserResizing = false;
+            IsMouseVisible = true;
+#endif
+#if ANDROID
+            _graphicsDeviceManager.IsFullScreen = true;
+            _graphicsDeviceManager.SupportedOrientations = DisplayOrientation.Landscape;
+#endif
         }
 
         public void LoadGame(GameBase game)
@@ -96,6 +106,11 @@ namespace PikaGames.Games.Core
 
         protected override void LoadContent()
         {
+#if ANDROID
+            VirtualSize.X = GraphicsDevice.Viewport.Width;
+            VirtualSize.Y = GraphicsDevice.Viewport.Height;
+#endif
+
             base.LoadContent();
 
             var transitionTexture = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);

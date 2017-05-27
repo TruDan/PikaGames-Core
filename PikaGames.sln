@@ -24,8 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{D5F55B8F-4CD3-4D25-B865-F0A29B9C677D}"
 	ProjectSection(SolutionItems) = preProject
-		Templates\Resources.Designer.t4 = Templates\Resources.Designer.t4
-		Templates\Resources.t4 = Templates\Resources.t4
+		Templates\Content.Designer.t4 = Templates\Content.Designer.t4
+		Templates\Content.t4 = Templates\Content.t4
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientLauncher", "Games\ClientLauncher\ClientLauncher.csproj", "{73077BE7-A824-4550-83D1-4D224B29DD66}"

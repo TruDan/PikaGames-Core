@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Resources>
+
+  <fonts importer="FontDescriptionImporter" processor="FontDescriptionProcessor">
+    <Parameters>
+      <PremultiplyAlpha Value="True" />
+      <TextureFormat Value="Compressed" />
+    </Parameters>
+    
+    <SpriteFont name="GameFont" src="Press Start 2P.spritefont" />
+    <SpriteFont name="DebugFont" src="DebugFont.spritefont" />
+  </fonts>
+  
+  <images importer="TextureImporter" processor="TextureProcessor">
+    <Parameters>
+      <ColorKeyColor Value="255,0,255,255" />
+      <ColorKeyEnabled Value="True" />
+      <GenerateMipmaps Value="False" />
+      <PremultiplyAlpha Value="True" />
+      <ResizeToPowerOfTwo Value="False" />
+      <MakeSquare Value="False" />
+      <TextureFormat  Value="Color" />
+    </Parameters>
+    
+    <Texture2D name="Logo" src="Logo.png" />
+    <Texture2D name="Background" src="Background.png" />
+
+
+    <Texture2D name="Buttons_A" src="buttons/A.png" />
+    <Texture2D name="Buttons_B" src="buttons/B.png" />
+
+
+    <Texture2D name="Splash_PikaGames" src="splash/PikaGames.png" />
+  </images>
+
+  <sfx importer="OggImporter" processor="SoundEffectProcessor">
+    <Parameters>
+      <Quality Value="Best" />
+    </Parameters>
+
+    <SoundEffect name="SpaceMorph" src="SpaceMorph.ogg" />
+    
+    <SoundEffect name="Splash_PikaGames" src="splash/PikaGames.ogg" />
+
+
+    <SoundEffect name="UI_Zap" src="ui/Zap.ogg" />
+  </sfx>
+  
+</Resources>

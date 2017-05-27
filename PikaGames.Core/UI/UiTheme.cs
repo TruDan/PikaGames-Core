@@ -58,7 +58,7 @@ namespace PikaGames.Games.Core.UI
 
         public static Color DialogTitleColor = AccentTheme.GetVariant(MaterialThemeVariant.Base);
         public static Color DialogTitleShadowColor = AccentTheme.GetVariant(MaterialThemeVariant.Hue900);
-        public static int DialogTitleShadowSize = 4;
+        public static int DialogTitleShadowSize = 6;
 
         public static Color SceneTransitionBackgroundColor = BackgroundTheme.GetVariant(MaterialThemeVariant.Hue900);
 

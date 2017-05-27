@@ -70,9 +70,6 @@ namespace PikaGames.Games.Core
 
             Content.RootDirectory = "Content";
             ContentManager = new ContentManager(Content.ServiceProvider, "Content");
-            
-            Window.AllowUserResizing = false;
-            Game.IsMouseVisible = true;
 
             DialogContainer = new UiDialogContainer((int) WindowSize.X, (int) WindowSize.Y);
         }

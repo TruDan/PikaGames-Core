@@ -7,19 +7,22 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Support.V7.Media;
 using Android.Views;
+using ClientLauncher;
 using PikaGames.Android.Cast;
 using Java.Lang;
+using Microsoft.Xna.Framework;
 using PikaGames.Android.Views;
+using PikaGames.Games.Core;
 using MediaRouteButton = Android.Support.V7.App.MediaRouteButton;
 
 namespace PikaGames.Android
 {
     [Activity(Label = "@string/app_name",
         ConfigurationChanges = ConfigChanges.Orientation,
-        ScreenOrientation = ScreenOrientation.Portrait,
+        ScreenOrientation = ScreenOrientation.Landscape,
         LaunchMode = LaunchMode.SingleTop)]
     [IntentFilter(actions: new[] { "android.intent.action.MAIN" }, Categories = new[] { "android.intent.category.LAUNCHER" })]
-    public class MainActivity : AppCompatActivity
+    public class MainActivity : AndroidGameActivity
     {
         private PikaToolbar _toolbar;
 
@@ -31,28 +34,28 @@ namespace PikaGames.Android
         {
             base.OnCreate(bundle);
 
-            SetContentView(Resource.Layout.Main);
+            //SetContentView(Resource.Layout.Main);
 
 
-            //var g = new Game1();
-            //SetContentView((View)g.Services.GetService(typeof(View)));
-            //g.Run();
-            InitMediaRouter();
-            
-            _toolbar = FindViewById<PikaToolbar>(Resource.Id.pikaToolbar1);
-            _toolbar.MediaRouteButton.RouteSelector = _mediaRouteSelector;
+            var g = new ClientLauncherGame();
+            SetContentView((View)RootGame.Instance.Services.GetService(typeof(View)));
+            RootGame.Instance.Run();
+            //InitMediaRouter();
+
+            //_toolbar = FindViewById<PikaToolbar>(Resource.Id.pikaToolbar1);
+            //_toolbar.MediaRouteButton.RouteSelector = _mediaRouteSelector;
         }
 
         protected override void OnStart()
         {
             base.OnStart();
-            _mediaRouter.AddCallback(_mediaRouteSelector, _myMediaRouterCallback, MediaRouter.CallbackFlagRequestDiscovery);
+            //_mediaRouter.AddCallback(_mediaRouteSelector, _myMediaRouterCallback, MediaRouter.CallbackFlagRequestDiscovery);
         }
 
         protected override void OnStop()
         {
             base.OnStop();
-            _mediaRouter.RemoveCallback(_myMediaRouterCallback);
+            //_mediaRouter.RemoveCallback(_myMediaRouterCallback);
         }
 
         private void InitMediaRouter()

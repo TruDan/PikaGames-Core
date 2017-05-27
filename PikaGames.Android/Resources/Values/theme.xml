@@ -12,5 +12,9 @@
     <item name="android:colorControlNormal">#ffba68c8</item>
     <item name="android:colorControlActivated">#ff80deea</item>
     <item name="android:colorButtonNormal">#ff29b6f6</item>
+    <item name="windowNoTitle">true</item>
+    <item name="windowActionBar">false</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowContentOverlay">@null</item>
   </style>
 </resources>
