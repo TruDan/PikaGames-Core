@@ -20,8 +20,8 @@ namespace PikaGames.PaperCast
 
         public int Score { get; set; } = 0;
 
-        public int TileX => (int) Math.Floor((double)X / Tile.Size);
-        public int TileY => (int) Math.Floor((double)Y / Tile.Size);
+        public int TileX => (int) Math.Floor((double)Position.X / Tile.Size);
+        public int TileY => (int) Math.Floor((double)Position.Y / Tile.Size);
 
         public Level Level { get; private set; }
         
@@ -50,6 +50,8 @@ namespace PikaGames.PaperCast
 
         public override void Update(GameTime deltaTime)
         {
+	        var dt = (float)deltaTime.ElapsedGameTime.TotalMilliseconds;
+
             base.Update(deltaTime);
 
             var g = ((PaperCastGame) Level.Game);
@@ -92,15 +94,15 @@ namespace PikaGames.PaperCast
 
             if (_currentDirection == Direction.None || _currentDirection != _nextDirection)
             {
-                if (X % Tile.Size == 0 && Y % Tile.Size == 0)
+                if (Position.X % Tile.Size == 0f && Position.Y % Tile.Size == 0f)
                 {
                     _currentDirection = _nextDirection;
                 }
             }
 
-            var tile = Level.GetTileFromPosition(X, Y);
+            var tile = Level.GetTileFromPosition(Position.X, Position.Y);
 
-            if (X % Tile.Size == 0 && Y % Tile.Size == 0)
+            if (Position.X % Tile.Size == 0f && Position.Y % Tile.Size == 0f)
             {
                 if (tile != null)
                 {
@@ -140,8 +142,8 @@ namespace PikaGames.PaperCast
                 return;
             }
 
-            var targetX = X;
-            var targetY = Y;
+            var targetX = Position.X;
+            var targetY = Position.Y;
 
             if (_currentDirection == Direction.North)
             {
@@ -167,8 +169,7 @@ namespace PikaGames.PaperCast
                 targetY = TileY * Tile.Size;
             }
 
-            X = targetX;
-            Y = targetY;
+			Position = new Vector2(targetX, targetY);
         }
 
         public void Kill()

@@ -79,6 +79,7 @@
     <Compile Include="UI\UiTheme.cs" />
     <Compile Include="Utils\CameraExtensions.cs" />
     <Compile Include="Utils\FloodFill.cs" />
+    <Compile Include="Utils\FrameCounter.cs" />
     <Compile Include="Utils\MaterialDesignColors.cs" />
     <Compile Include="Utils\MathUtils.cs" />
     <Compile Include="Utils\TextureUtils.cs" />

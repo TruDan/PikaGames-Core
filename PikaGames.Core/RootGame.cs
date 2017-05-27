@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Sprites;
 using MonoGame.Extended.ViewportAdapters;
 using PikaGames.Games.Core.Entities;
 using PikaGames.Games.Core.Sound;
 using PikaGames.Games.Core.UI;
+using PikaGames.Games.Core.Utils;
 
 namespace PikaGames.Games.Core
 {
@@ -99,7 +102,14 @@ namespace PikaGames.Games.Core
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _rootGame?.Initialize();
+#if DEBUG
+			Window.AllowUserResizing = true;
+
+			this._graphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
+			base.IsFixedTimeStep = false;
+			this._graphicsDeviceManager.ApplyChanges();
+#endif
+			_rootGame?.Initialize();
 
             base.Initialize();
         }
@@ -130,7 +140,11 @@ namespace PikaGames.Games.Core
             base.UnloadContent();
         }
 
-        protected override void Update(GameTime gameTime)
+		private FrameCounter _frameCounter = new FrameCounter();
+#if DEBUG
+		private KeyboardState _prevState;
+#endif
+		protected override void Update(GameTime gameTime)
         {
             if (RequestingExit)
                 Exit();
@@ -146,6 +160,20 @@ namespace PikaGames.Games.Core
             base.Update(gameTime);
             
             _currentGame?.Update(gameTime);
+
+#if DEBUG
+	        var keyboardState = Keyboard.GetState();
+	        if (_prevState != keyboardState)
+	        {
+		        if (keyboardState.IsKeyDown(Keys.F11))
+		        {
+			        _graphicsDeviceManager.IsFullScreen = !_graphicsDeviceManager.IsFullScreen;
+					_graphicsDeviceManager.ApplyChanges();
+		        }
+		        _prevState = keyboardState;
+	        }
+#endif
+			_frameCounter.Update();
         }
 
         private void UpdateTransition(GameTime gameTime)
@@ -178,7 +206,7 @@ namespace PikaGames.Games.Core
             }
         }
 
-        protected override void Draw(GameTime gameTime)
+		protected override void Draw(GameTime gameTime)
         {
             _currentGame?.Draw(gameTime);
             
@@ -187,6 +215,8 @@ namespace PikaGames.Games.Core
             _spriteBatch.End();
 
             base.Draw(gameTime);
+
+			_frameCounter.OnDraw();
         }
     }
 }

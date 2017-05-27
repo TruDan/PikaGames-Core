@@ -105,40 +105,36 @@ namespace PikaGames.PaperCast.Scenes
             _camera.LookAtMultiple(new Vector2(Level.Width, Level.Height), 100, Game.Players.Where(p => p.IsAlive).Select(p => p.Position).ToArray());
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, ViewportAdapter viewportAdapter)
+		private Texture2D TintedLightBlue = Resources.Images.InputGamePad.TintSolid(MaterialDesignColors.LightBlue.GetVariant(MaterialThemeVariant.HueA100));
+		public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, ViewportAdapter viewportAdapter)
         {
             base.Draw(gameTime, spriteBatch, viewportAdapter);
-            
-            Level.Draw(gameTime, _camera, spriteBatch);
 
-            spriteBatch.Begin(transformMatrix: viewportAdapter.GetScaleMatrix(), samplerState: SamplerState.PointClamp);
+			spriteBatch.Begin(transformMatrix: viewportAdapter.GetScaleMatrix(), samplerState: SamplerState.PointClamp);
+
+			Level.Draw(gameTime, _camera, spriteBatch);
+
             _playersHud.Draw(spriteBatch);
-            spriteBatch.End();
 
             if (IsPaused)
             {
-                spriteBatch.Begin(transformMatrix: viewportAdapter.GetScaleMatrix(), samplerState: SamplerState.PointClamp);
-                spriteBatch.Draw(_pauseBackground, _pauseBackgroundArea, Color.White * 0.85f);
-                spriteBatch.End();
-
-                spriteBatch.Begin(transformMatrix: viewportAdapter.GetScaleMatrix(), samplerState: SamplerState.PointClamp);
+				spriteBatch.Draw(_pauseBackground, _pauseBackgroundArea, Color.White * 0.85f);
 
                 _pauseScreen.Draw(spriteBatch);
                 
                 // Player List
                 for (int i = 0; i < Game.Players.Count; i++)
                 {
-                    var player = Game.Players[i];
+                    //var player = Game.Players[i];
 
-                    spriteBatch.Draw(Resources.Images.InputGamePad.TintSolid(UiTheme.AccentTheme.GetVariant(MaterialThemeVariant.Base)), new Rectangle((int)_playerListPosition.X, (int)_playerListPosition.Y + i * (_playerListItemHeight + 8), _playerListItemHeight-2, _playerListItemHeight-2), Color.White);
+                    spriteBatch.Draw(TintedLightBlue, new Rectangle((int)_playerListPosition.X, (int)_playerListPosition.Y + i * (_playerListItemHeight + 8), _playerListItemHeight-2, _playerListItemHeight-2), Color.White);
 
                     spriteBatch.DrawString(Games.Core.Resources.Fonts.GameFont, "Player " + i, _playerListPosition + new Vector2(_playerListItemHeight + 8, i * (_playerListItemHeight + 8)), UiTheme.AccentTheme.GetVariant(MaterialThemeVariant.Base), 0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0);
                 }
-
-
-                spriteBatch.End();
             }
-        }
+
+			spriteBatch.End();
+		}
 
     }
 }
