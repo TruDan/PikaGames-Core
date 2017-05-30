@@ -53,6 +53,7 @@ namespace PikaGames.Games.Core
             _graphicsDeviceManager = new GraphicsDeviceManager(this);
 
 #if WINDOWS
+            Debug.WriteLine("IS WINDOWS");
             _graphicsDeviceManager.PreferredBackBufferWidth = (int)WindowSize.X;
             _graphicsDeviceManager.PreferredBackBufferHeight = (int)WindowSize.Y;
             _graphicsDeviceManager.ApplyChanges();
@@ -61,6 +62,7 @@ namespace PikaGames.Games.Core
             IsMouseVisible = true;
 #endif
 #if ANDROID
+            Debug.WriteLine("IS ANDROID");
             _graphicsDeviceManager.IsFullScreen = true;
             _graphicsDeviceManager.SupportedOrientations = DisplayOrientation.Landscape;
 #endif
@@ -216,7 +218,7 @@ namespace PikaGames.Games.Core
 
             base.Draw(gameTime);
 
-			_frameCounter.OnDraw();
+			_frameCounter.Draw(_spriteBatch);
         }
     }
 }

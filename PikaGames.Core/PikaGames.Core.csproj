@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-    <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
   <PropertyGroup>
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -40,6 +40,17 @@
     <Compile Include="Entities\EntityManager.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="GameBase.cs" />
+    <Compile Include="Gui\Pika\IPikaControlRenderer.cs" />
+    <Compile Include="Gui\Pika\IPikaGuiGraphics.cs" />
+    <Compile Include="Gui\Pika\OpeningLocator.cs" />
+    <Compile Include="Gui\Pika\PikaGuiGraphics.cs" />
+    <Compile Include="Gui\Pika\PikaGuiGraphicsDrawing.cs" />
+    <Compile Include="Gui\Pika\PikaGuiVisualizer.cs" />
+    <Compile Include="Gui\Pika\Renderers\PikaButtonControlRenderer.cs" />
+    <Compile Include="Gui\Pika\Renderers\PikaCloseWindowButtonControlRenderer.cs" />
+    <Compile Include="Gui\Pika\Renderers\PikaHorizontalSliderControlRenderer.cs" />
+    <Compile Include="Gui\Pika\Renderers\PikaLabelControlRenderer.cs" />
+    <Compile Include="Gui\Pika\Renderers\PikaWindowControlRenderer.cs" />
     <Compile Include="Input\InputCommand.cs" />
     <Compile Include="Input\InputType.cs" />
     <Compile Include="Input\PlayerInputManager.cs" />
@@ -156,15 +167,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <EmbeddedResource Include="Gui\Pika\Skins\PikaSkin.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties Gui_4Pika_4Skins_4PikaSkin_1json__JSONSchema="http://jsonapi.org/schema" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

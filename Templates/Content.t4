@@ -35,7 +35,7 @@ doc.Load(path + @"\Content.xml");
 		foreach(XmlNode resource in resourceNode.ChildNodes) {
 			if(resource.Name != "Parameters" && resource.Name != "#comment") {
 #>
-#begin <#= resourceNode.Name #>/<#= resource.Attributes["src"].Value #>
+#begin <# if(resource.Attributes["root"] == null || resource.Attributes["root"].Value != "true") { #><#= resourceNode.Name #>/<# } #><#= resource.Attributes["src"].Value #>
 /importer:<#= resource.Attributes["importer"] != null ? resource.Attributes["importer"].Value : resourceNode.Attributes["importer"].Value #>
 /processor:<#= resource.Attributes["processor"] != null ? resource.Attributes["processor"].Value : resourceNode.Attributes["processor"].Value #>
 <#
@@ -53,7 +53,7 @@ doc.Load(path + @"\Content.xml");
 <#
             }
 #>
-/build:<#= resourceNode.Name #>/<#= resource.Attributes["src"].Value #>
+/build:<# if(resource.Attributes["root"] == null || resource.Attributes["root"].Value != "true") { #><#= resourceNode.Name #>/<# } #><#= resource.Attributes["src"].Value #>
 
 <#
             }

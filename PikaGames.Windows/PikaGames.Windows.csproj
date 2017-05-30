@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -94,6 +94,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Games\ClientLauncher\ClientLauncher.csproj">
+      <Project>{73077be7-a824-4550-83d1-4d224b29dd66}</Project>
+      <Name>ClientLauncher</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Games\GameLauncher\GameLauncher.csproj">
       <Project>{68e6c734-de72-4414-99e2-66e5caba8319}</Project>
       <Name>GameLauncher</Name>

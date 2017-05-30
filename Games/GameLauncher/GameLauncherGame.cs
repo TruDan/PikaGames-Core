@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GameLauncher.Scenes;
+using Microsoft.Xna.Framework.Graphics;
 using PikaGames.Games.Core;
 
 namespace GameLauncher
@@ -16,6 +17,8 @@ namespace GameLauncher
         protected override void Initialize()
         {
             base.Initialize();
+            Game.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
+
             Resources.Init(ContentManager, GraphicsDevice);
 
             MainMenuScene = new MainMenuScene(this);

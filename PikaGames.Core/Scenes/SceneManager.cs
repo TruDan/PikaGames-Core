@@ -16,7 +16,7 @@ namespace PikaGames.Games.Core.Scenes
     {
         public readonly GameBase Game;
 
-        public bool DebugMode = false;
+        public bool DebugMode = true;
         
         public bool IsTransitioning { get { return _isTransitioning; } }
 

@@ -70,7 +70,7 @@ namespace <#= defaultNamespace #>
 			foreach(XmlNode resource in resourceNode.ChildNodes) {
 				if(resource.Name != "Parameters" && resource.Name != "#comment") {
 #>
-				<#= resource.Attributes["name"].Value #> = Content.Load<<#= resource.Name #>>("<#= resourceNode.Name #>/<#= Path.ChangeExtension(resource.Attributes["src"].Value, null) #>");
+				<#= resource.Attributes["name"].Value #> = Content.Load<<#= resource.Name #>>("<# if(resource.Attributes["root"] == null || resource.Attributes["root"].Value != "true") { #><#= resourceNode.Name #>/<# } #><#= Path.ChangeExtension(resource.Attributes["src"].Value, null) #>");
 <#
 				}
             }

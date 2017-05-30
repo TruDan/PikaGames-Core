@@ -28,7 +28,7 @@ namespace PikaGames.Games.Core
 
         public static GameBase Instance { get; private set; }
 
-        private RootGame Game { get; }
+        protected RootGame Game { get; }
 
         public event Action<GameBase> Exiting;
 
@@ -37,6 +37,7 @@ namespace PikaGames.Games.Core
         public GraphicsDevice GraphicsDevice => Game.GraphicsDevice;
 
         public SoundManager SoundManager => Game.SoundManager;
+        protected GameServiceContainer Services => Game.Services;
 
         public Vector2 WindowSize => Game.WindowSize;
         public Vector2 VirtualSize => Game.VirtualSize;

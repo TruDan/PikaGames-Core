@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Linq;
+using ClientLauncher;
 using GameLauncher;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using PikaGames.Games.Core;
 using PikaGames.PaperCast;
+using Resources = PikaGames.Games.Core.Resources;
 
 namespace PikaGames.Windows
 {
@@ -20,7 +23,11 @@ namespace PikaGames.Windows
         [STAThread]
         static void Main()
         {
-            using (var game = new GameLauncherGame())
+            GameBase game;
+//            game = new GameLauncherGame();
+            game = new ClientLauncherGame();
+
+            using (game)
             {
                 //var screen =
                 //    System.Windows.Forms.Screen.AllScreens.First(
@@ -38,7 +45,7 @@ namespace PikaGames.Windows
                 //game._graphics.ApplyChanges();
 
                 //var player = game.AddPlayer("TruDan");
-                
+                Mouse.SetCursor(MouseCursor.FromTexture2D(Resources.Images.Cursor, 0, 0));
                 RootGame.Instance.Run();
             }
         }

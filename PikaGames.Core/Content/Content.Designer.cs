@@ -21,12 +21,18 @@ namespace PikaGames.Games.Core
 		public static class Fonts
 		{
 
+			public static SpriteFont TitleFont { get; private set; }
+
+			public static SpriteFont DefaultFont { get; private set; }
+
 			public static SpriteFont GameFont { get; private set; }
 
 			public static SpriteFont DebugFont { get; private set; }
 
 			internal static void Init()
 			{
+				TitleFont = Content.Load<SpriteFont>("TitleFont");
+				DefaultFont = Content.Load<SpriteFont>("DefaultFont");
 				GameFont = Content.Load<SpriteFont>("fonts/Press Start 2P");
 				DebugFont = Content.Load<SpriteFont>("fonts/DebugFont");
 			}
@@ -40,9 +46,15 @@ namespace PikaGames.Games.Core
 
 			public static Texture2D Background { get; private set; }
 
+			public static Texture2D Cursor { get; private set; }
+
 			public static Texture2D Buttons_A { get; private set; }
 
 			public static Texture2D Buttons_B { get; private set; }
+
+			public static Texture2D Buttons_Pika { get; private set; }
+
+			public static Texture2D SuaveSheet { get; private set; }
 
 			public static Texture2D Splash_PikaGames { get; private set; }
 
@@ -50,8 +62,11 @@ namespace PikaGames.Games.Core
 			{
 				Logo = Content.Load<Texture2D>("images/Logo");
 				Background = Content.Load<Texture2D>("images/Background");
+				Cursor = Content.Load<Texture2D>("images/Cursor");
 				Buttons_A = Content.Load<Texture2D>("images/buttons/A");
 				Buttons_B = Content.Load<Texture2D>("images/buttons/B");
+				Buttons_Pika = Content.Load<Texture2D>("images/buttons/Pika");
+				SuaveSheet = Content.Load<Texture2D>("SuaveSheet");
 				Splash_PikaGames = Content.Load<Texture2D>("images/splash/PikaGames");
 			}
 		}

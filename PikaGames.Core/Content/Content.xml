@@ -7,7 +7,9 @@
       <PremultiplyAlpha Value="True" />
       <TextureFormat Value="Compressed" />
     </Parameters>
-    
+    <SpriteFont root="true" name="TitleFont" src="TitleFont.spritefont" />
+    <SpriteFont root="true" name="DefaultFont" src="DefaultFont.spritefont" />
+
     <SpriteFont name="GameFont" src="Press Start 2P.spritefont" />
     <SpriteFont name="DebugFont" src="DebugFont.spritefont" />
   </fonts>
@@ -25,10 +27,14 @@
     
     <Texture2D name="Logo" src="Logo.png" />
     <Texture2D name="Background" src="Background.png" />
+    <Texture2D name="Cursor" src="Cursor.png" />
 
 
     <Texture2D name="Buttons_A" src="buttons/A.png" />
     <Texture2D name="Buttons_B" src="buttons/B.png" />
+    <Texture2D name="Buttons_Pika" src="buttons/Pika.png" />
+    
+    <Texture2D root="true" name="SuaveSheet" src="SuaveSheet.png" />
 
 
     <Texture2D name="Splash_PikaGames" src="splash/PikaGames.png" />

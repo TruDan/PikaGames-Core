@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Threading;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace PikaGames.Games.Core.Utils
 {
@@ -31,9 +33,13 @@ namespace PikaGames.Games.Core.Utils
 			}
 		}
 
-		public void OnDraw()
+		public void Draw(SpriteBatch spriteBatch)
 		{
 			Interlocked.Increment(ref _frames);
+
+            spriteBatch.Begin();
+            spriteBatch.DrawString(Resources.Fonts.DefaultFont, FrameRate + " FPS", new Vector2(5f, 2f), new Color(new Vector3(0, 255, 0)), 0, Vector2.Zero, 0.85f, SpriteEffects.None, 0);
+            spriteBatch.End();
 		}
 	}
 }

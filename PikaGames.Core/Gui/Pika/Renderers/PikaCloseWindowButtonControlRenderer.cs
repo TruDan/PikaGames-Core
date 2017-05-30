@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MonoGame.Extended.NuclexGui.Controls.Desktop;
+
+namespace PikaGames.Games.Core.Gui.Pika.Renderers
+{
+    public class PikaCloseWindowButtonControlRenderer : IPikaControlRenderer<GuiCloseWindowButtonControl>
+    {
+        /// <summary>Names of the states the button control can be in</summary>
+        /// <remarks>
+        ///     Storing this as full strings instead of building them dynamically prevents
+        ///     any garbage from forming during rendering.
+        /// </remarks>
+        private static readonly string[] _states =
+        {
+            "closeButton.disabled",
+            "closeButton.normal",
+            "closeButton.highlighted",
+            "closeButton.depressed"
+        };
+
+        /// <summary>
+        ///     Renders the specified control using the provided graphics interface
+        /// </summary>
+        /// <param name="control">Control that will be rendered</param>
+        /// <param name="graphics">
+        ///     Graphics interface that will be used to draw the control
+        /// </param>
+        public void Render(GuiCloseWindowButtonControl control, IPikaGuiGraphics graphics)
+        {
+            var controlBounds = control.GetAbsoluteBounds();
+
+            // Determine the style to use for the button
+            var stateIndex = 0;
+            if (control.Enabled)
+            {
+                if (control.Depressed)
+                    stateIndex = 3;
+                else
+                {
+                    if (control.MouseHovering || control.HasFocus)
+                        stateIndex = 2;
+                    else stateIndex = 1;
+                }
+            }
+
+            // Draw the button's frame
+            graphics.DrawElement(_states[stateIndex], controlBounds);
+
+            // If there's image assigned to the button, draw it into the button
+            if (control.Texture != null)
+                graphics.DrawImage(controlBounds, control.Texture, control.SourceRectangle);
+
+            // If there's text assigned to the button, draw it into the button
+            if (!string.IsNullOrEmpty(control.Text))
+                graphics.DrawString(_states[stateIndex], controlBounds, control.Text);
+        }
+    }
+}
