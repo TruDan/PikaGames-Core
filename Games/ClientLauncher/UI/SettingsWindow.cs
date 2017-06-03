@@ -28,7 +28,7 @@ namespace ClientLauncher.UI
             };
             closeButton.Pressed += (sender, args) =>
             {
-                Parent.Children.Remove(this);
+                Close();
             };
             Children.Add(closeButton);
             

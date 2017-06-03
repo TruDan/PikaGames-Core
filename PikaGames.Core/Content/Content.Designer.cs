@@ -42,6 +42,16 @@ namespace PikaGames.Games.Core
 		public static class Images
 		{
 
+			public static Texture2D PikaGamesLogo { get; private set; }
+
+			public static Texture2D InputKeyboard { get; private set; }
+
+			public static Texture2D InputPhone { get; private set; }
+
+			public static Texture2D InputNetwork { get; private set; }
+
+			public static Texture2D InputGamePad { get; private set; }
+
 			public static Texture2D Logo { get; private set; }
 
 			public static Texture2D Background { get; private set; }
@@ -54,20 +64,40 @@ namespace PikaGames.Games.Core
 
 			public static Texture2D Buttons_Pika { get; private set; }
 
-			public static Texture2D SuaveSheet { get; private set; }
+			public static Texture2D PikaSheet { get; private set; }
+
+			public static Texture2D Icons { get; private set; }
 
 			public static Texture2D Splash_PikaGames { get; private set; }
 
 			internal static void Init()
 			{
+				PikaGamesLogo = Content.Load<Texture2D>("images/PikaGamesLogo");
+				InputKeyboard = Content.Load<Texture2D>("images/Inputs/Keyboard");
+				InputPhone = Content.Load<Texture2D>("images/Inputs/Phone");
+				InputNetwork = Content.Load<Texture2D>("images/Inputs/Network");
+				InputGamePad = Content.Load<Texture2D>("images/Inputs/GamePad");
 				Logo = Content.Load<Texture2D>("images/Logo");
 				Background = Content.Load<Texture2D>("images/Background");
 				Cursor = Content.Load<Texture2D>("images/Cursor");
 				Buttons_A = Content.Load<Texture2D>("images/buttons/A");
 				Buttons_B = Content.Load<Texture2D>("images/buttons/B");
 				Buttons_Pika = Content.Load<Texture2D>("images/buttons/Pika");
-				SuaveSheet = Content.Load<Texture2D>("SuaveSheet");
+				PikaSheet = Content.Load<Texture2D>("PikaSheet");
+				Icons = Content.Load<Texture2D>("Icons");
 				Splash_PikaGames = Content.Load<Texture2D>("images/splash/PikaGames");
+			}
+		}
+
+
+		public static class Music
+		{
+
+			public static Song Metropolis { get; private set; }
+
+			internal static void Init()
+			{
+				Metropolis = Content.Load<Song>("music/Metropolis");
 			}
 		}
 
@@ -98,6 +128,8 @@ namespace PikaGames.Games.Core
 			Fonts
 .Init();
 			Images
+.Init();
+			Music
 .Init();
 			Sfx
 .Init();

@@ -16,6 +16,7 @@ using PikaGames.Games.Core.UI.Menu;
 using PikaGames.Games.Core.UI.PlayerBar;
 using PikaGames.Games.Core.Utils;
 using PikaGames.PaperCast;
+using Resources = PikaGames.Games.Core.Resources;
 
 namespace GameLauncher.Scenes
 {

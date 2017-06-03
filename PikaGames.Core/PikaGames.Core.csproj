@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;WINDOWS</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -40,6 +40,10 @@
     <Compile Include="Entities\EntityManager.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="GameBase.cs" />
+    <Compile Include="Gui\GuiWindowExtensions.cs" />
+    <Compile Include="Gui\IconsMap.cs" />
+    <Compile Include="Gui\PikaInputCapturer.cs" />
+    <Compile Include="Gui\PikaGuiInputService.cs" />
     <Compile Include="Gui\Pika\IPikaControlRenderer.cs" />
     <Compile Include="Gui\Pika\IPikaGuiGraphics.cs" />
     <Compile Include="Gui\Pika\OpeningLocator.cs" />
@@ -50,6 +54,8 @@
     <Compile Include="Gui\Pika\Renderers\PikaCloseWindowButtonControlRenderer.cs" />
     <Compile Include="Gui\Pika\Renderers\PikaHorizontalSliderControlRenderer.cs" />
     <Compile Include="Gui\Pika\Renderers\PikaLabelControlRenderer.cs" />
+    <Compile Include="Gui\Pika\Renderers\PikaListControlRenderer.cs" />
+    <Compile Include="Gui\Pika\Renderers\PikaVerticalSliderControlRenderer.cs" />
     <Compile Include="Gui\Pika\Renderers\PikaWindowControlRenderer.cs" />
     <Compile Include="Input\InputCommand.cs" />
     <Compile Include="Input\InputType.cs" />
@@ -175,7 +181,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

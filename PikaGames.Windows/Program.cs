@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using ClientLauncher;
 using GameLauncher;
@@ -23,9 +24,11 @@ namespace PikaGames.Windows
         [STAThread]
         static void Main()
         {
+            RootGame.InitDesktop();
+
             GameBase game;
 //            game = new GameLauncherGame();
-            game = new ClientLauncherGame();
+            game = new ClientLauncherGame(new RootGame());
 
             using (game)
             {
@@ -47,6 +50,7 @@ namespace PikaGames.Windows
                 //var player = game.AddPlayer("TruDan");
                 Mouse.SetCursor(MouseCursor.FromTexture2D(Resources.Images.Cursor, 0, 0));
                 RootGame.Instance.Run();
+
             }
         }
     }

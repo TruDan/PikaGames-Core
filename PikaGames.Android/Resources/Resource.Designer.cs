@@ -2437,17 +2437,17 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f06002b
 			public const int bottom = 2131099691;
 			
-			// aapt resource value: 0x7f060092
-			public const int button1 = 2131099794;
-			
 			// aapt resource value: 0x7f060093
-			public const int button2 = 2131099795;
+			public const int button1 = 2131099795;
 			
 			// aapt resource value: 0x7f060094
-			public const int button3 = 2131099796;
+			public const int button2 = 2131099796;
 			
 			// aapt resource value: 0x7f060095
-			public const int button4 = 2131099797;
+			public const int button3 = 2131099797;
+			
+			// aapt resource value: 0x7f060096
+			public const int button4 = 2131099798;
 			
 			// aapt resource value: 0x7f060037
 			public const int buttonPanel = 2131099703;
@@ -2503,8 +2503,8 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f060046
 			public const int expanded_menu = 2131099718;
 			
-			// aapt resource value: 0x7f060091
-			public const int gridLayout1 = 2131099793;
+			// aapt resource value: 0x7f060092
+			public const int gridLayout1 = 2131099794;
 			
 			// aapt resource value: 0x7f060005
 			public const int home = 2131099653;
@@ -2539,14 +2539,17 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f06008e
 			public const int line3 = 2131099790;
 			
+			// aapt resource value: 0x7f06005f
+			public const int linearLayout1 = 2131099743;
+			
 			// aapt resource value: 0x7f060013
 			public const int listMode = 2131099667;
 			
 			// aapt resource value: 0x7f060034
 			public const int list_item = 2131099700;
 			
-			// aapt resource value: 0x7f060096
-			public const int mediaRouteButton1 = 2131099798;
+			// aapt resource value: 0x7f060097
+			public const int mediaRouteButton1 = 2131099799;
 			
 			// aapt resource value: 0x7f060080
 			public const int media_actions = 2131099776;
@@ -2653,8 +2656,8 @@ namespace PikaGames.Android
 			// aapt resource value: 0x7f060039
 			public const int parentPanel = 2131099705;
 			
-			// aapt resource value: 0x7f06005f
-			public const int pikaToolbar1 = 2131099743;
+			// aapt resource value: 0x7f060091
+			public const int pikaToolbar1 = 2131099793;
 			
 			// aapt resource value: 0x7f060006
 			public const int progress_circular = 2131099654;

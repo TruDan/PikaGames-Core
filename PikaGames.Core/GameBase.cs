@@ -5,8 +5,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
+using MonoGame.Extended.Input.InputListeners;
+using MonoGame.Extended.NuclexGui;
 using MonoGame.Extended.ViewportAdapters;
 using PikaGames.Games.Core.Entities;
+using PikaGames.Games.Core.Gui;
+using PikaGames.Games.Core.Gui.Pika;
 using PikaGames.Games.Core.Input;
 using PikaGames.Games.Core.Scenes;
 using PikaGames.Games.Core.Sound;
@@ -28,19 +32,21 @@ namespace PikaGames.Games.Core
 
         public static GameBase Instance { get; private set; }
 
-        protected RootGame Game { get; }
+        public RootGame Game { get; private set; }
 
         public event Action<GameBase> Exiting;
 
         public ContentManager Content => Game.Content;
         public GameWindow Window => Game.Window;
-        public GraphicsDevice GraphicsDevice => Game.GraphicsDevice;
+        public GraphicsDevice GraphicsDevice => Game?.GraphicsDevice ?? RootGame.Instance.GraphicsDevice;
 
         public SoundManager SoundManager => Game.SoundManager;
         protected GameServiceContainer Services => Game.Services;
 
         public Vector2 WindowSize => Game.WindowSize;
         public Vector2 VirtualSize => Game.VirtualSize;
+
+        public GuiManager GuiManager => Game.GuiManager;
 
         public BoxingViewportAdapter ViewportAdapter => Game.ViewportAdapter;
         public ContentManager ContentManager;
@@ -55,26 +61,30 @@ namespace PikaGames.Games.Core
         internal UiDialogContainer DialogContainer { get; }
 
         public SpriteBatch SpriteBatch { get; private set; }
-        
-        public GameBase()
+
+        public GameBase(RootGame rootGame)
         {
-            if (RootGame.Instance == null)
+            if (rootGame == null)
             {
-                Game = new RootGame(this);
+                Game = new RootGame();
             }
             else
             {
-                Game = RootGame.Instance;
+                Game = rootGame;
             }
+
+            Game.Assign(this);
             
             Instance = this;
 
             Content.RootDirectory = "Content";
             ContentManager = new ContentManager(Content.ServiceProvider, "Content");
 
-            DialogContainer = new UiDialogContainer((int) WindowSize.X, (int) WindowSize.Y);
+            DialogContainer = new UiDialogContainer((int) VirtualSize.X, (int)VirtualSize.Y);
         }
 
+        public GameBase() : this(RootGame.Instance) { }
+        
         public virtual Player CreatePlayer(PlayerIndex playerIndex)
         {
             return new Player(TextureUtils.CreateRectangle(64, 64, Color.White), playerIndex);

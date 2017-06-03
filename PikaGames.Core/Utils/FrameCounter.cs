@@ -10,10 +10,12 @@ namespace PikaGames.Games.Core.Utils
 		private int _frames = 0;
 		private Stopwatch _sw = Stopwatch.StartNew();
 
+	    private GameBase _game;
+
 		public int FrameRate { get; set; }
-		public FrameCounter()
+		public FrameCounter(GameBase game)
 		{
-			
+		    _game = game;
 		}
 
 		public void Update()
@@ -27,7 +29,7 @@ namespace PikaGames.Games.Core.Utils
 #if DEBUG
 				if (Debugger.IsAttached)
 				{
-					Debug.WriteLine($"FPS: {FrameRate}");
+					Debug.WriteLine($"{_game.GetType().Name} FPS: {FrameRate}");
 				}
 #endif
 			}

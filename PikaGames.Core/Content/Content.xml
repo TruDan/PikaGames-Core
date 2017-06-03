@@ -25,6 +25,12 @@
       <TextureFormat  Value="Color" />
     </Parameters>
     
+    <Texture2D name="PikaGamesLogo" src="PikaGamesLogo.png" />
+    <Texture2D name="InputKeyboard" src="Inputs/Keyboard.png" />
+    <Texture2D name="InputPhone" src="Inputs/Phone.png" />
+    <Texture2D name="InputNetwork" src="Inputs/Network.png" />
+    <Texture2D name="InputGamePad" src="Inputs/GamePad.png" />
+    
     <Texture2D name="Logo" src="Logo.png" />
     <Texture2D name="Background" src="Background.png" />
     <Texture2D name="Cursor" src="Cursor.png" />
@@ -33,20 +39,28 @@
     <Texture2D name="Buttons_A" src="buttons/A.png" />
     <Texture2D name="Buttons_B" src="buttons/B.png" />
     <Texture2D name="Buttons_Pika" src="buttons/Pika.png" />
+
+    <Texture2D root="true" name="PikaSheet" src="PikaSheet.png" />
+    <Texture2D root="true" name="Icons" src="Icons.png" />
     
-    <Texture2D root="true" name="SuaveSheet" src="SuaveSheet.png" />
-
-
     <Texture2D name="Splash_PikaGames" src="splash/PikaGames.png" />
   </images>
+
+  <music importer="OggImporter" processor="SongProcessor">
+    <Parameters>
+      <Quality Value="Best" />
+    </Parameters>
+
+    <Song name="Metropolis" src="Metropolis.ogg" />
+  </music>
+
 
   <sfx importer="OggImporter" processor="SoundEffectProcessor">
     <Parameters>
       <Quality Value="Best" />
     </Parameters>
-
     <SoundEffect name="SpaceMorph" src="SpaceMorph.ogg" />
-    
+
     <SoundEffect name="Splash_PikaGames" src="splash/PikaGames.ogg" />
 
 

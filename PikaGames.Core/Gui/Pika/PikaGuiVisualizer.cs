@@ -11,6 +11,7 @@ using MonoGame.Extended.NuclexGui;
 using MonoGame.Extended.NuclexGui.Visuals;
 using MonoGame.Extended.NuclexGui.Controls;
 using MonoGame.Extended.NuclexGui.Visuals.Flat;
+using MonoGame.Extended.ViewportAdapters;
 
 namespace PikaGames.Games.Core.Gui.Pika
 {
@@ -25,14 +26,14 @@ namespace PikaGames.Games.Core.Gui.Pika
         /// <summary>Initializes a new gui painter for traditional GUIs</summary>
         /// <param name="contentManager">Content manager that will be used to load the skin resources</param>
         /// <param name="skinStream">Stream from which the GUI Visualizer will read the skin description</param>
-        protected PikaGuiVisualizer(ContentManager contentManager, Stream skinStream)
+        protected PikaGuiVisualizer(ViewportAdapter viewportAdapter, ContentManager contentManager, Stream skinStream)
         {
             _renderers = new Dictionary<Type, IControlRendererAdapter>();
 
             // Obtain default GUI renderers
             FetchRenderers();
 
-            _pikaGuiGraphics = new PikaGuiGraphics(contentManager, skinStream);
+            _pikaGuiGraphics = new PikaGuiGraphics(viewportAdapter, contentManager, skinStream);
             _controlStack = new Stack<ControlWithBounds>();
         }
 
@@ -167,7 +168,7 @@ namespace PikaGames.Games.Core.Gui.Pika
 
                 try
                 {
-                    return new PikaGuiVisualizer(contentManager, skinStream);
+                    return new PikaGuiVisualizer(GameBase.Instance.ViewportAdapter, contentManager, skinStream);
                 }
                 catch (Exception)
                 {

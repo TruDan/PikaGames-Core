@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,10 +28,15 @@ namespace PikaGames.Games.Core.Gui.Pika
         public IDisposable SetClipRegion(RectangleF clipRegion)
         {
             // Cache the integer values of the clipping region's boundaries
-            var clipX = (int)clipRegion.X;
-            var clipY = (int)clipRegion.Y;
-            var clipRight = clipX + (int)clipRegion.Width;
-            var clipBottom = clipY + (int)clipRegion.Height;
+            var matrix = _viewportAdapter.GetScaleMatrix();
+
+            var p = Vector2.Transform(clipRegion.Position, matrix).ToPoint();
+            var pM = Vector2.Transform(clipRegion.Position + clipRegion.Size, matrix).ToPoint();
+            
+            var clipX = p.X;
+            var clipY = p.Y;
+            var clipRight = pM.X;
+            var clipBottom = pM.Y;
 
             // Calculate the viewport's right and bottom coordinates
             var viewport = _spriteBatch.GraphicsDevice.Viewport;
@@ -216,7 +222,7 @@ namespace PikaGames.Games.Core.Gui.Pika
             // nothing will be drawn at all, so we don't use beginSpriteBatch() here
             // and instead call SpriteBatch.Begin() ourselves. Care has to be taken
             // if something ever gets added to the beginSpriteBatch() method.
-            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: _viewportAdapter.GetScaleMatrix());
         }
 
         /// <summary>Needs to be called when the GUI drawing process has ended</summary>
@@ -228,7 +234,7 @@ namespace PikaGames.Games.Core.Gui.Pika
         /// <summary>Starts drawing on the sprite batch</summary>
         private void BeginSpriteBatch()
         {
-            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, _rasterizerState);
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, _rasterizerState, null, _viewportAdapter.GetScaleMatrix());
         }
 
         /// <summary>Stops drawing on the sprite batch</summary>

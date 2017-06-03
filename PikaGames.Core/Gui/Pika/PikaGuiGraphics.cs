@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using MonoGame.Extended.NuclexGui;
 using MonoGame.Extended.NuclexGui.Visuals.Flat;
+using MonoGame.Extended.ViewportAdapters;
 
 namespace PikaGames.Games.Core.Gui.Pika
 {
@@ -45,6 +46,8 @@ namespace PikaGames.Games.Core.Gui.Pika
         /// <summary>Batches GUI elements for faster drawing</summary>
         private SpriteBatch _spriteBatch;
 
+        private ViewportAdapter _viewportAdapter;
+
         /// <summary>Initializes a new gui painter</summary>
         /// <param name="contentManager">
         ///     Content manager containing the resources for the GUI. The instance takes
@@ -53,8 +56,10 @@ namespace PikaGames.Games.Core.Gui.Pika
         /// <param name="skinStream">
         ///     Stream from which the skin description will be read
         /// </param>
-        public PikaGuiGraphics(ContentManager contentManager, Stream skinStream)
+        public PikaGuiGraphics(ViewportAdapter viewportAdapter, ContentManager contentManager, Stream skinStream)
         {
+            _viewportAdapter = viewportAdapter;
+
             var graphicsDeviceService =
                 (IGraphicsDeviceService)contentManager.ServiceProvider.GetService(
                     typeof(IGraphicsDeviceService)

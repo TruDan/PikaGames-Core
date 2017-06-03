@@ -12,8 +12,10 @@ using Android.Support.V7.Media;
 using Android.Views;
 using Android.Widget;
 using Microsoft.Xna.Framework;
+using Org.Apache.Http.Conn.Params;
 using PikaGames.Android.Views;
 using PikaGames.Games;
+using Debug = System.Diagnostics.Debug;
 
 namespace PikaGames.Android.Cast
 {
@@ -138,12 +140,13 @@ namespace PikaGames.Android.Cast
             PendingIntent notificationPendingIntent = PendingIntent.GetActivity(this, 0, intent, 0);
 
             CastRemoteDisplayLocalService.NotificationSettings settings = new CastRemoteDisplayLocalService.NotificationSettings.Builder().SetNotificationPendingIntent(notificationPendingIntent).Build();
+
             CastRemoteDisplayLocalService.StartService(this, Java.Lang.Class.FromType(typeof(PikaPresentationService)), GetString(Resource.String.app_id), castDevice, settings, new PikaRemoteDisplayCallback()
             {
                 OnRemoteDisplaySessionErrorHandler = (errorReason) =>
                 {
                     int code = errorReason.StatusCode;
-                    Console.WriteLine("OnServiceError: " + errorReason.StatusCode);
+                    Debug.WriteLine("OnServiceError: " + errorReason.StatusCode);
 
                     _castDevice = null;
                     Finish();

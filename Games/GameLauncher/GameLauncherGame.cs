@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using GameLauncher.Scenes;
@@ -14,13 +15,15 @@ namespace GameLauncher
         internal GameSelectScene GameSelectScene;
         internal OptionsMenuScene OptionsMenuScene;
         
+        public GameLauncherGame(RootGame rootGame) : base(rootGame) { }
+
         protected override void Initialize()
         {
+            Debug.WriteLine("Initialise GameLauncher");
+
             base.Initialize();
             Game.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
-
-            Resources.Init(ContentManager, GraphicsDevice);
-
+            
             MainMenuScene = new MainMenuScene(this);
             GameSelectScene = new GameSelectScene();
             OptionsMenuScene = new OptionsMenuScene();
